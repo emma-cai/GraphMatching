@@ -40,3 +40,7 @@ Thumbs.db
 # Rubymine files #
 ##################
 .idea/
+
+# Files in target/ #
+####################
+target/
