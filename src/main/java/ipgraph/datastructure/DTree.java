@@ -112,8 +112,8 @@ public class DTree extends ArrayList<DNode> {
         SemanticHeadFinder headFinder = new SemanticHeadFinder(false); // keep copula verbs as head
         GrammaticalStructure egs = new EnglishGrammaticalStructure(tree, string -> true, headFinder, true);
 
-        // notes:
-        String conllx = EnglishGrammaticalStructure.dependenciesToString(egs, egs.typedDependencies(), tree, true, true);    // DEBUG: should be typedDependencies()
+        // notes: typedDependencies() is suggested
+        String conllx = EnglishGrammaticalStructure.dependenciesToString(egs, egs.typedDependencies(), tree, true, true);
 
         DTree dtree = LangTools.getDTreeFromCoNLLXString(conllx, true);
         return dtree;
