@@ -5,52 +5,43 @@ import ipgraph.datastructure.DTree;
 
 import java.util.*;
 
-import static ipgraph.matching.Matching.GraphSimilarityCost;
+import static ipgraph.matching.Matching.computeNodeSimilarity;
 
 /**
 * Created by qingqingcai on 5/4/15.
 */
 public class Main {
 
-    private static Set<String> postagSet = new HashSet<>(Arrays.asList(new String[]{"NN", "NNS", "NNP", "NNPS"}));
+    private static Set<String> postagSet = new HashSet<>(Arrays.asList(new String[]{"NN", "NNS", "NNP", "NNPS", "WP"}));
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         test1();
     //    test2();
     }
 
-    public static void test1() {
+    public static void test1() throws Exception {
 
         String s1 = "Some proteins, such as those to be incorporated in membranes (known as membrane proteins), are transported into the RER during synthesis.";
         DTree dtree1 = DTree.buildTree(s1);
-        DGraph dgraph1 = DGraph.buildDGraph(dtree1);
-        DGraph dsubgraph1 = dgraph1.getSubgraph(postagSet);
-        System.out.println("\nsubgraph1 = \n" + dsubgraph1.toString());
+        DGraph dgraph1 = DGraph.buildDGraph(dtree1).getSubgraph(postagSet);
+        System.out.println("\nsubgraph1 = \n" + dgraph1.toString());
 
         String s2 = "What are transported into the RER during synthesis?";
         DTree dtree2 = DTree.buildTree(s2);
-        DGraph dgraph2 = DGraph.buildDGraph(dtree2);
-        DGraph dsubgraph2 = dgraph2.getSubgraph(postagSet);
-        System.out.println("\nsubgraph2 = \n" + dsubgraph2.toString());
+        DGraph dgraph2 = DGraph.buildDGraph(dtree2).getSubgraph(postagSet);
+        System.out.println("\nsubgraph2 = \n" + dgraph2.toString());
 
         String s3 = "Biosynthesis (also called biogenesis) is an enzyme-catalyzed process in cells of living organisms by which substrates are converted to more complex products (also simply known as protein translation).";
         DTree dtree3 = DTree.buildTree(s3);
-        DGraph dgraph3 = DGraph.buildDGraph(dtree3);
-        DGraph dsubgraph3 = dgraph3.getSubgraph(postagSet);
-        System.out.println("\nsubgraph3 = \n" + dsubgraph3.toString());
+        DGraph dgraph3 = DGraph.buildDGraph(dtree3).getSubgraph(postagSet);
+        System.out.println("\nsubgraph3 = \n" + dgraph3.toString());
 
-        double similarity_s1_s2 = GraphSimilarityCost(dsubgraph1, dsubgraph2);
-    //    double similarity_s3_s2 = GraphSimilarityCost(dsubgraph3, dsubgraph2);
-
-        System.out.println("s1 = " + s1);
-        System.out.println("s2 = " + s2);
-        System.out.println("s3 = " + s3);
-        System.out.println("similarity_s1_s2 = " + similarity_s1_s2);
-    //     System.out.println("similarity_s3_s2 = " + similarity_s3_s2);
+        computeNodeSimilarity(dgraph1, dgraph2);
+        computeNodeSimilarity(dgraph3, dgraph2);
     }
 
-    public static void test2() {
+    public static void test2() throws Exception {
 
         List<String> texts = new ArrayList<>();
         texts.add("Sarojini Naidu (born as Sarojini Chattopadhyay), also known by the sobriquet as The Nightingale of India, was an Indian independence activist and poet.");
@@ -71,8 +62,7 @@ public class Main {
                 DTree TDTree = DTree.buildTree(text);
                 DGraph TDGraph = DGraph.buildDGraph(TDTree).getSubgraph(postagSet);
 
-                double graphSimilarity = GraphSimilarityCost(QDGraph, TDGraph);
-                System.out.println("similarity = " + graphSimilarity + "\n");
+                computeNodeSimilarity(QDGraph, TDGraph);
             }
         }
     }
