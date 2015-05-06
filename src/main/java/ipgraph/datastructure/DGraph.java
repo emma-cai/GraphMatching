@@ -124,27 +124,6 @@ public class DGraph extends SimpleGraph<DNode, DefaultEdge> {
         return path;
     }
 
-//    /** **************************************************************
-//     * Return the subtree/subgraph containing all nodes in containNodes
-//     */
-//    public Subgraph getSubgraph(UndirectedGraph<DNode, DefaultEdge> dgraph, Set<Integer> containNodes) {
-//
-//        Set edgeSubset = new HashSet<>();
-//        Set vertexSubset = new HashSet<>();
-//        for (int nid : containNodes) {
-//            List<DefaultEdge> path = findShortestPath(getNodeById(0), nid);
-//            edgeSubset.addAll(path);
-//            for (DefaultEdge p : path) {
-//                DNode sn = dgraph.getEdgeSource(p);
-//                DNode tn = dgraph.getEdgeTarget(p);
-//                vertexSubset.add(sn);
-//                vertexSubset.add(tn);
-//            }
-//        }
-//        Subgraph subgraph = new Subgraph(dgraph, vertexSubset, edgeSubset);
-//        return subgraph;
-//    }
-
     /** **************************************************************
      * Build an undirected graph from dtree, where all nodes whose POS
      * tag is NN, NNS, NNP, NNPS
