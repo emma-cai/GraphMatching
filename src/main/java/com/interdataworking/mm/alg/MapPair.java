@@ -966,7 +966,16 @@ public class MapPair implements Cloneable {
       //      materialize();
       return m.getNodeFactory();
     }
-      
+
+    /**
+     * TODO: Not fully implemented.
+     * @return
+     */
+    @Override
+    public Set<Object> getNodeResources() {
+      return null;
+    }
+
   }
 
   static class GroupComparator implements Comparator {

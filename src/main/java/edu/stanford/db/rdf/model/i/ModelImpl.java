@@ -1,5 +1,5 @@
 /**
- * Copyright © Sergey Melnik (Stanford University, Database Group)
+ * Copyright ï¿½ Sergey Melnik (Stanford University, Database Group)
  *
  * All Rights Reserved.
  */
@@ -7,6 +7,7 @@
 
 package edu.stanford.db.rdf.model.i;
 
+import com.google.common.collect.Sets;
 import org.w3c.rdf.model.*;
 import org.w3c.rdf.io.*;
 import org.w3c.rdf.digest.*;
@@ -20,6 +21,8 @@ import java.io.*;
  */
 
 public class ModelImpl implements Model, Digestable, Digest, Serializable {
+
+  Set<Object> nodeResources = new HashSet();
 
   //  static final boolean CHECK_CONSISTENCY = true;
 
@@ -141,6 +144,8 @@ public class ModelImpl implements Model, Digestable, Digest, Serializable {
   public void add(Resource subject, Resource predicate, String object) throws ModelException {
 
     add(nodeFactory.createStatement(subject, predicate, nodeFactory.createLiteral(object)));
+    nodeResources.add(subject);
+    nodeResources.add(object);
   }
 
 
@@ -154,6 +159,8 @@ public class ModelImpl implements Model, Digestable, Digest, Serializable {
   public void add(Resource subject, Resource predicate, RDFNode object) throws ModelException {
 
     add(nodeFactory.createStatement(subject, predicate, object));
+    nodeResources.add(subject);
+    nodeResources.add(object);
   }
 
   /**
@@ -166,6 +173,10 @@ public class ModelImpl implements Model, Digestable, Digest, Serializable {
     makePrivate();
 
     triples.put(t, t);
+
+    nodeResources.add(t.subject());
+    // JERRY: won't let me do .object()
+    nodeResources.add(t.object());
 
     if(validLookup())
       _findIndex.addLookup(t);
@@ -371,6 +382,18 @@ public class ModelImpl implements Model, Digestable, Digest, Serializable {
 
     return nodeFactory;
   }
+
+  /**
+   * Returns a copy of all the nodes/resources used in this model.
+   *
+   * @return
+   */
+  @Override
+  public Set<Object> getNodeResources() {
+    return Sets.newHashSet(nodeResources);
+  }
+
+
   // Resource implementation
 
   public String getLabel() throws ModelException {

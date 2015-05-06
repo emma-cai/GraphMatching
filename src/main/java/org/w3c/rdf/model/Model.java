@@ -7,6 +7,7 @@
 package org.w3c.rdf.model;
 
 import java.util.Enumeration;
+import java.util.Set;
 
 /**
  * This is a programming interface to an RDF model.
@@ -118,6 +119,14 @@ public interface Model extends Resource {
    * Creates a unique unnamed resource
    */
   //  public Resource noname();
+
+
+  /**
+   * Returns a set of all the nodes/resources used in this model.
+   * @return
+   */
+  Set<Object> getNodeResources();
+
 }
 
 

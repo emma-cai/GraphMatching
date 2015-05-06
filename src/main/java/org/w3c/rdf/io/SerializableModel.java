@@ -369,6 +369,15 @@ public class SerializableModel implements Model, Serializable {
     return m.getNodeFactory();
   }
 
+  /**
+   * TODO: Not fully implemented.
+   * @return
+   */
+  @Override
+  public Set<Object> getNodeResources() {
+    return null;
+  }
+
   public String getURI() throws ModelException {
 
     silentUnfold();
