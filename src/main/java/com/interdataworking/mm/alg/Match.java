@@ -971,24 +971,6 @@ public class Match implements UntypedGateway {
     dump(f);
   }
 
-  public static void main(String[] args) throws Exception {
-
-    Set<String> postagSet = new HashSet<>(Arrays.asList(new String[]{"NN", "NNS", "NNP", "NNPS", "WP"}));
-
-    String s1 = "Some proteins, such as those to be incorporated in membranes (known as membrane proteins), are transported into the RER during synthesis.";
-    DTree dtree1 = DTree.buildTree(s1);
-    DGraph dgraph1 = DGraph.buildDGraph(dtree1).getSubgraph(postagSet);
-    System.out.println("\nsubgraph1 = \n" + dgraph1.toString());
-
-
-    String s2 = "What are transported into the RER during synthesis?";
-    DTree dtree2 = DTree.buildTree(s2);
-    DGraph dgraph2 = DGraph.buildDGraph(dtree2).getSubgraph(postagSet);
-    System.out.println("\nsubgraph2 = \n" + dgraph2.toString());
-
-    similarityFloodingBetweenTwoGraphs(dgraph1, dgraph2);
-  }
-
   /**
    * Generate input to Similarity Flooding algorithm from DGraph
    */
@@ -1070,6 +1052,24 @@ public class Match implements UntypedGateway {
       }
     }
     return answer;
+  }
+
+  public static void main(String[] args) throws Exception {
+
+    Set<String> postagSet = new HashSet<>(Arrays.asList(new String[]{"NN", "NNS", "NNP", "NNPS", "WP"}));
+
+    String s1 = "Some proteins, such as those to be incorporated in membranes (known as membrane proteins), are transported into the RER during synthesis.";
+    DTree dtree1 = DTree.buildTree(s1);
+    DGraph dgraph1 = DGraph.buildDGraph(dtree1).getSubgraph(postagSet);
+    System.out.println("\nsubgraph1 = \n" + dgraph1.toString());
+
+
+    String s2 = "What are transported into the RER during synthesis?";
+    DTree dtree2 = DTree.buildTree(s2);
+    DGraph dgraph2 = DGraph.buildDGraph(dtree2).getSubgraph(postagSet);
+    System.out.println("\nsubgraph2 = \n" + dgraph2.toString());
+
+    similarityFloodingBetweenTwoGraphs(dgraph1, dgraph2);
   }
 
   /** Original main function
