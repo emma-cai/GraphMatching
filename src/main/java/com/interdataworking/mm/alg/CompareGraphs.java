@@ -12,8 +12,7 @@ import org.w3c.rdf.util.RDFUtil;
 import java.util.*;
 
 /**
-  * This is an implementation of the Similarity Flooding algorithm
-  * described in the ICDE'02 paper.
+  * New version of the Match class.
   *
   **/
 
