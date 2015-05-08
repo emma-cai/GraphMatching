@@ -1,6 +1,5 @@
 package com.interdataworking.mm.alg;
 
-import junit.framework.TestCase;
 import org.w3c.rdf.model.Model;
 import org.w3c.rdf.model.ModelException;
 import org.w3c.rdf.model.NodeFactory;
@@ -13,8 +12,11 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-public class CompareGraphsTest extends TestCase {
+
+public class CompareGraphsTest {
 
     private CompareGraphs.PGNode makePGNode(Resource r1, Resource r2, double d1, double d2, double d3, double d4) {
         CompareGraphs match = new CompareGraphs();
@@ -74,6 +76,7 @@ public class CompareGraphsTest extends TestCase {
      * This test verifies ICDE02Example().
      * @throws org.w3c.rdf.model.ModelException
      */
+    @Test
     public void testICDE02Example() throws ModelException {
         RDFFactory rf = new RDFFactoryImpl();
         NodeFactory nf = rf.getNodeFactory();
@@ -114,7 +117,12 @@ public class CompareGraphsTest extends TestCase {
             Iterator itB = B.getNodeResources().iterator();
             while(itB.hasNext())    {
                 Resource resB = (Resource) itB.next();
-                initMap.add(new MapPair(resA, resB, 1.0));
+                if (resA.equals(a1) && resB.equals(b1))     {
+                    initMap.add(new MapPair(resA, resB, 1.0, true));
+                }
+                else {
+                    initMap.add(new MapPair(resA, resB, 1.0));
+                }
             }
         }
 //        initMap.add(new MapPair(a, b, 1.0));
@@ -164,7 +172,7 @@ public class CompareGraphsTest extends TestCase {
             CompareGraphs.PGNode expected = (CompareGraphs.PGNode) expectedList.get(ct);
             CompareGraphs.PGNode actual = (CompareGraphs.PGNode) actualArray[ct];
 
-            assertEquals("Testing element = " + ct + "; ", expected, actual);
+            assertEquals("Testing element = " + ct + "; ", expected.toString(), actual.toString());
 
         }
     }
@@ -173,6 +181,7 @@ public class CompareGraphsTest extends TestCase {
     /**
      * This test verifies a call to orderedNodesExample(10).
      */
+    @Test
     public void testOrderedNodesExample() throws ModelException {
 
         int num = 10;
@@ -247,6 +256,7 @@ public class CompareGraphsTest extends TestCase {
     /**
      * This test verifies a call to sequenceExample("GATTACA", "GTAACATCAGAGATTTTGAGACAC").
      */
+    @Test
     public void testSequenceExample() throws ModelException {
 
         String seq1 = "GATTACA";
@@ -295,6 +305,7 @@ public class CompareGraphsTest extends TestCase {
      * Try graph matching on parser output.
      * @throws org.w3c.rdf.model.ModelException
      */
+    @Test
     public void testParseOutputAffirmativeAffirmative() throws ModelException {
         RDFFactory rf = new RDFFactoryImpl();
         NodeFactory nf = rf.getNodeFactory();
@@ -431,6 +442,7 @@ public class CompareGraphsTest extends TestCase {
 
 
 
+    @Test
     public void testParseOutputQuestionAffirmative() throws ModelException {
         RDFFactory rf = new RDFFactoryImpl();
         NodeFactory nf = rf.getNodeFactory();
