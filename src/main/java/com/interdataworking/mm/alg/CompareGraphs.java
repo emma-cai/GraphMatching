@@ -1,6 +1,5 @@
 package com.interdataworking.mm.alg;
 
-import com.interdataworking.UntypedGateway;
 import ipgraph.datastructure.DGraph;
 import ipgraph.datastructure.DNode;
 import ipgraph.datastructure.DTree;
@@ -18,12 +17,11 @@ import java.util.*;
   *
   **/
 
-public class CompareGraphs implements UntypedGateway {
+public class CompareGraphs {
 
     public boolean DEBUG = false;
     public static final int DEBUG_MAX_ITERATIONS = 0;
 
-    //  static final boolean ADD_SIGMAN_BEFORE = true; // ALWAYS TRUE, OTHERWISE DOES NOT MAKE SENSE
     static final double MIN_NODE_SIM2 = StringMatcher.MIN_NODE_SIM;
 
 
@@ -175,10 +173,6 @@ public class CompareGraphs implements UntypedGateway {
             }
 
             double diff = distance(nodes);
-
-//       double maxN1 = maxN1(nodes);
-//       double diff = distanceF(nodes, maxN, maxN1);
-//       maxN = maxN1;
 
             if(TEST) {
                 if(DEBUG && iteration < DEBUG_MAX_ITERATIONS)
@@ -357,11 +351,9 @@ public class CompareGraphs implements UntypedGateway {
             Iterator it2 = c2.iterator();
             while(it2.hasNext()) {
                 RDFNode n2 = (RDFNode)it2.next();
-                //    MapPair p = getNormalPair(n1, n2);
-                //    System.err.println("Reinforce pair: " + p);
-                //    sigma0.add(p);
+
                 PGNode pn = getNormalNode(n1, n2);
-                //    System.err.println("Init node: " + pn);
+
                 pgnodes.put(pn, pn);
             }
         }
@@ -402,19 +394,11 @@ public class CompareGraphs implements UntypedGateway {
 
                 Statement st2 = (Statement)en2.nextElement();
 
-                if(st2.subject() instanceof Statement ||
-                                st2.object() instanceof Statement)
+                if(st2.subject() instanceof Statement || st2.object() instanceof Statement)
                     continue;
 
-//     if(tryAll) {
-//       sigma0.add(getNormalPair(st1.subject(), st2.subject()));
-//       sigma0.add(getNormalPair(st1.object(), st2.object()));
-//       sigma0.add(getNormalPair(st1.subject(), st2.object()));
-//       sigma0.add(getNormalPair(st1.object(), st2.subject()));
-//     }
-
                 double ps = 0.0; //predicateSim(st1.predicate(), st2.predicate());
-                //    System.err.println("-- " + st1 + " -- " + st2);
+
                 if(st1.predicate().equals(st2.predicate()))
                     ps = EQUAL_PRED_COEFF;
                 else if(TRY_ALL_ARCS)
@@ -422,7 +406,7 @@ public class CompareGraphs implements UntypedGateway {
 
 
                 if(ps > 0) {
-                    //      System.err.println("--- ps=" + ps + " from " + EQUAL_PRED_COEFF + ", " + TRY_ALL_ARCS + ", " + OTHER_PRED_COEFF);
+
                     StmtPair p = new StmtPair(st1, st2, ps,
                                     getCard(cardMapSPLeft, st1.subject(), ignorePredicates ? null : st1.predicate()),
                                     getCard(cardMapOPLeft, st1.object(), ignorePredicates ? null : st1.predicate()),
@@ -512,7 +496,7 @@ public class CompareGraphs implements UntypedGateway {
     MapPair get(Map table, RDFNode r1, RDFNode r2) {
 
         MapPair p = setPair(GET_PAIR, r1, r2); // new MapPair(r1, r2); //
-        // MapPair p = new MapPair(r1, r2);
+
         MapPair res = (MapPair)table.get(p);
         if(res == null) {
             res = p.duplicate();
@@ -590,23 +574,22 @@ public class CompareGraphs implements UntypedGateway {
 
         Statement stLeft, stRight;
         double predSim;
-        //    int spLeft,opLeft,spRight,opRight;
+
         double soso,osos,soos,osso;
 
         public StmtPair(Statement stLeft, Statement stRight, double predSim,
-                                        int spLeft, int opLeft, int pLeft, int spRight, int opRight, int pRight) {
+                        int spLeft, int opLeft, int pLeft, int spRight, int opRight, int pRight) {
 
-            //      System.err.println("--- predSim=" + predSim);
 
             this.stLeft = stLeft;
             this.stRight = stRight;
             this.predSim = predSim;
 
-          double c = 2.0;
-          this.soso = c * predSim / (spLeft + spRight);
-          this.osos = c * predSim / (opLeft + opRight);
-          this.soos = c * predSim / (spLeft + opRight);
-          this.osso = c * predSim / (opLeft + spRight);
+            double c = 2.0;
+            this.soso = c * predSim / (spLeft + spRight);
+            this.osos = c * predSim / (opLeft + opRight);
+            this.soos = c * predSim / (spLeft + opRight);
+            this.osso = c * predSim / (opLeft + spRight);
 
 
         }
@@ -864,25 +847,4 @@ public class CompareGraphs implements UntypedGateway {
         similarityFloodingBetweenTwoGraphs(dgraph1, dgraph2);
     }
 
-    /** Original main function
-      public static void main(String[] args) throws Exception {
-
-      switch(args.length) {
-
-      case 0:
-
-      ICDE02Example();
-      orderedNodesExample(10);
-      sequenceExample("GATTACA", "GTAACATCAGAGATTTTGAGACAC");
-      break;
-
-      case 1:
-
-      orderedNodesExample(Integer.parseInt(args[0]));
-      break;
-
-      case 2: sequenceExample(args[0], args[1]); break;
-      }
-      }
-      **/
 }
