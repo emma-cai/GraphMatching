@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class DGraph extends SimpleGraph<DNode, DefaultEdge> {
 
-    private static Set<String> postagSet = new HashSet<>(Arrays.asList(new String[]{"NN", "NNS", "NNP", "NNPS", "WP"}));
+    public static final Set<String> postagSet = new HashSet<>(Arrays.asList(new String[]{"NN", "NNS", "NNP", "NNPS", "WP"}));
 
     public DGraph(Class<? extends DefaultEdge> aClass) {
         super(aClass);
