@@ -125,45 +125,37 @@ public class CompareGraphsTest {
                 }
             }
         }
-//        initMap.add(new MapPair(a, b, 1.0));
-//        initMap.add(new MapPair(a, b1, 1.0));
-//        initMap.add(new MapPair(a, b2, 1.0));
-//        initMap.add(new MapPair(a1, b, 1.0));
-//        initMap.add(new MapPair(a1, b1, 1.0, true)); // test inverse
-//        initMap.add(new MapPair(a1, b2, 1.0));
-//        initMap.add(new MapPair(a2, b, 1.0));
-//        initMap.add(new MapPair(a2, b1, 1.0));
-//        initMap.add(new MapPair(a2, b2, 1.0));
 
         CompareGraphs sf = new CompareGraphs();
 
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
-        sf.formula = CompareGraphs.FORMULA_FFT;
+//        sf.formula = CompareGraphs.FORMULA_FFT;
         sf.FLOW_GRAPH_TYPE = CompareGraphs.FG_PRODUCT;
 
         MapPair[] actualArray = sf.getComparison(A, B, initMap);
         MapPair.sort(actualArray);
+        CompareGraphs.dump(actualArray);
 
         // Now create the expected.
-        CompareGraphs.PGNode a_b_MP = makePGNode(a, b, 1.0, 1.0, 1.0, 1.0);
-        CompareGraphs.PGNode a2_b1_MP = makePGNode(a2, b1, 0.9192856376702777, 1.0, 0.9170165472956283, 0.9192856376702777);
-        CompareGraphs.PGNode a1_b2_MP = makePGNode(a1, b2, 0.7021345060602809, 1.0, 0.6996789330698936, 0.7021345060602809);
-        CompareGraphs.PGNode a1_b1_MP = makePGNode(a1, b1, 0.38458650648932746, 1.0, 0.385527290689059, 0.38458650648932746);
+        CompareGraphs.PGNode a_b_MP = makePGNode(a, b, "sim=1.0, init=1.0, N=1.0, N1=1.0");
+        CompareGraphs.PGNode a2_b1_MP = makePGNode(a2, b1, "sim=0.8488116656146333, init=1.0, N=0.8488015659046423, N1=0.8488116656146333");
+        CompareGraphs.PGNode a1_b2_MP = makePGNode(a1, b2, "sim=0.6605787759891664, init=1.0, N=0.6605680097499723, N1=0.6605787759891664");
+        CompareGraphs.PGNode a1_b_MP = makePGNode(a1, b, "sim=0.603827362695727, init=1.0, N=0.6039369206337483, N1=0.603827362695727");
+        CompareGraphs.PGNode a2_b2_MP = makePGNode(a2, b2, "sim=0.603827362695727, init=1.0, N=0.6039369206337483, N1=0.603827362695727");
+        CompareGraphs.PGNode a1_b1_MP = makePGNode(a1, b1, "sim=0.46376184928021447, init=1.0, N=0.463766296118477, N1=0.46376184928021447");
         a1_b1_MP.inverse = true;
-        CompareGraphs.PGNode a1_b_MP = makePGNode(a1, b, 0.21967177947012764, 1.0, 0.2529019510990368, 0.21967177947012764);
-        CompareGraphs.PGNode a2_b2_MP = makePGNode(a2, b2, 0.21967177947012764, 1.0, 0.2529019510990368, 0.21967177947012764);
-        CompareGraphs.PGNode a_b1_MP = makePGNode(a, b1, 4.2904644427759305E-4, 1.0, 9.878982464806125E-4, 4.2904644427759305E-4);
-        CompareGraphs.PGNode a_b2_MP = makePGNode(a, b2, 4.2904644427759305E-4, 1.0, 9.878982464806125E-4, 4.2904644427759305E-4);
-        CompareGraphs.PGNode a2_b_MP = makePGNode(a2, b, 4.2904644427759305E-4, 1.0, 9.878982464806125E-4, 4.2904644427759305E-4);
+        CompareGraphs.PGNode a_b1_MP = makePGNode(a, b1, "sim=0.23188161981641786, init=1.0, N=0.23188684123056472, N1=0.23188161981641786");
+        CompareGraphs.PGNode a_b2_MP = makePGNode(a, b2, "sim=0.23188161981641786, init=1.0, N=0.23188684123056472, N1=0.23188161981641786");
+        CompareGraphs.PGNode a2_b_MP = makePGNode(a2, b, "sim=0.23188161981641786, init=1.0, N=0.23188684123056472, N1=0.23188161981641786");
 
         List expectedList = new ArrayList();
         expectedList.add(a_b_MP);
         expectedList.add(a2_b1_MP);
         expectedList.add(a1_b2_MP);
-        expectedList.add(a1_b1_MP);
         expectedList.add(a1_b_MP);
         expectedList.add(a2_b2_MP);
+        expectedList.add(a1_b1_MP);
         expectedList.add(a_b1_MP);
         expectedList.add(a_b2_MP);
         expectedList.add(a2_b_MP);

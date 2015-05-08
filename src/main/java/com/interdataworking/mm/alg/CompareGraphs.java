@@ -23,39 +23,8 @@ public class CompareGraphs implements UntypedGateway {
     public boolean DEBUG = false;
     public static final int DEBUG_MAX_ITERATIONS = 0;
 
-    // default formula to be used: {ADD_SIGMA0_BEFORE=t, ADD_SIGMA0_AFTER=t, ADD_SIGMAN_AFTER=t}
-    public boolean[] formula = FORMULA_TTT;
-
     // default way of computing the propagation coefficients to be used
     public int FLOW_GRAPH_TYPE = FG_AVG;
-
-    // various iteration formulas
-
-    // MAY BE BETTER! but much worse convergence!
-    //   sigma^{n+1} = normalize(f(sigma^0 + sigma^n));
-    public static final boolean[] FORMULA_TFF = {true, false, false};
-
-    // SLIGHTLY WORSE, BUT BETTER CONVERGENCE!
-    //   sigma^{n+1} = normalize(sigma^0 + sigma^n + f(sigma^0 + sigma^n));
-    public static final boolean[] FORMULA_TTT = {true, true, true};
-
-    // USE THIS ONE FOR TESTING/DEBUGGING - PURE VERSION
-    //   sigma^{n+1} = normalize(sigma^n + f(sigma^n));
-    public static final boolean[] FORMULA_FFT = {false, false, true};
-
-    //   sigma^{n+1} = normalize(sigma^0 + f(sigma^n));
-    public static final boolean[] FORMULA_FTF = {false, true, false};
-
-    //   sigma^{n+1} = normalize(sigma^0 + f(sigma^0 + sigma^n));
-    public static final boolean[] FORMULA_TTF = {true, true, false};
-
-    //   sigma^{n+1} = normalize(sigma^n + f(sigma^0 + sigma^n));
-    public static final boolean[] FORMULA_TFT = {true, false, true};
-
-    //   sigma^{n+1} = normalize(sigma^0 + sigma^n + f(sigma^n));
-    public static final boolean[] FORMULA_FTT = {false, true, true};
-
-
 
     //  static final boolean ADD_SIGMAN_BEFORE = true; // ALWAYS TRUE, OTHERWISE DOES NOT MAKE SENSE
     static final double MIN_NODE_SIM2 = StringMatcher.MIN_NODE_SIM;
@@ -252,40 +221,15 @@ public class CompareGraphs implements UntypedGateway {
 
     public void applyFormula(PGArc[] arcs, PGNode[] nodes, int iteration) {
 
-        // special case for default formula
-
-        if(formula == FORMULA_TFT) {
-
-            for(int i = nodes.length; --i >= 0;) {
-
-                PGNode n = nodes[i];
-                n.sim = (n.simN = n.simN1) + n.sim0;
-            }
-            propagateValues(arcs);
-            return;
-        }
-
-        // generic, for all formulas
-
-        boolean add_sigma0_before = formula[0];
-        boolean add_sigma0_after = formula[1];
-        boolean add_sigmaN_after = formula[2];
-
         for(int i = nodes.length; --i >= 0;) {
 
             PGNode n = nodes[i];
             // move simN1 values in simN and take current value from previous iteration
             n.sim = n.simN = n.simN1;
 
-            if(add_sigma0_before)
-                n.sim += n.sim0;
+            n.sim += n.sim0;
 
-            // initialize simN1 for next iteration
-            if(!add_sigmaN_after)
-                n.simN1 = 0; // otherwise, n.simN1 = n.sim from above
-
-            if(add_sigma0_after)
-                n.simN1 += n.sim0;
+            n.simN1 += n.sim0;
         }
 
 //     if(DEBUG && iteration < DEBUG_MAX_ITERATIONS) {
@@ -300,21 +244,6 @@ public class CompareGraphs implements UntypedGateway {
             dump(nodes);
         }
 
-        /*
-        if(add_sigma0_after || add_sigmaN_after) {
-
-            for(int i = nodes.length; --i >= 0;) {
-            
-        PGNode n = nodes[i];
-
-        if(add_sigma0_after)
-            n.simN1 += n.sim0;
-
-        if(add_sigmaN_after)
-            n.simN1 += n.sim;
-            }
-        }
-        */
     }
 
     public static void propagateValues(PGArc[] arcs) {
@@ -883,7 +812,7 @@ public class CompareGraphs implements UntypedGateway {
 
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
-        sf.formula = FORMULA_FFT;
+//        sf.formula = FORMULA_FFT;
         sf.FLOW_GRAPH_TYPE = FG_PRODUCT;
 
         MapPair[] result = sf.getComparison(A, B, initMap);
@@ -1021,7 +950,7 @@ public class CompareGraphs implements UntypedGateway {
 
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
-        sf.formula = FORMULA_FFT;
+ //       sf.formula = FORMULA_FFT;
         sf.FLOW_GRAPH_TYPE = FG_PRODUCT;
 
         MapPair[] result = sf.getComparison(A, B, initMap);
