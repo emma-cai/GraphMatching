@@ -23,22 +23,9 @@ public class CompareGraphs implements UntypedGateway {
     public boolean DEBUG = false;
     public static final int DEBUG_MAX_ITERATIONS = 0;
 
-    // default way of computing the propagation coefficients to be used
-    public int FLOW_GRAPH_TYPE = FG_AVG;
-
     //  static final boolean ADD_SIGMAN_BEFORE = true; // ALWAYS TRUE, OTHERWISE DOES NOT MAKE SENSE
     static final double MIN_NODE_SIM2 = StringMatcher.MIN_NODE_SIM;
 
-    // ways of computing propagation coefficients
-
-    public static final int FG_PRODUCT = 1;
-    public static final int FG_AVG = 2;
-    public static final int FG_EQUAL = 3;
-    public static final int FG_TOTALP = 4;
-    public static final int FG_TOTALS = 5;
-    public static final int FG_AVG_TOTALS = 6;
-    public static final int FG_STOCHASTIC = 7; // weight of OUTGOING normalized to 1
-    public static final int FG_INCOMING = 8; // weight of INCOMING normalized to 1
 
     // other variables and constants
 
@@ -445,29 +432,6 @@ public class CompareGraphs implements UntypedGateway {
                                     getCard(cardMapPRight, null, ignorePredicates ? null : st2.predicate())
                     );
 
-//       MapPair p = new MapPair(st1, st2, ps);
-
-                    if(FLOW_GRAPH_TYPE == FG_STOCHASTIC || FLOW_GRAPH_TYPE == FG_INCOMING) {
-
-                        // collect the numbers
-
-                        MapPair sourcePair = get(outgoing, st1.subject(), st2.subject());
-                        sourcePair.sim += 1.0;
-
-                        sourcePair = get(outgoing, st1.object(), st2.object());
-                        sourcePair.sim += 1.0;
-
-                        if(TRY_ALL_ARCS) {
-                            sourcePair = get(outgoing, st1.subject(), st2.object());
-                            sourcePair.sim += 1.0;
-
-                            sourcePair = get(outgoing, st1.object(), st2.subject());
-                            sourcePair.sim += 1.0;
-                        }
-
-//          MapPair targetPair = get(incoming, st1.object(), st2.object());
-//          targetPair.sim += 1.0;
-                    }
 
                     if(DEBUG)
                         System.err.println("" + p);
@@ -476,44 +440,10 @@ public class CompareGraphs implements UntypedGateway {
             }
         }
 
-        if(FLOW_GRAPH_TYPE == FG_STOCHASTIC) {
-
-            Iterator it = stmtPairs.iterator();
-            while(it.hasNext()) {
-
-                StmtPair p = (StmtPair)it.next();
-                p.soso = 1.0 / get(outgoing, p.stLeft.subject(), p.stRight.subject()).sim;
-                p.osos = 1.0 / get(outgoing, p.stLeft.object(), p.stRight.object()).sim;
-                if(TRY_ALL_ARCS) {
-                    p.soos = 1.0 / get(outgoing, p.stLeft.subject(), p.stRight.object()).sim;
-                    p.osso = 1.0 / get(outgoing, p.stLeft.object(), p.stRight.subject()).sim;
-                }
-                if(DEBUG)
-                    System.err.println("Adjusted: " + p);
-            }
-        } else if(FLOW_GRAPH_TYPE == FG_INCOMING) {
-
-            Iterator it = stmtPairs.iterator();
-            while(it.hasNext()) {
-
-                StmtPair p = (StmtPair)it.next();
-                p.osos = 1.0 / get(outgoing, p.stLeft.subject(), p.stRight.subject()).sim;
-                p.soso = 1.0 / get(outgoing, p.stLeft.object(), p.stRight.object()).sim;
-                if(TRY_ALL_ARCS) {
-                    p.osso = 1.0 / get(outgoing, p.stLeft.subject(), p.stRight.object()).sim;
-                    p.soos = 1.0 / get(outgoing, p.stLeft.object(), p.stRight.subject()).sim;
-                }
-                if(DEBUG)
-                    System.err.println("Adjusted: " + p);
-            }
-        }
 
         // we don't need cardMaps any more, free memory
         cardMapSPLeft = cardMapOPLeft = cardMapSPRight = cardMapOPRight = cardMapPLeft = cardMapPRight = null;
 
-
-//     pgnodes = new HashMap();
-//     pgarcs = new ArrayList();
 
         for(Iterator it = stmtPairs.iterator(); it.hasNext();) {
 
@@ -672,80 +602,13 @@ public class CompareGraphs implements UntypedGateway {
             this.stRight = stRight;
             this.predSim = predSim;
 
-            switch(FLOW_GRAPH_TYPE) {
+          double c = 2.0;
+          this.soso = c * predSim / (spLeft + spRight);
+          this.osos = c * predSim / (opLeft + opRight);
+          this.soos = c * predSim / (spLeft + opRight);
+          this.osso = c * predSim / (opLeft + spRight);
 
-                case CompareGraphs.FG_AVG: {
 
-                    double c = 2.0;
-                    this.soso = c * predSim / (spLeft + spRight);
-                    this.osos = c * predSim / (opLeft + opRight);
-                    this.soos = c * predSim / (spLeft + opRight);
-                    this.osso = c * predSim / (opLeft + spRight);
-                    //    System.err.println("--- soso=" + soso + " from predSim=" + predSim + ", spLeft="+ spLeft + ", spRight=" + spRight);
-                    break;
-                }
-                case CompareGraphs.FG_PRODUCT: {
-
-                    double c = 1.0;
-                    this.soso = c * predSim / (spLeft * spRight);
-                    this.osos = c * predSim / (opLeft * opRight);
-                    this.soos = c * predSim / (spLeft * opRight);
-                    this.osso = c * predSim / (opLeft * spRight);
-                    break;
-                }
-
-        /*
-            case CompareGraphs.FG_CONSTANT_WEIGHT: { // ignore directionality
-
-        double c = 1.0 / ((spLeft * spRight) + (opLeft * opRight));
-        this.soso = c * predSim;
-        this.osos = c * predSim;
-        this.soos = c * predSim;
-        this.osso = c * predSim;
-        break;
-            }
-        */
-                case CompareGraphs.FG_EQUAL:
-                case CompareGraphs.FG_INCOMING:
-                case CompareGraphs.FG_STOCHASTIC: { // for constant weight, weight computed here does not matter...
-
-                    double c = 1.0;
-                    this.soso = c * predSim;
-                    this.osos = c * predSim;
-                    this.soos = c * predSim;
-                    this.osso = c * predSim;
-                    break;
-                }
-                case CompareGraphs.FG_TOTALP: {
-
-                    double c = pLeft * pRight;
-                    this.soso = predSim / c;
-                    this.osos = predSim / c;
-                    this.soos = predSim / c;
-                    this.osso = predSim / c;
-                    break;
-                }
-                case CompareGraphs.FG_TOTALS: {
-
-                    double c = 2.0 / (pLeft + pRight);
-                    this.soso = predSim * c;
-                    this.osos = predSim * c;
-                    this.soos = predSim * c;
-                    this.osso = predSim * c;
-                    break;
-                }
-
-                case CompareGraphs.FG_AVG_TOTALS: {
-
-                    double c = 4.0 / (pLeft + pRight);
-                    this.soso = c * predSim / (spLeft + spRight);
-                    this.osos = c * predSim / (opLeft + opRight);
-                    this.soos = c * predSim / (spLeft + opRight);
-                    this.osso = c * predSim / (opLeft + spRight);
-                    break;
-                }
-
-            }
         }
 
         public String toString() {
@@ -813,7 +676,7 @@ public class CompareGraphs implements UntypedGateway {
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
 //        sf.formula = FORMULA_FFT;
-        sf.FLOW_GRAPH_TYPE = FG_PRODUCT;
+//        sf.FLOW_GRAPH_TYPE = FG_PRODUCT;
 
         MapPair[] result = sf.getComparison(A, B, initMap);
         MapPair.sort(result);
@@ -951,7 +814,7 @@ public class CompareGraphs implements UntypedGateway {
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
  //       sf.formula = FORMULA_FFT;
-        sf.FLOW_GRAPH_TYPE = FG_PRODUCT;
+//        sf.FLOW_GRAPH_TYPE = FG_PRODUCT;
 
         MapPair[] result = sf.getComparison(A, B, initMap);
         MapPair.sort(result);
