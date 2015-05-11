@@ -1,6 +1,6 @@
 package ipgraph.matching;
 
-import com.interdataworking.mm.alg.CompareGraphs;
+import com.interdataworking.mm.alg.SimplifiedMatch;
 import com.interdataworking.mm.alg.MapPair;
 import com.interdataworking.mm.alg.Match;
 import ipgraph.datastructure.DGraph;
@@ -65,7 +65,7 @@ public class MatchingTest {
 
     @Test
     public void testGoodMatch_UsingCompareGraphs() throws ModelException {
-        CompareGraphs compareGraphs = new CompareGraphs();
+        SimplifiedMatch compareGraphs = new SimplifiedMatch();
 
         Matching matching = new Matching(compareGraphs);
 
@@ -87,7 +87,7 @@ public class MatchingTest {
 
     @Test
     public void testBadMatch_UsingCompareGraphs() throws ModelException {
-        CompareGraphs compareGraphs = new CompareGraphs();
+        SimplifiedMatch compareGraphs = new SimplifiedMatch();
 
         Matching matching = new Matching(compareGraphs);
 

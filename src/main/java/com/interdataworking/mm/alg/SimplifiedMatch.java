@@ -16,7 +16,7 @@ import java.util.*;
   *
   **/
 
-public class CompareGraphs implements GraphComparer {
+public class SimplifiedMatch implements NodeComparer {
 
     public boolean DEBUG = false;
     public static final int DEBUG_MAX_ITERATIONS = 0;
@@ -663,7 +663,7 @@ public class CompareGraphs implements GraphComparer {
         initMap.add(new MapPair(a2, b1, 1.0));
         initMap.add(new MapPair(a2, b2, 1.0));
 
-        CompareGraphs sf = new CompareGraphs();
+        SimplifiedMatch sf = new SimplifiedMatch();
 
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
@@ -708,7 +708,7 @@ public class CompareGraphs implements GraphComparer {
             B.add(nf.createStatement(b[i-1], NEXT, b[i]));
         }
 
-        CompareGraphs sf = new CompareGraphs();
+        SimplifiedMatch sf = new SimplifiedMatch();
         PGNode[] result = sf.getComparison(A, B, null); // initial mapping is a full cross-product of nodes in A and B
         MapPair.printMap(new FilterBest().getFilterBest(Arrays.asList(result), true), System.out);
     }
@@ -746,7 +746,7 @@ public class CompareGraphs implements GraphComparer {
         addSequence(A, nf, seq1, "x");
         addSequence(B, nf, seq2, "y");
 
-        CompareGraphs sf = new CompareGraphs();
+        SimplifiedMatch sf = new SimplifiedMatch();
         PGNode[] result = sf.getComparison(A, B, null); // initial mapping is a full cross-product of nodes in A and B
 
         List pruned = new FilterBest().getFilterBest(Arrays.asList(result), true);
@@ -801,7 +801,7 @@ public class CompareGraphs implements GraphComparer {
             }
         }
 
-        CompareGraphs sf = new CompareGraphs();
+        SimplifiedMatch sf = new SimplifiedMatch();
 
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)

@@ -1,6 +1,6 @@
 package ipgraph.matching;
 
-import com.interdataworking.mm.alg.GraphComparer;
+import com.interdataworking.mm.alg.NodeComparer;
 import com.interdataworking.mm.alg.MapPair;
 import com.interdataworking.mm.alg.Match;
 import ipgraph.datastructure.DGraph;
@@ -20,11 +20,11 @@ public class Matching {
 
     private static boolean debug = true;
 
-    public static final Set<String> postagSet = GraphComparer.postagSet;
+    public static final Set<String> postagSet = NodeComparer.postagSet;
 
-    GraphComparer graphComparer;
+    NodeComparer graphComparer;
 
-    public Matching(GraphComparer comparer) {
+    public Matching(NodeComparer comparer) {
         graphComparer = comparer;
     }
 

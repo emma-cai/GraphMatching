@@ -18,7 +18,7 @@ import java.util.*;
  *
  **/
 
-public class Match implements UntypedGateway, GraphComparer {
+public class Match implements UntypedGateway, NodeComparer {
 
   public boolean DEBUG = false;
   public static final int DEBUG_MAX_ITERATIONS = 0;

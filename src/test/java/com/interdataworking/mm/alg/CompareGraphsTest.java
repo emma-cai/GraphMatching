@@ -126,7 +126,7 @@ public class CompareGraphsTest {
             }
         }
 
-        CompareGraphs sf = new CompareGraphs();
+        SimplifiedMatch sf = new SimplifiedMatch();
 
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
@@ -135,7 +135,7 @@ public class CompareGraphsTest {
 
         MapPair[] actualArray = sf.getComparison(A, B, initMap);
         MapPair.sort(actualArray);
-        CompareGraphs.dump(actualArray);
+        SimplifiedMatch.dump(actualArray);
 
         // Now create the expected.
         PGNode a_b_MP = makePGNode(a, b, "sim=1.0, init=1.0, N=1.0, N1=1.0");
@@ -202,14 +202,14 @@ public class CompareGraphsTest {
             B.add(nf.createStatement(b[i-1], NEXT, b[i]));
         }
 
-        CompareGraphs sf = new CompareGraphs();
+        SimplifiedMatch sf = new SimplifiedMatch();
         PGNode[] result = sf.getComparison(A, B, null); // initial mapping is a full cross-product of nodes in A and B
         //MapPair.printMap(new FilterBest().getFilterBest(Arrays.asList(result), true), System.out);
         List actualList = new FilterBest().getFilterBest(Arrays.asList(result), true);
         //List l = new ArrayList(c);
         Object[] actualArray = actualList.toArray();
         MapPair.sort(actualArray);
-        CompareGraphs.dump(actualArray);
+        SimplifiedMatch.dump(actualArray);
 
 
         // Now create the expected.
@@ -263,10 +263,10 @@ public class CompareGraphsTest {
         Model A = rf.createModel();
         Model B = rf.createModel();
 
-        CompareGraphs.addSequence(A, nf, seq1, "x");
-        CompareGraphs.addSequence(B, nf, seq2, "y");
+        SimplifiedMatch.addSequence(A, nf, seq1, "x");
+        SimplifiedMatch.addSequence(B, nf, seq2, "y");
 
-        CompareGraphs sf = new CompareGraphs();
+        SimplifiedMatch sf = new SimplifiedMatch();
         PGNode[] result = sf.getComparison(A, B, null); // initial mapping is a full cross-product of nodes in A and B
 
         List pruned = new FilterBest().getFilterBest(Arrays.asList(result), true);
@@ -356,7 +356,7 @@ public class CompareGraphsTest {
             }
         }
 
-        CompareGraphs sf = new CompareGraphs();
+        SimplifiedMatch sf = new SimplifiedMatch();
 
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
@@ -366,7 +366,7 @@ public class CompareGraphsTest {
         MapPair[] actualArray = sf.getComparison(A, B, initMap);
         MapPair.sort(actualArray);
 
-        CompareGraphs.dump(actualArray);
+        SimplifiedMatch.dump(actualArray);
 
         // Now create the expected.
         PGNode is_is_MP = makePGNode(a_is, b_is, "sim=1.0, init=1.0, N=1.0, N1=1.0");
@@ -497,7 +497,7 @@ public class CompareGraphsTest {
             }
         }
 
-        CompareGraphs sf = new CompareGraphs();
+        SimplifiedMatch sf = new SimplifiedMatch();
 
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
@@ -507,7 +507,7 @@ public class CompareGraphsTest {
         MapPair[] actualArray = sf.getComparison(A, B, initMap);
         MapPair.sort(actualArray);
 
-        CompareGraphs.dump(actualArray);
+        SimplifiedMatch.dump(actualArray);
 
         // Now create the expected.
         PGNode place_place_MP = makePGNode(a_place, a_place, "sim=1.0, init=1.0, N=1.0, N1=1.0");
