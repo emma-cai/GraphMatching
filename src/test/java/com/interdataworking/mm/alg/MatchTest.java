@@ -17,9 +17,9 @@ import java.util.List;
 
 public class MatchTest extends TestCase {
 
-    private Match.PGNode makePGNode(Resource r1, Resource r2, double d1, double d2, double d3, double d4) {
-        Match match = new Match();
-        Match.PGNode pgNode = match.new PGNode(r1, r2);
+    private PGNode makePGNode(Resource r1, Resource r2, double d1, double d2, double d3, double d4) {
+        //Match match = new Match();
+        PGNode pgNode = new PGNode(r1, r2);
 
         pgNode.sim = d1;
         pgNode.sim0 = d2;
@@ -37,7 +37,7 @@ public class MatchTest extends TestCase {
      *  has the form, e.g. "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318"
      * @return
      */
-    private Match.PGNode makePGNode(Resource r1, Resource r2, String s) {
+    private PGNode makePGNode(Resource r1, Resource r2, String s) {
         String[] commaSplit = s.split(",");
 
         String field = commaSplit[0];
@@ -59,7 +59,7 @@ public class MatchTest extends TestCase {
         return makePGNode(r1, r2, Double.parseDouble(simVal), Double.parseDouble(initVal), Double.parseDouble(nVal), Double.parseDouble(n1Val));
     }
 
-    private Match.PGNode makePGNode(String s1, String s2, double d1, double d2, double d3, double d4) throws ModelException {
+    private PGNode makePGNode(String s1, String s2, double d1, double d2, double d3, double d4) throws ModelException {
 
         RDFFactory rf = new RDFFactoryImpl();
         NodeFactory nf = rf.getNodeFactory();
@@ -139,16 +139,16 @@ public class MatchTest extends TestCase {
         MapPair.sort(actualArray);
 
         // Now create the expected.
-        Match.PGNode a_b_MP = makePGNode(a, b, 1.0, 1.0, 1.0, 1.0);
-        Match.PGNode a2_b1_MP = makePGNode(a2, b1, 0.9192856376702777, 1.0, 0.9170165472956283, 0.9192856376702777);
-        Match.PGNode a1_b2_MP = makePGNode(a1, b2, 0.7021345060602809, 1.0, 0.6996789330698936, 0.7021345060602809);
-        Match.PGNode a1_b1_MP = makePGNode(a1, b1, 0.38458650648932746, 1.0, 0.385527290689059, 0.38458650648932746);
+        PGNode a_b_MP = makePGNode(a, b, 1.0, 1.0, 1.0, 1.0);
+        PGNode a2_b1_MP = makePGNode(a2, b1, 0.9192856376702777, 1.0, 0.9170165472956283, 0.9192856376702777);
+        PGNode a1_b2_MP = makePGNode(a1, b2, 0.7021345060602809, 1.0, 0.6996789330698936, 0.7021345060602809);
+        PGNode a1_b1_MP = makePGNode(a1, b1, 0.38458650648932746, 1.0, 0.385527290689059, 0.38458650648932746);
         a1_b1_MP.inverse = true;
-        Match.PGNode a1_b_MP = makePGNode(a1, b, 0.21967177947012764, 1.0, 0.2529019510990368, 0.21967177947012764);
-        Match.PGNode a2_b2_MP = makePGNode(a2, b2, 0.21967177947012764, 1.0, 0.2529019510990368, 0.21967177947012764);
-        Match.PGNode a_b1_MP = makePGNode(a, b1, 4.2904644427759305E-4, 1.0, 9.878982464806125E-4, 4.2904644427759305E-4);
-        Match.PGNode a_b2_MP = makePGNode(a, b2, 4.2904644427759305E-4, 1.0, 9.878982464806125E-4, 4.2904644427759305E-4);
-        Match.PGNode a2_b_MP = makePGNode(a2, b, 4.2904644427759305E-4, 1.0, 9.878982464806125E-4, 4.2904644427759305E-4);
+        PGNode a1_b_MP = makePGNode(a1, b, 0.21967177947012764, 1.0, 0.2529019510990368, 0.21967177947012764);
+        PGNode a2_b2_MP = makePGNode(a2, b2, 0.21967177947012764, 1.0, 0.2529019510990368, 0.21967177947012764);
+        PGNode a_b1_MP = makePGNode(a, b1, 4.2904644427759305E-4, 1.0, 9.878982464806125E-4, 4.2904644427759305E-4);
+        PGNode a_b2_MP = makePGNode(a, b2, 4.2904644427759305E-4, 1.0, 9.878982464806125E-4, 4.2904644427759305E-4);
+        PGNode a2_b_MP = makePGNode(a2, b, 4.2904644427759305E-4, 1.0, 9.878982464806125E-4, 4.2904644427759305E-4);
 
         List expectedList = new ArrayList();
         expectedList.add(a_b_MP);
@@ -162,8 +162,8 @@ public class MatchTest extends TestCase {
         expectedList.add(a2_b_MP);
 
         for (int ct = 0; ct < expectedList.size(); ct++)    {
-            Match.PGNode expected = (Match.PGNode) expectedList.get(ct);
-            Match.PGNode actual = (Match.PGNode) actualArray[ct];
+            PGNode expected = (PGNode) expectedList.get(ct);
+            PGNode actual = (PGNode) actualArray[ct];
 
             assertEquals("Testing element = " + ct + "; ", expected, actual);
 
@@ -203,7 +203,7 @@ public class MatchTest extends TestCase {
         }
 
         Match sf = new Match();
-        Match.PGNode[] result = sf.getMatch(A, B, null); // initial mapping is a full cross-product of nodes in A and B
+        PGNode[] result = sf.getMatch(A, B, null); // initial mapping is a full cross-product of nodes in A and B
         //MapPair.printMap(new FilterBest().getFilterBest(Arrays.asList(result), true), System.out);
         List actualList = new FilterBest().getFilterBest(Arrays.asList(result), true);
         //List l = new ArrayList(c);
@@ -213,16 +213,16 @@ public class MatchTest extends TestCase {
 
 
         // Now create the expected.
-        Match.PGNode a5_b5_MP = makePGNode("a5", "b5", 1.0, 0.001, 1.0, 1.0);
-        Match.PGNode a6_b6_MP = makePGNode("a6", "b6", 1.0, 0.001, 1.0, 1.0);
-        Match.PGNode a4_b4_MP = makePGNode("a4", "b4", 0.9196714699636644, 0.001, 0.9196811395357198, 0.9196714699636644);
-        Match.PGNode a7_b7_MP = makePGNode("a7", "b7", 0.9196714699636644, 0.001, 0.9196811395357198, 0.9196714699636644);
-        Match.PGNode a3_b3_MP = makePGNode("a3", "b3", 0.7652037714138048, 0.001, 0.7652253202961736, 0.7652037714138048);
-        Match.PGNode a8_b8_MP = makePGNode("a8", "b8", 0.7652037714138048, 0.001, 0.7652253202961736, 0.7652037714138048);
-        Match.PGNode a2_b2_MP = makePGNode("a2", "b2", 0.5485142368307199, 0.001, 0.5485401707808361, 0.5485142368307199);
-        Match.PGNode a9_b9_MP = makePGNode("a9", "b9", 0.5485142368307199, 0.001, 0.5485401707808361, 0.5485142368307199);
-        Match.PGNode a1_b1_MP = makePGNode("a1", "b1", 0.2863490249192036, 0.001, 0.2863667236749642, 0.2863490249192036);
-        Match.PGNode a10_b10_MP = makePGNode("a10", "b10", 0.2863490249192036, 0.001, 0.28636672367496413, 0.2863490249192036);
+        PGNode a5_b5_MP = makePGNode("a5", "b5", 1.0, 0.001, 1.0, 1.0);
+        PGNode a6_b6_MP = makePGNode("a6", "b6", 1.0, 0.001, 1.0, 1.0);
+        PGNode a4_b4_MP = makePGNode("a4", "b4", 0.9196714699636644, 0.001, 0.9196811395357198, 0.9196714699636644);
+        PGNode a7_b7_MP = makePGNode("a7", "b7", 0.9196714699636644, 0.001, 0.9196811395357198, 0.9196714699636644);
+        PGNode a3_b3_MP = makePGNode("a3", "b3", 0.7652037714138048, 0.001, 0.7652253202961736, 0.7652037714138048);
+        PGNode a8_b8_MP = makePGNode("a8", "b8", 0.7652037714138048, 0.001, 0.7652253202961736, 0.7652037714138048);
+        PGNode a2_b2_MP = makePGNode("a2", "b2", 0.5485142368307199, 0.001, 0.5485401707808361, 0.5485142368307199);
+        PGNode a9_b9_MP = makePGNode("a9", "b9", 0.5485142368307199, 0.001, 0.5485401707808361, 0.5485142368307199);
+        PGNode a1_b1_MP = makePGNode("a1", "b1", 0.2863490249192036, 0.001, 0.2863667236749642, 0.2863490249192036);
+        PGNode a10_b10_MP = makePGNode("a10", "b10", 0.2863490249192036, 0.001, 0.28636672367496413, 0.2863490249192036);
 
         List expectedList = new ArrayList();
         expectedList.add(a5_b5_MP);
@@ -237,8 +237,8 @@ public class MatchTest extends TestCase {
         expectedList.add(a10_b10_MP);
 
         for (int ct = 0; ct < expectedList.size(); ct++)    {
-            Match.PGNode expected = (Match.PGNode) expectedList.get(ct);
-            Match.PGNode actual = (Match.PGNode) actualArray[ct];
+            PGNode expected = (PGNode) expectedList.get(ct);
+            PGNode actual = (PGNode) actualArray[ct];
 
             assertEquals("Testing element = " + ct + "; ", expected.toString(), actual.toString());
         }
@@ -266,17 +266,17 @@ public class MatchTest extends TestCase {
         Match.addSequence(B, nf, seq2, "y");
 
         Match sf = new Match();
-        Match.PGNode[] result = sf.getMatch(A, B, null); // initial mapping is a full cross-product of nodes in A and B
+        PGNode[] result = sf.getMatch(A, B, null); // initial mapping is a full cross-product of nodes in A and B
 
         List pruned = new FilterBest().getFilterBest(Arrays.asList(result), true);
         Object[] actualArray = pruned.toArray();
         MapPair.sortGroup(actualArray, false);
 
         // Now create the expected.
-        Match.PGNode x0_y0_MP = makePGNode("x0", "y0", 1.0, 0.001, 1.0, 1.0);
-        Match.PGNode x1_y12_MP = makePGNode("x1", "y12", 0.21660899646321097, 0.001, 0.2368652622897955, 0.21660899646321097);
-        Match.PGNode x2_y13_MP = makePGNode("x2", "y13", 0.18776333576686896, 0.001, 0.20530577704461345, 0.18776333576686896);
-        Match.PGNode x3_y15_MP = makePGNode("x3", "y14", 0.10855412421515549, 0.001, 0.11868225797349849, 0.10855412421515549);
+        PGNode x0_y0_MP = makePGNode("x0", "y0", 1.0, 0.001, 1.0, 1.0);
+        PGNode x1_y12_MP = makePGNode("x1", "y12", 0.21660899646321097, 0.001, 0.2368652622897955, 0.21660899646321097);
+        PGNode x2_y13_MP = makePGNode("x2", "y13", 0.18776333576686896, 0.001, 0.20530577704461345, 0.18776333576686896);
+        PGNode x3_y15_MP = makePGNode("x3", "y14", 0.10855412421515549, 0.001, 0.11868225797349849, 0.10855412421515549);
 
         List expectedList = new ArrayList();
         expectedList.add(x0_y0_MP);
@@ -285,8 +285,8 @@ public class MatchTest extends TestCase {
         expectedList.add(x3_y15_MP);
 
         for (int ct = 0; ct < expectedList.size(); ct++)    {
-            Match.PGNode expected = (Match.PGNode) expectedList.get(ct);
-            Match.PGNode actual = (Match.PGNode) actualArray[ct];
+            PGNode expected = (PGNode) expectedList.get(ct);
+            PGNode actual = (PGNode) actualArray[ct];
 
             assertEquals("Testing element = " + ct + "; ", expected.toString(), actual.toString());
         }
@@ -367,32 +367,32 @@ public class MatchTest extends TestCase {
         Match.dump(actualArray);
 
         // Now create the expected.
-        Match.PGNode is_is_MP = makePGNode(a_is, b_is, "sim=1.0, init=1.0, N=1.0, N1=1.0");
+        PGNode is_is_MP = makePGNode(a_is, b_is, "sim=1.0, init=1.0, N=1.0, N1=1.0");
 
-        Match.PGNode city_work_MP = makePGNode(a_city, b_work, "sim=0.724744868707717, init=0.5, N=0.7247448979591836, N1=0.724744868707717");
-        Match.PGNode place_great_MP = makePGNode(a_place, b_great, "sim=0.724744868707717, init=0.5, N=0.7247448979591836, N1=0.724744868707717");
-        Match.PGNode great_great_MP = makePGNode(a_great, b_great, "sim=0.28990368077055384, init=1.0, N=0.2899234693877551, N1=0.28990368077055384");
-        Match.PGNode a_is_MP = makePGNode(a_a, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode city_work_MP = makePGNode(a_city, b_work, "sim=0.724744868707717, init=0.5, N=0.7247448979591836, N1=0.724744868707717");
+        PGNode place_great_MP = makePGNode(a_place, b_great, "sim=0.724744868707717, init=0.5, N=0.7247448979591836, N1=0.724744868707717");
+        PGNode great_great_MP = makePGNode(a_great, b_great, "sim=0.28990368077055384, init=1.0, N=0.2899234693877551, N1=0.28990368077055384");
+        PGNode a_is_MP = makePGNode(a_a, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
 
-        Match.PGNode new_is_MP = makePGNode(a_new, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        Match.PGNode a_work_MP = makePGNode(a_a, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        Match.PGNode is_work_MP = makePGNode(a_is, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        Match.PGNode new_work_MP = makePGNode(a_new, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode new_is_MP = makePGNode(a_new, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode a_work_MP = makePGNode(a_a, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode is_work_MP = makePGNode(a_is, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode new_work_MP = makePGNode(a_new, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
 
-        Match.PGNode city_is_MP = makePGNode(a_city, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        Match.PGNode york_is_MP = makePGNode(a_york, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        Match.PGNode york_work_MP = makePGNode(a_york, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        Match.PGNode a_great_MP = makePGNode(a_a, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode city_is_MP = makePGNode(a_city, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode york_is_MP = makePGNode(a_york, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode york_work_MP = makePGNode(a_york, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode a_great_MP = makePGNode(a_a, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
 
-        Match.PGNode is_great_MP = makePGNode(a_is, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        Match.PGNode new_great_MP = makePGNode(a_new, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        Match.PGNode city_great_MP = makePGNode(a_city, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        Match.PGNode york_great_MP = makePGNode(a_york, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode is_great_MP = makePGNode(a_is, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode new_great_MP = makePGNode(a_new, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode city_great_MP = makePGNode(a_city, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode york_great_MP = makePGNode(a_york, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
 
-        Match.PGNode great_is_MP = makePGNode(a_great, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        Match.PGNode great_work_MP = makePGNode(a_great, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        Match.PGNode place_is_MP = makePGNode(a_place, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        Match.PGNode place_work_MP = makePGNode(a_place, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode great_is_MP = makePGNode(a_great, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode great_work_MP = makePGNode(a_great, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode place_is_MP = makePGNode(a_place, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode place_work_MP = makePGNode(a_place, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
 
         List expectedList = new ArrayList();
         expectedList.add(is_is_MP);
@@ -423,8 +423,8 @@ public class MatchTest extends TestCase {
         expectedList.add(place_work_MP);
 
         for (int ct = 0; ct < expectedList.size(); ct++)    {
-            Match.PGNode expected = (Match.PGNode) expectedList.get(ct);
-            Match.PGNode actual = (Match.PGNode) actualArray[ct];
+            PGNode expected = (PGNode) expectedList.get(ct);
+            PGNode actual = (PGNode) actualArray[ct];
 
             assertEquals("Testing element = " + ct + "; ", expected.toString(), actual.toString());
         }
@@ -507,50 +507,50 @@ public class MatchTest extends TestCase {
         Match.dump(actualArray);
 
         // Now create the expected.
-        Match.PGNode place_place_MP = makePGNode(a_place, a_place, "sim=1.0, init=1.0, N=1.0, N1=1.0");
+        PGNode place_place_MP = makePGNode(a_place, a_place, "sim=1.0, init=1.0, N=1.0, N1=1.0");
 
-        Match.PGNode great_great_MP = makePGNode(a_great, b_great, "sim=0.9631842495076888, init=1.0, N=0.9632012056942844, N1=0.9631842495076888");
-        Match.PGNode is_is_MP = makePGNode(a_is, b_is, "sim=0.831399945022848, init=1.0, N=0.8313835451125151, N1=0.831399945022848");
-        Match.PGNode a_a_MP = makePGNode(a_a, b_a, "sim=0.618034409439937, init=1.0, N=0.6180515587202603, N1=0.618034409439937");
-        Match.PGNode city_what_MP = makePGNode(a_city, b_what, "sim=0.4862501049550962, init=0.5, N=0.48623389813849105, N1=0.4862501049550962");
+        PGNode great_great_MP = makePGNode(a_great, b_great, "sim=0.9631842495076888, init=1.0, N=0.9632012056942844, N1=0.9631842495076888");
+        PGNode is_is_MP = makePGNode(a_is, b_is, "sim=0.831399945022848, init=1.0, N=0.8313835451125151, N1=0.831399945022848");
+        PGNode a_a_MP = makePGNode(a_a, b_a, "sim=0.618034409439937, init=1.0, N=0.6180515587202603, N1=0.618034409439937");
+        PGNode city_what_MP = makePGNode(a_city, b_what, "sim=0.4862501049550962, init=0.5, N=0.48623389813849105, N1=0.4862501049550962");
 
-        Match.PGNode a_is_MP = makePGNode(a_a, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode is_a_MP = makePGNode(a_is, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode new_a_MP = makePGNode(a_new, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode new_is_MP = makePGNode(a_new, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode a_is_MP = makePGNode(a_a, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode is_a_MP = makePGNode(a_is, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode new_a_MP = makePGNode(a_new, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode new_is_MP = makePGNode(a_new, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        Match.PGNode a_what_MP = makePGNode(a_a, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode is_what_MP = makePGNode(a_is, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode new_what_MP = makePGNode(a_new, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode city_a_MP = makePGNode(a_city, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode a_what_MP = makePGNode(a_a, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode is_what_MP = makePGNode(a_is, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode new_what_MP = makePGNode(a_new, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode city_a_MP = makePGNode(a_city, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        Match.PGNode city_is_MP = makePGNode(a_city, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode york_a_MP = makePGNode(a_york, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode york_is_MP = makePGNode(a_york, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode york_what_MP = makePGNode(a_york, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode city_is_MP = makePGNode(a_city, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode york_a_MP = makePGNode(a_york, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode york_is_MP = makePGNode(a_york, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode york_what_MP = makePGNode(a_york, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        Match.PGNode a_great_MP = makePGNode(a_a, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode is_great_MP = makePGNode(a_is, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode new_great_MP = makePGNode(a_new, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode a_place_MP = makePGNode(a_a, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode a_great_MP = makePGNode(a_a, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode is_great_MP = makePGNode(a_is, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode new_great_MP = makePGNode(a_new, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode a_place_MP = makePGNode(a_a, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        Match.PGNode is_place_MP = makePGNode(a_is, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode new_place_MP = makePGNode(a_new, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode city_great_MP = makePGNode(a_city, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode york_great_MP = makePGNode(a_york, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode is_place_MP = makePGNode(a_is, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode new_place_MP = makePGNode(a_new, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode city_great_MP = makePGNode(a_city, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode york_great_MP = makePGNode(a_york, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        Match.PGNode city_place_MP = makePGNode(a_city, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode york_place = makePGNode(a_york, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode great_a_MP = makePGNode(a_great, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode great_is_MP = makePGNode(a_great, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode city_place_MP = makePGNode(a_city, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode york_place = makePGNode(a_york, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode great_a_MP = makePGNode(a_great, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode great_is_MP = makePGNode(a_great, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        Match.PGNode great_what_MP = makePGNode(a_great, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode place_a_MP = makePGNode(a_place, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode place_is_MP = makePGNode(a_place, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode place_what_MP = makePGNode(a_place, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode great_what_MP = makePGNode(a_great, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode place_a_MP = makePGNode(a_place, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode place_is_MP = makePGNode(a_place, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode place_what_MP = makePGNode(a_place, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        Match.PGNode great_place_MP = makePGNode(a_great, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        Match.PGNode place_great_MP = makePGNode(a_place, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode great_place_MP = makePGNode(a_great, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode place_great_MP = makePGNode(a_place, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
 
         List expectedList = new ArrayList();
@@ -591,8 +591,8 @@ public class MatchTest extends TestCase {
         expectedList.add(place_great_MP);
 
         for (int ct = 0; ct < expectedList.size(); ct++)    {
-            Match.PGNode expected = (Match.PGNode) expectedList.get(ct);
-            Match.PGNode actual = (Match.PGNode) actualArray[ct];
+            PGNode expected = (PGNode) expectedList.get(ct);
+            PGNode actual = (PGNode) actualArray[ct];
 
             assertEquals("Testing element = " + ct + "; ", expected.toString(), actual.toString());
         }

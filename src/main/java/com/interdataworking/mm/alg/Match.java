@@ -18,7 +18,7 @@ import java.util.*;
  *
  **/
 
-public class Match implements UntypedGateway {
+public class Match implements UntypedGateway, GraphComparer {
 
   public boolean DEBUG = false;
   public static final int DEBUG_MAX_ITERATIONS = 0;
@@ -680,27 +680,33 @@ public class Match implements UntypedGateway {
 
   public int getMaxOutputLen() { return 1; }
 
+  @Override
+  public PGNode[] getComparison(Model m1, Model m2, List sigma0) throws ModelException {
+    return getMatch(m1, m2, sigma0);
+  }
 
+
+  // Moved to separate class
   /**
    * A node in the propagation graph
    */
-  class PGNode extends MapPair {
-
-    double sim0;
-    // double sim; corresponds to simN, defined in MapPair
-    double simN1; // N+1
-    double simN; // for comparing vectors, storage only
-
-    public PGNode(Object r1, Object r2) {
-
-      super(r1, r2);
-    }
-
-    public String toString() {
-
-      return "[" + getLeft() + "," + getRight() + ": sim=" + sim + ", init=" + sim0 + ", N=" + simN + ", N1=" + simN1 + (inverse ? ", inverse" : "") + "]";
-    }
-  }
+//  class PGNode extends MapPair {
+//
+//    double sim0;
+//    // double sim; corresponds to simN, defined in MapPair
+//    double simN1; // N+1
+//    double simN; // for comparing vectors, storage only
+//
+//    public PGNode(Object r1, Object r2) {
+//
+//      super(r1, r2);
+//    }
+//
+//    public String toString() {
+//
+//      return "[" + getLeft() + "," + getRight() + ": sim=" + sim + ", init=" + sim0 + ", N=" + simN + ", N1=" + simN1 + (inverse ? ", inverse" : "") + "]";
+//    }
+//  }
 
   /**
    * An arc of the propagation graph
@@ -1021,7 +1027,7 @@ public class Match implements UntypedGateway {
 
     // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
     // (In general, this formula won't converge! So better stick to the default values instead)
-    sf.formula = FORMULA_FFT;
+     sf.formula = FORMULA_FFT;
     sf.FLOW_GRAPH_TYPE = FG_PRODUCT;
 
     MapPair[] result = sf.getMatch(A, B, initMap);

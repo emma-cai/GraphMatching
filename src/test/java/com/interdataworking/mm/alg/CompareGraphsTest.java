@@ -18,9 +18,9 @@ import static org.junit.Assert.assertEquals;
 
 public class CompareGraphsTest {
 
-    private CompareGraphs.PGNode makePGNode(Resource r1, Resource r2, double d1, double d2, double d3, double d4) {
-        CompareGraphs match = new CompareGraphs();
-        CompareGraphs.PGNode pgNode = match.new PGNode(r1, r2);
+    private PGNode makePGNode(Resource r1, Resource r2, double d1, double d2, double d3, double d4) {
+        //CompareGraphs match = new CompareGraphs();
+        PGNode pgNode = new PGNode(r1, r2);
 
         pgNode.sim = d1;
         pgNode.sim0 = d2;
@@ -38,7 +38,7 @@ public class CompareGraphsTest {
      *  has the form, e.g. "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318"
      * @return
      */
-    private CompareGraphs.PGNode makePGNode(Resource r1, Resource r2, String s) {
+    private PGNode makePGNode(Resource r1, Resource r2, String s) {
         String[] commaSplit = s.split(",");
 
         String field = commaSplit[0];
@@ -60,7 +60,7 @@ public class CompareGraphsTest {
         return makePGNode(r1, r2, Double.parseDouble(simVal), Double.parseDouble(initVal), Double.parseDouble(nVal), Double.parseDouble(n1Val));
     }
 
-    private CompareGraphs.PGNode makePGNode(String s1, String s2, double d1, double d2, double d3, double d4) throws ModelException {
+    private PGNode makePGNode(String s1, String s2, double d1, double d2, double d3, double d4) throws ModelException {
 
         RDFFactory rf = new RDFFactoryImpl();
         NodeFactory nf = rf.getNodeFactory();
@@ -138,16 +138,16 @@ public class CompareGraphsTest {
         CompareGraphs.dump(actualArray);
 
         // Now create the expected.
-        CompareGraphs.PGNode a_b_MP = makePGNode(a, b, "sim=1.0, init=1.0, N=1.0, N1=1.0");
-        CompareGraphs.PGNode a2_b1_MP = makePGNode(a2, b1, "sim=0.9007839487015484, init=1.0, N=0.9007784258108072, N1=0.9007839487015484");
-        CompareGraphs.PGNode a1_b2_MP = makePGNode(a1, b2, "sim=0.6551331898713546, init=1.0, N=0.6551272183980411, N1=0.6551331898713546");
-        CompareGraphs.PGNode a1_b_MP = makePGNode(a1, b, "sim=0.5835455461730198, init=1.0, N=0.5836725519104299, N1=0.5835455461730198");
-        CompareGraphs.PGNode a2_b2_MP = makePGNode(a2, b2, "sim=0.5835455461730198, init=1.0, N=0.5836725519104299, N1=0.5835455461730198");
-        CompareGraphs.PGNode a1_b1_MP = makePGNode(a1, b1, "sim=0.5269788735835386, init=1.0, N=0.5269814544466794, N1=0.5269788735835386");
+        PGNode a_b_MP = makePGNode(a, b, "sim=1.0, init=1.0, N=1.0, N1=1.0");
+        PGNode a2_b1_MP = makePGNode(a2, b1, "sim=0.9007839487015484, init=1.0, N=0.9007784258108072, N1=0.9007839487015484");
+        PGNode a1_b2_MP = makePGNode(a1, b2, "sim=0.6551331898713546, init=1.0, N=0.6551272183980411, N1=0.6551331898713546");
+        PGNode a1_b_MP = makePGNode(a1, b, "sim=0.5835455461730198, init=1.0, N=0.5836725519104299, N1=0.5835455461730198");
+        PGNode a2_b2_MP = makePGNode(a2, b2, "sim=0.5835455461730198, init=1.0, N=0.5836725519104299, N1=0.5835455461730198");
+        PGNode a1_b1_MP = makePGNode(a1, b1, "sim=0.5269788735835386, init=1.0, N=0.5269814544466794, N1=0.5269788735835386");
         a1_b1_MP.inverse = true;
-        CompareGraphs.PGNode a_b1_MP = makePGNode(a, b1, "sim=0.22584877277873247, init=1.0, N=0.22585290789379314, N1=0.22584877277873247");
-        CompareGraphs.PGNode a_b2_MP = makePGNode(a, b2, "sim=0.22584877277873247, init=1.0, N=0.22585290789379314, N1=0.22584877277873247");
-        CompareGraphs.PGNode a2_b_MP = makePGNode(a2, b, "sim=0.22584877277873247, init=1.0, N=0.22585290789379314, N1=0.22584877277873247");
+        PGNode a_b1_MP = makePGNode(a, b1, "sim=0.22584877277873247, init=1.0, N=0.22585290789379314, N1=0.22584877277873247");
+        PGNode a_b2_MP = makePGNode(a, b2, "sim=0.22584877277873247, init=1.0, N=0.22585290789379314, N1=0.22584877277873247");
+        PGNode a2_b_MP = makePGNode(a2, b, "sim=0.22584877277873247, init=1.0, N=0.22585290789379314, N1=0.22584877277873247");
 
         List expectedList = new ArrayList();
         expectedList.add(a_b_MP);
@@ -161,8 +161,8 @@ public class CompareGraphsTest {
         expectedList.add(a2_b_MP);
 
         for (int ct = 0; ct < expectedList.size(); ct++)    {
-            CompareGraphs.PGNode expected = (CompareGraphs.PGNode) expectedList.get(ct);
-            CompareGraphs.PGNode actual = (CompareGraphs.PGNode) actualArray[ct];
+            PGNode expected = (PGNode) expectedList.get(ct);
+            PGNode actual = (PGNode) actualArray[ct];
 
             assertEquals("Testing element = " + ct + "; ", expected.toString(), actual.toString());
 
@@ -203,7 +203,7 @@ public class CompareGraphsTest {
         }
 
         CompareGraphs sf = new CompareGraphs();
-        CompareGraphs.PGNode[] result = sf.getComparison(A, B, null); // initial mapping is a full cross-product of nodes in A and B
+        PGNode[] result = sf.getComparison(A, B, null); // initial mapping is a full cross-product of nodes in A and B
         //MapPair.printMap(new FilterBest().getFilterBest(Arrays.asList(result), true), System.out);
         List actualList = new FilterBest().getFilterBest(Arrays.asList(result), true);
         //List l = new ArrayList(c);
@@ -213,16 +213,16 @@ public class CompareGraphsTest {
 
 
         // Now create the expected.
-        CompareGraphs.PGNode a5_b5_MP = makePGNode("a5", "b5", 1.0, 0.001, 1.0, 1.0);
-        CompareGraphs.PGNode a6_b6_MP = makePGNode("a6", "b6", 1.0, 0.001, 1.0, 1.0);
-        CompareGraphs.PGNode a4_b4_MP = makePGNode("a4", "b4", 0.9196714699636644, 0.001, 0.9196811395357198, 0.9196714699636644);
-        CompareGraphs.PGNode a7_b7_MP = makePGNode("a7", "b7", 0.9196714699636644, 0.001, 0.9196811395357198, 0.9196714699636644);
-        CompareGraphs.PGNode a3_b3_MP = makePGNode("a3", "b3", 0.7652037714138048, 0.001, 0.7652253202961736, 0.7652037714138048);
-        CompareGraphs.PGNode a8_b8_MP = makePGNode("a8", "b8", 0.7652037714138048, 0.001, 0.7652253202961736, 0.7652037714138048);
-        CompareGraphs.PGNode a2_b2_MP = makePGNode("a2", "b2", 0.5485142368307199, 0.001, 0.5485401707808361, 0.5485142368307199);
-        CompareGraphs.PGNode a9_b9_MP = makePGNode("a9", "b9", 0.5485142368307199, 0.001, 0.5485401707808361, 0.5485142368307199);
-        CompareGraphs.PGNode a1_b1_MP = makePGNode("a1", "b1", 0.2863490249192036, 0.001, 0.2863667236749642, 0.2863490249192036);
-        CompareGraphs.PGNode a10_b10_MP = makePGNode("a10", "b10", 0.2863490249192036, 0.001, 0.28636672367496413, 0.2863490249192036);
+        PGNode a5_b5_MP = makePGNode("a5", "b5", 1.0, 0.001, 1.0, 1.0);
+        PGNode a6_b6_MP = makePGNode("a6", "b6", 1.0, 0.001, 1.0, 1.0);
+        PGNode a4_b4_MP = makePGNode("a4", "b4", 0.9196714699636644, 0.001, 0.9196811395357198, 0.9196714699636644);
+        PGNode a7_b7_MP = makePGNode("a7", "b7", 0.9196714699636644, 0.001, 0.9196811395357198, 0.9196714699636644);
+        PGNode a3_b3_MP = makePGNode("a3", "b3", 0.7652037714138048, 0.001, 0.7652253202961736, 0.7652037714138048);
+        PGNode a8_b8_MP = makePGNode("a8", "b8", 0.7652037714138048, 0.001, 0.7652253202961736, 0.7652037714138048);
+        PGNode a2_b2_MP = makePGNode("a2", "b2", 0.5485142368307199, 0.001, 0.5485401707808361, 0.5485142368307199);
+        PGNode a9_b9_MP = makePGNode("a9", "b9", 0.5485142368307199, 0.001, 0.5485401707808361, 0.5485142368307199);
+        PGNode a1_b1_MP = makePGNode("a1", "b1", 0.2863490249192036, 0.001, 0.2863667236749642, 0.2863490249192036);
+        PGNode a10_b10_MP = makePGNode("a10", "b10", 0.2863490249192036, 0.001, 0.28636672367496413, 0.2863490249192036);
 
         List expectedList = new ArrayList();
         expectedList.add(a5_b5_MP);
@@ -237,8 +237,8 @@ public class CompareGraphsTest {
         expectedList.add(a10_b10_MP);
 
         for (int ct = 0; ct < expectedList.size(); ct++)    {
-            CompareGraphs.PGNode expected = (CompareGraphs.PGNode) expectedList.get(ct);
-            CompareGraphs.PGNode actual = (CompareGraphs.PGNode) actualArray[ct];
+            PGNode expected = (PGNode) expectedList.get(ct);
+            PGNode actual = (PGNode) actualArray[ct];
 
             assertEquals("Testing element = " + ct + "; ", expected.toString(), actual.toString());
         }
@@ -267,17 +267,17 @@ public class CompareGraphsTest {
         CompareGraphs.addSequence(B, nf, seq2, "y");
 
         CompareGraphs sf = new CompareGraphs();
-        CompareGraphs.PGNode[] result = sf.getComparison(A, B, null); // initial mapping is a full cross-product of nodes in A and B
+        PGNode[] result = sf.getComparison(A, B, null); // initial mapping is a full cross-product of nodes in A and B
 
         List pruned = new FilterBest().getFilterBest(Arrays.asList(result), true);
         Object[] actualArray = pruned.toArray();
         MapPair.sortGroup(actualArray, false);
 
         // Now create the expected.
-        CompareGraphs.PGNode x0_y0_MP = makePGNode("x0", "y0", 1.0, 0.001, 1.0, 1.0);
-        CompareGraphs.PGNode x1_y12_MP = makePGNode("x1", "y12", 0.21660899646321097, 0.001, 0.2368652622897955, 0.21660899646321097);
-        CompareGraphs.PGNode x2_y13_MP = makePGNode("x2", "y13", 0.18776333576686896, 0.001, 0.20530577704461345, 0.18776333576686896);
-        CompareGraphs.PGNode x3_y15_MP = makePGNode("x3", "y14", 0.10855412421515549, 0.001, 0.11868225797349849, 0.10855412421515549);
+        PGNode x0_y0_MP = makePGNode("x0", "y0", 1.0, 0.001, 1.0, 1.0);
+        PGNode x1_y12_MP = makePGNode("x1", "y12", 0.21660899646321097, 0.001, 0.2368652622897955, 0.21660899646321097);
+        PGNode x2_y13_MP = makePGNode("x2", "y13", 0.18776333576686896, 0.001, 0.20530577704461345, 0.18776333576686896);
+        PGNode x3_y15_MP = makePGNode("x3", "y14", 0.10855412421515549, 0.001, 0.11868225797349849, 0.10855412421515549);
 
         List expectedList = new ArrayList();
         expectedList.add(x0_y0_MP);
@@ -286,8 +286,8 @@ public class CompareGraphsTest {
         expectedList.add(x3_y15_MP);
 
         for (int ct = 0; ct < expectedList.size(); ct++)    {
-            CompareGraphs.PGNode expected = (CompareGraphs.PGNode) expectedList.get(ct);
-            CompareGraphs.PGNode actual = (CompareGraphs.PGNode) actualArray[ct];
+            PGNode expected = (PGNode) expectedList.get(ct);
+            PGNode actual = (PGNode) actualArray[ct];
 
             assertEquals("Testing element = " + ct + "; ", expected.toString(), actual.toString());
         }
@@ -369,32 +369,32 @@ public class CompareGraphsTest {
         CompareGraphs.dump(actualArray);
 
         // Now create the expected.
-        CompareGraphs.PGNode is_is_MP = makePGNode(a_is, b_is, "sim=1.0, init=1.0, N=1.0, N1=1.0");
+        PGNode is_is_MP = makePGNode(a_is, b_is, "sim=1.0, init=1.0, N=1.0, N1=1.0");
 
-        CompareGraphs.PGNode city_work_MP = makePGNode(a_city, b_work, "sim=0.724744868707717, init=0.5, N=0.7247448979591836, N1=0.724744868707717");
-        CompareGraphs.PGNode place_great_MP = makePGNode(a_place, b_great, "sim=0.724744868707717, init=0.5, N=0.7247448979591836, N1=0.724744868707717");
-        CompareGraphs.PGNode great_great_MP = makePGNode(a_great, b_great, "sim=0.28990368077055384, init=1.0, N=0.2899234693877551, N1=0.28990368077055384");
-        CompareGraphs.PGNode a_is_MP = makePGNode(a_a, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode city_work_MP = makePGNode(a_city, b_work, "sim=0.724744868707717, init=0.5, N=0.7247448979591836, N1=0.724744868707717");
+        PGNode place_great_MP = makePGNode(a_place, b_great, "sim=0.724744868707717, init=0.5, N=0.7247448979591836, N1=0.724744868707717");
+        PGNode great_great_MP = makePGNode(a_great, b_great, "sim=0.28990368077055384, init=1.0, N=0.2899234693877551, N1=0.28990368077055384");
+        PGNode a_is_MP = makePGNode(a_a, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
 
-        CompareGraphs.PGNode new_is_MP = makePGNode(a_new, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        CompareGraphs.PGNode a_work_MP = makePGNode(a_a, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        CompareGraphs.PGNode is_work_MP = makePGNode(a_is, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        CompareGraphs.PGNode new_work_MP = makePGNode(a_new, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode new_is_MP = makePGNode(a_new, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode a_work_MP = makePGNode(a_a, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode is_work_MP = makePGNode(a_is, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode new_work_MP = makePGNode(a_new, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
 
-        CompareGraphs.PGNode city_is_MP = makePGNode(a_city, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        CompareGraphs.PGNode york_is_MP = makePGNode(a_york, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        CompareGraphs.PGNode york_work_MP = makePGNode(a_york, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        CompareGraphs.PGNode a_great_MP = makePGNode(a_a, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode city_is_MP = makePGNode(a_city, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode york_is_MP = makePGNode(a_york, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode york_work_MP = makePGNode(a_york, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode a_great_MP = makePGNode(a_a, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
 
-        CompareGraphs.PGNode is_great_MP = makePGNode(a_is, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        CompareGraphs.PGNode new_great_MP = makePGNode(a_new, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        CompareGraphs.PGNode city_great_MP = makePGNode(a_city, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        CompareGraphs.PGNode york_great_MP = makePGNode(a_york, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode is_great_MP = makePGNode(a_is, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode new_great_MP = makePGNode(a_new, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode city_great_MP = makePGNode(a_city, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode york_great_MP = makePGNode(a_york, b_great, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
 
-        CompareGraphs.PGNode great_is_MP = makePGNode(a_great, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        CompareGraphs.PGNode great_work_MP = makePGNode(a_great, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        CompareGraphs.PGNode place_is_MP = makePGNode(a_place, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
-        CompareGraphs.PGNode place_work_MP = makePGNode(a_place, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode great_is_MP = makePGNode(a_great, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode great_work_MP = makePGNode(a_great, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode place_is_MP = makePGNode(a_place, b_is, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
+        PGNode place_work_MP = makePGNode(a_place, b_work, "sim=0.14495184038527692, init=0.5, N=0.14496173469387755, N1=0.14495184038527692");
 
         List expectedList = new ArrayList();
         expectedList.add(is_is_MP);
@@ -425,8 +425,8 @@ public class CompareGraphsTest {
         expectedList.add(place_work_MP);
 
         for (int ct = 0; ct < expectedList.size(); ct++)    {
-            CompareGraphs.PGNode expected = (CompareGraphs.PGNode) expectedList.get(ct);
-            CompareGraphs.PGNode actual = (CompareGraphs.PGNode) actualArray[ct];
+            PGNode expected = (PGNode) expectedList.get(ct);
+            PGNode actual = (PGNode) actualArray[ct];
 
             assertEquals("Testing element = " + ct + "; ", expected.toString(), actual.toString());
         }
@@ -510,50 +510,50 @@ public class CompareGraphsTest {
         CompareGraphs.dump(actualArray);
 
         // Now create the expected.
-        CompareGraphs.PGNode place_place_MP = makePGNode(a_place, a_place, "sim=1.0, init=1.0, N=1.0, N1=1.0");
+        PGNode place_place_MP = makePGNode(a_place, a_place, "sim=1.0, init=1.0, N=1.0, N1=1.0");
 
-        CompareGraphs.PGNode great_great_MP = makePGNode(a_great, b_great, "sim=0.9631842495076888, init=1.0, N=0.9632012056942844, N1=0.9631842495076888");
-        CompareGraphs.PGNode is_is_MP = makePGNode(a_is, b_is, "sim=0.831399945022848, init=1.0, N=0.8313835451125151, N1=0.831399945022848");
-        CompareGraphs.PGNode a_a_MP = makePGNode(a_a, b_a, "sim=0.618034409439937, init=1.0, N=0.6180515587202603, N1=0.618034409439937");
-        CompareGraphs.PGNode city_what_MP = makePGNode(a_city, b_what, "sim=0.4862501049550962, init=0.5, N=0.48623389813849105, N1=0.4862501049550962");
+        PGNode great_great_MP = makePGNode(a_great, b_great, "sim=0.9631842495076888, init=1.0, N=0.9632012056942844, N1=0.9631842495076888");
+        PGNode is_is_MP = makePGNode(a_is, b_is, "sim=0.831399945022848, init=1.0, N=0.8313835451125151, N1=0.831399945022848");
+        PGNode a_a_MP = makePGNode(a_a, b_a, "sim=0.618034409439937, init=1.0, N=0.6180515587202603, N1=0.618034409439937");
+        PGNode city_what_MP = makePGNode(a_city, b_what, "sim=0.4862501049550962, init=0.5, N=0.48623389813849105, N1=0.4862501049550962");
 
-        CompareGraphs.PGNode a_is_MP = makePGNode(a_a, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode is_a_MP = makePGNode(a_is, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode new_a_MP = makePGNode(a_new, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode new_is_MP = makePGNode(a_new, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode a_is_MP = makePGNode(a_a, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode is_a_MP = makePGNode(a_is, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode new_a_MP = makePGNode(a_new, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode new_is_MP = makePGNode(a_new, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        CompareGraphs.PGNode a_what_MP = makePGNode(a_a, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode is_what_MP = makePGNode(a_is, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode new_what_MP = makePGNode(a_new, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode city_a_MP = makePGNode(a_city, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode a_what_MP = makePGNode(a_a, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode is_what_MP = makePGNode(a_is, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode new_what_MP = makePGNode(a_new, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode city_a_MP = makePGNode(a_city, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        CompareGraphs.PGNode city_is_MP = makePGNode(a_city, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode york_a_MP = makePGNode(a_york, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode york_is_MP = makePGNode(a_york, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode york_what_MP = makePGNode(a_york, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode city_is_MP = makePGNode(a_city, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode york_a_MP = makePGNode(a_york, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode york_is_MP = makePGNode(a_york, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode york_what_MP = makePGNode(a_york, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        CompareGraphs.PGNode a_great_MP = makePGNode(a_a, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode is_great_MP = makePGNode(a_is, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode new_great_MP = makePGNode(a_new, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode a_place_MP = makePGNode(a_a, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode a_great_MP = makePGNode(a_a, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode is_great_MP = makePGNode(a_is, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode new_great_MP = makePGNode(a_new, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode a_place_MP = makePGNode(a_a, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        CompareGraphs.PGNode is_place_MP = makePGNode(a_is, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode new_place_MP = makePGNode(a_new, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode city_great_MP = makePGNode(a_city, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode york_great_MP = makePGNode(a_york, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode is_place_MP = makePGNode(a_is, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode new_place_MP = makePGNode(a_new, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode city_great_MP = makePGNode(a_city, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode york_great_MP = makePGNode(a_york, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        CompareGraphs.PGNode city_place_MP = makePGNode(a_city, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode york_place = makePGNode(a_york, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode great_a_MP = makePGNode(a_great, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode great_is_MP = makePGNode(a_great, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode city_place_MP = makePGNode(a_city, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode york_place = makePGNode(a_york, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode great_a_MP = makePGNode(a_great, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode great_is_MP = makePGNode(a_great, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        CompareGraphs.PGNode great_what_MP = makePGNode(a_great, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode place_a_MP = makePGNode(a_place, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode place_is_MP = makePGNode(a_place, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode place_what_MP = makePGNode(a_place, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode great_what_MP = makePGNode(a_great, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode place_a_MP = makePGNode(a_place, b_a, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode place_is_MP = makePGNode(a_place, b_is, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode place_what_MP = makePGNode(a_place, b_what, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
-        CompareGraphs.PGNode great_place_MP = makePGNode(a_great, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
-        CompareGraphs.PGNode place_great_MP = makePGNode(a_place, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode great_place_MP = makePGNode(a_great, b_place, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
+        PGNode place_great_MP = makePGNode(a_place, b_great, "sim=0.10428451439503318, init=0.5, N=0.1042854568587514, N1=0.10428451439503318");
 
 
         List expectedList = new ArrayList();
@@ -594,8 +594,8 @@ public class CompareGraphsTest {
         expectedList.add(place_great_MP);
 
         for (int ct = 0; ct < expectedList.size(); ct++)    {
-            CompareGraphs.PGNode expected = (CompareGraphs.PGNode) expectedList.get(ct);
-            CompareGraphs.PGNode actual = (CompareGraphs.PGNode) actualArray[ct];
+            PGNode expected = (PGNode) expectedList.get(ct);
+            PGNode actual = (PGNode) actualArray[ct];
 
             assertEquals("Testing element = " + ct + "; ", expected.toString(), actual.toString());
         }
