@@ -19,12 +19,12 @@ public class Matching {
 
     private static boolean debug = true;
 
-    private static Set<String> postagSet = new HashSet<>(Arrays.asList(new String[]{"NN", "NNS", "NNP", "NNPS", "WP"}));
+    public static final Set<String> postagSet = new HashSet<>(Arrays.asList(new String[]{"NN", "NNS", "NNP", "NNPS", "WP"}));
 
     /** **************************************************************
      * Create Similarity Flooding input model from DGraph
      */
-    static Model createModelFromGraph(DGraph graph, ArrayList<Resource> NodeResources) throws Exception {
+    static Model createModelFromGraph(DGraph graph, ArrayList<Resource> NodeResources) throws ModelException {
 
         RDFFactory rf = new RDFFactoryImpl();
         NodeFactory nf = rf.getNodeFactory();
@@ -50,8 +50,12 @@ public class Matching {
 
     /** **************************************************************
      * Compute the similarity between two DGraphs' nodes
+     * @param dgraph1
+     * @param dgraph2
+     * @return  a MapPair[] sorted by similarity score
+     * @throws Exception
      */
-    static void computeNodeSimilarity(DGraph dgraph1, DGraph dgraph2) throws Exception {
+    static MapPair[] computeNodeSimilarity(DGraph dgraph1, DGraph dgraph2) throws ModelException {
 
         ArrayList<Resource> NodeResourcesDGraph1 = new ArrayList<>();
         ArrayList<Resource> NodeResourcesDGraph2 = new ArrayList<>();
@@ -80,6 +84,8 @@ public class Matching {
         // Answer Extraction
         String answer = extractAnswer(dgraph1, result);
         System.out.println("Answer = " + answer);
+
+        return result;
     }
 
     /** **************************************************************
@@ -104,8 +110,34 @@ public class Matching {
         return answer;
     }
 
+    /**
+     * Given a MapPair[], sorts the array by similarity and then finds the highest-ranked pair whose right-node label matches the given string.
+     * The expected use case for this method is a MapPair array whose left nodes are an assertion, and whose right nodes are a question about
+     * that assertion. However, there is nothing in the method itself that requires this relationship between the left and right nodes.
+     * @param allPairs
+     *      a MapPair array
+     * @param label
+     *      a string which will be used to search the labels of the rightNodes in the given MapPair array
+     * @return
+     *      the MapPair with the highest similarity value whose rightNode label matches the input string
+     * @throws ModelException
+     */
+    static MapPair extractAnswer(MapPair[] allPairs, String label) throws ModelException {
+        MapPair answer = new MapPair();
 
-    public static void test1() throws Exception {
+        MapPair.sort(allPairs);
+        for (MapPair mp : allPairs) {
+            RDFNode rightNode = mp.getRightNode();
+            if (rightNode.getLabel().equals("What")) {
+                answer = mp;
+                break;
+            }
+        }
+        return answer;
+    }
+
+
+    public static void test1() throws ModelException {
 
         String s1 = "Some proteins, such as those to be incorporated in membranes (known as membrane proteins), are transported into the RER during synthesis.";
         DTree dtree1 = DTree.buildTree(s1);
@@ -122,7 +154,10 @@ public class Matching {
         DGraph dgraph3 = DGraph.buildDGraph(dtree3).getSubgraph(postagSet);
         System.out.println("\nsubgraph3 = \n" + dgraph3.toString());
 
+        System.out.flush();
+        System.out.println("1 to 2");
         computeNodeSimilarity(dgraph1, dgraph2);
+        System.out.println("3 to 2");
         computeNodeSimilarity(dgraph3, dgraph2);
     }
 
@@ -154,8 +189,8 @@ public class Matching {
 
     public static void main(String[] args) throws Exception {
 
-        //test1();
-        test2();
+        test1();
+        //test2();
     }
 
 }
