@@ -175,7 +175,6 @@ public class ModelImpl implements Model, Digestable, Digest, Serializable {
     triples.put(t, t);
 
     nodeResources.add(t.subject());
-    // JERRY: won't let me do .object()
     nodeResources.add(t.object());
 
     if(validLookup())

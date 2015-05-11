@@ -680,12 +680,6 @@ public class Match implements UntypedGateway, GraphComparer {
 
   public int getMaxOutputLen() { return 1; }
 
-  @Override
-  public PGNode[] getComparison(Model m1, Model m2, List sigma0) throws ModelException {
-    return getMatch(m1, m2, sigma0);
-  }
-
-
   // Moved to separate class
   /**
    * A node in the propagation graph
@@ -1099,4 +1093,26 @@ public class Match implements UntypedGateway, GraphComparer {
     }
   }
    **/
+
+
+
+  // These methods are new, created by IPsoft.
+  @Override
+  public PGNode[] getComparison(Model m1, Model m2, List sigma0) throws ModelException {
+    return getMatch(m1, m2, sigma0);
+  }
+
+  @Override
+  public void setFlowGraphType(int type) {
+    this.FLOW_GRAPH_TYPE = type;
+  }
+
+  @Override
+  public void setFormula(boolean[] vals) {
+    this.formula = vals;
+  }
+
+
+
+
 }

@@ -199,6 +199,16 @@ public class CompareGraphs implements GraphComparer {
         return nodes;
     }
 
+    @Override
+    public void setFlowGraphType(int type) {
+        // For now, do nothing.
+    }
+
+    @Override
+    public void setFormula(boolean[] vals) {
+        // For now, do nothing.
+    }
+
     public void applyFormula(PGArc[] arcs, PGNode[] nodes, int iteration) {
 
         for(int i = nodes.length; --i >= 0;) {

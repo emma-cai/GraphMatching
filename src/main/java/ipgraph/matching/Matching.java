@@ -1,5 +1,6 @@
 package ipgraph.matching;
 
+import com.interdataworking.mm.alg.GraphComparer;
 import com.interdataworking.mm.alg.MapPair;
 import com.interdataworking.mm.alg.Match;
 import ipgraph.datastructure.DGraph;
@@ -20,6 +21,12 @@ public class Matching {
     private static boolean debug = true;
 
     public static final Set<String> postagSet = new HashSet<>(Arrays.asList(new String[]{"NN", "NNS", "NNP", "NNPS", "WP"}));
+
+    GraphComparer graphComparer;
+
+    public Matching(GraphComparer comparer) {
+        graphComparer = comparer;
+    }
 
     /** **************************************************************
      * Create Similarity Flooding input model from DGraph
@@ -55,7 +62,7 @@ public class Matching {
      * @return  a MapPair[] sorted by similarity score
      * @throws Exception
      */
-    static MapPair[] computeNodeSimilarity(DGraph dgraph1, DGraph dgraph2) throws ModelException {
+    public MapPair[] computeNodeSimilarity(DGraph dgraph1, DGraph dgraph2) throws ModelException {
 
         ArrayList<Resource> NodeResourcesDGraph1 = new ArrayList<>();
         ArrayList<Resource> NodeResourcesDGraph2 = new ArrayList<>();
@@ -71,14 +78,17 @@ public class Matching {
             }
         }
 
-        Match sf = new Match();
+//        Match sf = new Match();
 
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
-        sf.formula = com.interdataworking.mm.alg.Match.FORMULA_FFT;
-        sf.FLOW_GRAPH_TYPE = com.interdataworking.mm.alg.Match.FG_PRODUCT;
+//        sf.formula = com.interdataworking.mm.alg.Match.FORMULA_FFT;
+//        sf.FLOW_GRAPH_TYPE = com.interdataworking.mm.alg.Match.FG_PRODUCT;
 
-        MapPair[] result = sf.getMatch(A, B, initMap);
+//        MapPair[] result = sf.getMatch(A, B, initMap);
+
+        MapPair[] result = graphComparer.getComparison(A, B, initMap);
+
         MapPair.sort(result);
 
         // Answer Extraction
@@ -156,12 +166,23 @@ public class Matching {
 
         System.out.flush();
         System.out.println("1 to 2");
-        computeNodeSimilarity(dgraph1, dgraph2);
+
+        Match match = new Match();
+        match.setFormula(com.interdataworking.mm.alg.Match.FORMULA_FFT);
+        match.setFlowGraphType(com.interdataworking.mm.alg.Match.FG_PRODUCT);
+        Matching matching = new Matching(match);
+
+        matching.computeNodeSimilarity(dgraph1, dgraph2);
         System.out.println("3 to 2");
-        computeNodeSimilarity(dgraph3, dgraph2);
+        matching.computeNodeSimilarity(dgraph3, dgraph2);
     }
 
     public static void test2() throws Exception {
+        Match match = new Match();
+        match.setFormula(com.interdataworking.mm.alg.Match.FORMULA_FFT);
+        match.setFlowGraphType(com.interdataworking.mm.alg.Match.FG_PRODUCT);
+        Matching matching = new Matching(match);
+
 
         List<String> texts = new ArrayList<>();
         texts.add("Sarojini Naidu (born as Sarojini Chattopadhyay), also known by the sobriquet as The Nightingale of India, was an Indian independence activist and poet.");
@@ -182,7 +203,7 @@ public class Matching {
                 DTree TDTree = DTree.buildTree(text);
                 DGraph TDGraph = DGraph.buildDGraph(TDTree).getSubgraph(postagSet);
 
-                computeNodeSimilarity(QDGraph, TDGraph);
+                matching.computeNodeSimilarity(QDGraph, TDGraph);
             }
         }
     }
