@@ -1,5 +1,6 @@
 package ipgraph.datastructure;
 
+import com.interdataworking.mm.alg.GraphComparer;
 import org.jgrapht.UndirectedGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultEdge;
@@ -13,7 +14,7 @@ import java.util.*;
  */
 public class DGraph extends SimpleGraph<DNode, DefaultEdge> {
 
-    public static final Set<String> postagSet = new HashSet<>(Arrays.asList(new String[]{"NN", "NNS", "NNP", "NNPS", "WP"}));
+    public static final Set<String> postagSet = GraphComparer.postagSet;
 
     public DGraph(Class<? extends DefaultEdge> aClass) {
         super(aClass);

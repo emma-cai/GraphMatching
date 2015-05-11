@@ -20,7 +20,7 @@ public class Matching {
 
     private static boolean debug = true;
 
-    public static final Set<String> postagSet = new HashSet<>(Arrays.asList(new String[]{"NN", "NNS", "NNP", "NNPS", "WP"}));
+    public static final Set<String> postagSet = GraphComparer.postagSet;
 
     GraphComparer graphComparer;
 
