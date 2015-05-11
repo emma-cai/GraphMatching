@@ -1098,7 +1098,7 @@ public class Match implements UntypedGateway, NodeComparer {
 
   // These methods are new, created by IPsoft.
   @Override
-  public PGNode[] getComparison(Model m1, Model m2, List sigma0) throws ModelException {
+  public PGNode[] compareGraphNodes(Model m1, Model m2, List sigma0) throws ModelException {
     return getMatch(m1, m2, sigma0);
   }
 

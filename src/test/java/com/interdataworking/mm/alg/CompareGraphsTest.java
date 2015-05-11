@@ -133,7 +133,7 @@ public class CompareGraphsTest {
 //        sf.formula = CompareGraphs.FORMULA_FFT;
 //        sf.FLOW_GRAPH_TYPE = CompareGraphs.FG_PRODUCT;
 
-        MapPair[] actualArray = sf.getComparison(A, B, initMap);
+        MapPair[] actualArray = sf.compareGraphNodes(A, B, initMap);
         MapPair.sort(actualArray);
         SimplifiedMatch.dump(actualArray);
 
@@ -203,7 +203,7 @@ public class CompareGraphsTest {
         }
 
         SimplifiedMatch sf = new SimplifiedMatch();
-        PGNode[] result = sf.getComparison(A, B, null); // initial mapping is a full cross-product of nodes in A and B
+        PGNode[] result = sf.compareGraphNodes(A, B, null); // initial mapping is a full cross-product of nodes in A and B
         //MapPair.printMap(new FilterBest().getFilterBest(Arrays.asList(result), true), System.out);
         List actualList = new FilterBest().getFilterBest(Arrays.asList(result), true);
         //List l = new ArrayList(c);
@@ -267,7 +267,7 @@ public class CompareGraphsTest {
         SimplifiedMatch.addSequence(B, nf, seq2, "y");
 
         SimplifiedMatch sf = new SimplifiedMatch();
-        PGNode[] result = sf.getComparison(A, B, null); // initial mapping is a full cross-product of nodes in A and B
+        PGNode[] result = sf.compareGraphNodes(A, B, null); // initial mapping is a full cross-product of nodes in A and B
 
         List pruned = new FilterBest().getFilterBest(Arrays.asList(result), true);
         Object[] actualArray = pruned.toArray();
@@ -363,7 +363,7 @@ public class CompareGraphsTest {
 //        sf.formula = CompareGraphs.FORMULA_FFT;
 //        sf.FLOW_GRAPH_TYPE = CompareGraphs.FG_PRODUCT;
 
-        MapPair[] actualArray = sf.getComparison(A, B, initMap);
+        MapPair[] actualArray = sf.compareGraphNodes(A, B, initMap);
         MapPair.sort(actualArray);
 
         SimplifiedMatch.dump(actualArray);
@@ -504,7 +504,7 @@ public class CompareGraphsTest {
 //        sf.formula = CompareGraphs.FORMULA_FFT;
 //        sf.FLOW_GRAPH_TYPE = CompareGraphs.FG_PRODUCT;
 
-        MapPair[] actualArray = sf.getComparison(A, B, initMap);
+        MapPair[] actualArray = sf.compareGraphNodes(A, B, initMap);
         MapPair.sort(actualArray);
 
         SimplifiedMatch.dump(actualArray);

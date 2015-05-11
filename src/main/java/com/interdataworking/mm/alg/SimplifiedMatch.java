@@ -66,7 +66,7 @@ public class SimplifiedMatch implements NodeComparer {
                 sigma0 = null;
         }
 
-        PGNode[] finalList = getComparison(m1, m2, sigma0);
+        PGNode[] finalList = compareGraphNodes(m1, m2, sigma0);
 
         Model map = MapPair.asModel(m1.create(), finalList);
         ArrayList l = new ArrayList();
@@ -74,7 +74,7 @@ public class SimplifiedMatch implements NodeComparer {
         return l;
     }
 
-    public PGNode[] getComparison(Model m1, Model m2, List sigma0) throws ModelException {
+    public PGNode[] compareGraphNodes(Model m1, Model m2, List sigma0) throws ModelException {
 
         this.m1 = m1;
         this.m2 = m2;
@@ -670,7 +670,7 @@ public class SimplifiedMatch implements NodeComparer {
 //        sf.formula = FORMULA_FFT;
 //        sf.FLOW_GRAPH_TYPE = FG_PRODUCT;
 
-        MapPair[] result = sf.getComparison(A, B, initMap);
+        MapPair[] result = sf.compareGraphNodes(A, B, initMap);
         MapPair.sort(result);
         dump(result);
         //    MapPair.printMap(Arrays.asList(result), System.out);
@@ -709,7 +709,7 @@ public class SimplifiedMatch implements NodeComparer {
         }
 
         SimplifiedMatch sf = new SimplifiedMatch();
-        PGNode[] result = sf.getComparison(A, B, null); // initial mapping is a full cross-product of nodes in A and B
+        PGNode[] result = sf.compareGraphNodes(A, B, null); // initial mapping is a full cross-product of nodes in A and B
         MapPair.printMap(new FilterBest().getFilterBest(Arrays.asList(result), true), System.out);
     }
 
@@ -747,7 +747,7 @@ public class SimplifiedMatch implements NodeComparer {
         addSequence(B, nf, seq2, "y");
 
         SimplifiedMatch sf = new SimplifiedMatch();
-        PGNode[] result = sf.getComparison(A, B, null); // initial mapping is a full cross-product of nodes in A and B
+        PGNode[] result = sf.compareGraphNodes(A, B, null); // initial mapping is a full cross-product of nodes in A and B
 
         List pruned = new FilterBest().getFilterBest(Arrays.asList(result), true);
         Object[] f = pruned.toArray();
@@ -808,7 +808,7 @@ public class SimplifiedMatch implements NodeComparer {
  //       sf.formula = FORMULA_FFT;
 //        sf.FLOW_GRAPH_TYPE = FG_PRODUCT;
 
-        MapPair[] result = sf.getComparison(A, B, initMap);
+        MapPair[] result = sf.compareGraphNodes(A, B, initMap);
         MapPair.sort(result);
         dump(result);
 

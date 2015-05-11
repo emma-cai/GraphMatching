@@ -22,7 +22,7 @@ public interface NodeComparer {
                     LangLib.POS_NNPS,
                     LangLib.POS_WP}));
 
-    public PGNode[] getComparison(Model m1, Model m2, List sigma0) throws ModelException;
+    public PGNode[] compareGraphNodes(Model m1, Model m2, List sigma0) throws ModelException;
 
     public void setFlowGraphType(int type);
 

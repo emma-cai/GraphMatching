@@ -1,5 +1,6 @@
 package ipgraph.matching;
 
+import com.interdataworking.mm.alg.GraphComparer;
 import com.interdataworking.mm.alg.NodeComparer;
 import com.interdataworking.mm.alg.MapPair;
 import com.interdataworking.mm.alg.Match;
@@ -22,10 +23,17 @@ public class Matching {
 
     public static final Set<String> postagSet = NodeComparer.postagSet;
 
-    NodeComparer graphComparer;
+    NodeComparer nodeComparer;
+
+    GraphComparer graphComparer;
 
     public Matching(NodeComparer comparer) {
-        graphComparer = comparer;
+        nodeComparer = comparer;
+    }
+
+    public Matching(GraphComparer comp1, NodeComparer comp2) {
+        graphComparer = comp1;
+        nodeComparer = comp2;
     }
 
     /** **************************************************************
@@ -87,7 +95,7 @@ public class Matching {
 
 //        MapPair[] result = sf.getMatch(A, B, initMap);
 
-        MapPair[] result = graphComparer.getComparison(A, B, initMap);
+        MapPair[] result = nodeComparer.compareGraphNodes(A, B, initMap);
 
         MapPair.sort(result);
 
