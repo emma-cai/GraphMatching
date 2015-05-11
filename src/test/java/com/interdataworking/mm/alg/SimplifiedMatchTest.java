@@ -16,7 +16,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 
-public class CompareGraphsTest {
+public class SimplifiedMatchTest {
 
     private PGNode makePGNode(Resource r1, Resource r2, double d1, double d2, double d3, double d4) {
         //CompareGraphs match = new CompareGraphs();
