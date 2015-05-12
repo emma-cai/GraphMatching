@@ -4,6 +4,7 @@ import com.interdataworking.mm.alg.CompareGraphs;
 import com.interdataworking.mm.alg.MapPair;
 import com.interdataworking.mm.alg.Match;
 import ipgraph.datastructure.DGraph;
+import ipgraph.datastructure.DNode;
 import ipgraph.datastructure.DTree;
 import org.junit.Test;
 import org.w3c.rdf.model.ModelException;
@@ -34,8 +35,13 @@ public class MatchingTest {
         MapPair[] actualPairs =  matching.computeNodeSimilarity(dgraph1, dgraph2);
         MapPair actual = Matching.extractAnswer(actualPairs, "What");
 
-        assertEquals("proteins", actual.getLeftNode().getLabel());
-        assertEquals("What", actual.getRightNode().getLabel());
+        System.out.println("actual = " + actual);
+        System.out.println("leftDNodeInDGraph = " + Integer.parseInt(actual.getLeftNode().getLabel()));
+        System.out.println("rightDNodeInDGraph = " + Integer.parseInt(actual.getRightNode().getLabel()));
+        DNode leftDNodeInDGraph = dgraph1.getNodeById(Integer.parseInt(actual.getLeftNode().getLabel()));
+        DNode rightDNodeInDGraph = dgraph2.getNodeById(Integer.parseInt(actual.getRightNode().getLabel()));
+        assertEquals("proteins", leftDNodeInDGraph.getForm());
+        assertEquals("What", rightDNodeInDGraph.getForm());
         assertEquals(0.539, actual.sim, .01);
     }
 

@@ -166,6 +166,20 @@ public class DGraph extends SimpleGraph<DNode, DefaultEdge> {
     }
 
     /** **************************************************************
+     * In graph, return the node whose parent = "parent"; the dependency
+     * label between node and its parent = "label";
+     * TODO: find the node deeper until the searching getting to leaves
+     */
+    public DNode getNodeByParentAndLabel(DNode parent, String label) {
+        List<DNode> children = parent.getChildren();
+        for (DNode c : children) {
+            if (label.equals(c.getDepLabel()))
+                return c;
+        }
+        return null;
+    }
+
+    /** **************************************************************
      * In graph, return all nodes with id = targetLevel
      */
     public Set<DNode> getNodesByLevel(int targetLevel) {

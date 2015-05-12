@@ -1,11 +1,14 @@
 package com.interdataworking.mm.alg;
 
-import java.util.*;
-import java.io.*;
-import org.w3c.rdf.model.*;
-import org.w3c.rdf.util.*;
-import org.w3c.rdf.vocabulary.rdf_syntax_19990222.RDF;
 import com.interdataworking.mm.MapVocabulary;
+import org.w3c.rdf.model.*;
+import org.w3c.rdf.vocabulary.rdf_syntax_19990222.RDF;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.util.*;
 
 public class MapPair implements Cloneable {
 
@@ -118,11 +121,63 @@ public class MapPair implements Cloneable {
   }
 
 
+//  /** returns map l -> sorted list of pairs, or r -> sorted list of pairs
+//   */
+//  public static Map sortedCandidates(Object[] arr, boolean isRight) {
+//
+//    Map result = new HashMap();
+//
+//    sortGroup(arr, isRight);
+//    // if !isRight, sorted by left elements
+//    // collect lists
+//
+//    // pivot -> currList
+//    Object pivot = null;
+//    List currList = null;
+//
+//    for(int i = 0; i < arr.length; i++) {
+//
+//      MapPair currPair = (MapPair)arr[i];
+//      Object currLeft = isRight ? currPair.r2 : currPair.r1;
+//
+//      boolean createNew = false;
+//
+//      if(i == 0) {
+//	pivot = currLeft;
+//	createNew = true;
+//
+//      } else {
+//
+//	MapPair prevPair = (MapPair)arr[i-1];
+//
+//	Object prevLeft = pivot = isRight ? prevPair.r2 : prevPair.r1;
+//
+//	if(!currLeft.equals(prevLeft))
+//	  createNew = true;
+//      }
+//
+//      if(createNew) {
+//	// save previous if any
+//	if(currList != null) {
+//	  result.put(pivot, currList);
+//	}
+//	currList = new ArrayList();
+//      }
+//      currList.add(currPair);
+//    }
+//
+//    if(currList != null && currList.size() > 0) {
+//      result.put(pivot, currList);
+//    }
+//
+//    return result;
+//  }
+
   /** returns map l -> sorted list of pairs, or r -> sorted list of pairs
    */
   public static Map sortedCandidates(Object[] arr, boolean isRight) {
 
-    Map result = new HashMap();
+    Map<String, ArrayList<MapPair>> result = new HashMap();
 
     sortGroup(arr, isRight);
     // if !isRight, sorted by left elements
@@ -130,7 +185,7 @@ public class MapPair implements Cloneable {
 
     // pivot -> currList
     Object pivot = null;
-    List currList = null;
+    ArrayList<MapPair> currList = null;
 
     for(int i = 0; i < arr.length; i++) {
 
@@ -140,31 +195,31 @@ public class MapPair implements Cloneable {
       boolean createNew = false;
 
       if(i == 0) {
-	pivot = currLeft;
-	createNew = true;
+        pivot = currLeft;
+        createNew = true;
 
       } else {
 
-	MapPair prevPair = (MapPair)arr[i-1];
+        MapPair prevPair = (MapPair)arr[i-1];
 
-	Object prevLeft = pivot = isRight ? prevPair.r2 : prevPair.r1;
+        Object prevLeft = pivot = isRight ? prevPair.r2 : prevPair.r1;
 
-	if(!currLeft.equals(prevLeft))
-	  createNew = true;
+        if(!currLeft.equals(prevLeft))
+          createNew = true;
       }
 
       if(createNew) {
-	// save previous if any
-	if(currList != null) {
-	  result.put(pivot, currList);
-	}
-	currList = new ArrayList();
+        // save previous if any
+        if(currList != null) {
+          result.put(pivot.toString(), currList);
+        }
+        currList = new ArrayList();
       }
       currList.add(currPair);
     }
 
     if(currList != null && currList.size() > 0) {
-      result.put(pivot, currList);
+      result.put(pivot.toString(), currList);
     }
 
     return result;
@@ -1049,5 +1104,40 @@ public class MapPair implements Cloneable {
       return that instanceof GroupComparator;
     }
   }
+
+//  /**
+//   *
+//   * @param c
+//   * @param inversed
+//   * @return
+//   */
+//  public static Map toJavaMapGroupBy(Collection c, boolean inversed) {
+//
+//    HashMap<String, ArrayList<MapPair>> map = new HashMap<>();
+//
+//    Iterator it = c.iterator();
+//    while(it.hasNext()) {
+//
+//      MapPair p = (MapPair)it.next();
+//      String key;
+//      if (inversed)
+//        key = p.getRight().toString();
+//      else
+//        key = p.getLeft().toString();
+//      ArrayList<MapPair> values;
+//      if (map.containsKey(key)) {
+//        values = map.get(key);
+//        if (!values.contains(p)) {
+//          values.add(p);
+//        }
+//      } else {
+//        values = new ArrayList<>();
+//        values.add(p);
+//      }
+//      map.put(key, values);
+//    }
+//
+//    return map;
+//  }
 
 }

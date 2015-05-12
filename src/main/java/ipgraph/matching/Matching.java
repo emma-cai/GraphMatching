@@ -42,8 +42,10 @@ public class Matching {
         for (DefaultEdge edge : graph.edgeSet()) {
             DNode source = graph.getEdgeSource(edge);
             DNode target = graph.getEdgeTarget(edge);
-            Resource s = nf.createResource(source.getForm());
-            Resource t = nf.createResource(target.getForm());
+//            Resource s = nf.createResource(source.getForm());
+//            Resource t = nf.createResource(target.getForm());
+            Resource s = nf.createResource(Integer.toString(source.getId()));
+            Resource t = nf.createResource(Integer.toString(target.getId()));
             Resource e = nf.createResource(target.getDepLabel());
 
             NodeResources.add(s);
@@ -92,7 +94,7 @@ public class Matching {
         MapPair.sort(result);
 
         // Answer Extraction
-        String answer = extractAnswer(dgraph1, result);
+        String answer = extractAnswer(dgraph1, dgraph2, result);
         System.out.println("Answer = " + answer);
 
         return result;
@@ -102,19 +104,27 @@ public class Matching {
      * Extract answers, defined as the node with highest similarity
      * score with WH-node
      */
-    static String extractAnswer(DGraph graph, MapPair[] result) throws ModelException {
+    static String extractAnswer(DGraph graph1, DGraph graph2, MapPair[] result) throws ModelException {
 
         String answer = "";
         for (MapPair mp : result) {
             RDFNode leftNode = mp.getLeftNode();
             RDFNode rightNode = mp.getRightNode();
-            if (rightNode.getLabel().equals("What")) {
+            DNode leftNodeInDGraph = graph1.getNodeById(Integer.parseInt(leftNode.getLabel()));
+            DNode rightNodeInDGraph = graph2.getNodeById(Integer.parseInt(rightNode.getLabel()));
+            if (rightNodeInDGraph.getPOS().equals("WP")) {
+
                 System.out.println();
-                System.out.println("mp.left = " + leftNode.getLabel());
-                System.out.println("mp.right = " + rightNode.getLabel());
+                System.out.println("mp.left = " + leftNodeInDGraph.getForm());
+                System.out.println("mp.right = " + rightNodeInDGraph.getForm());
                 System.out.println("mp.similarity = " + mp.sim);
-                answer = leftNode.getLabel();
-                return answer;
+                List<DNode> answers = leftNodeInDGraph.getChildren();
+                StringBuilder sb = new StringBuilder();
+                for (DNode n : answers) {
+                    sb.append(n.getForm() + " ");
+                }
+                sb.append(leftNodeInDGraph.getForm());
+                return sb.toString();
             }
         }
         return answer;
@@ -138,7 +148,7 @@ public class Matching {
         MapPair.sort(allPairs);
         for (MapPair mp : allPairs) {
             RDFNode rightNode = mp.getRightNode();
-            if (rightNode.getLabel().equals("What")) {
+            if (rightNode.getLabel().equals("Who") || rightNode.getLabel().equals("What")) {
                 answer = mp;
                 break;
             }
@@ -208,10 +218,118 @@ public class Matching {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void qingqingTest() throws ModelException {
+        Match match = new Match();
+        match.setFormula(com.interdataworking.mm.alg.Match.FORMULA_FFT);
+        match.setFlowGraphType(com.interdataworking.mm.alg.Match.FG_PRODUCT);
 
-        test1();
-        //test2();
+        String s1 = "James Cameron is the director of the movie Titanic.";
+        DTree dtree1 = DTree.buildTree(s1);
+        DGraph dgraph1 = DGraph.buildDGraph(dtree1).getSubgraph(Matching.postagSet);
+        System.out.println(dgraph1.toString());
+
+        String s2 = "Who directed the movie Titanic?";
+        DTree dtree2 = DTree.buildTree(s2);
+        DGraph dgraph2 = DGraph.buildDGraph(dtree2).getSubgraph(Matching.postagSet);
+        System.out.println(dgraph2.toString());
+
+        String s3 = "Tom is a student at Temple University.";
+        DTree dtree3 = DTree.buildTree(s3);
+        DGraph dgraph3 = DGraph.buildDGraph(dtree3).getSubgraph(Matching.postagSet);
+        System.out.println(dgraph3.toString());
+
+        Matching matching = new Matching(match);
+        double graphSimilarity_1_2 = compareGraph(matching, dgraph1, dgraph2);
+        System.out.println("graphSimilarity_1_2 = " + graphSimilarity_1_2);
+
+        match = new Match();
+        match.setFormula(com.interdataworking.mm.alg.Match.FORMULA_FFT);
+        match.setFlowGraphType(com.interdataworking.mm.alg.Match.FG_PRODUCT);
+        matching = new Matching(match);
+        double graphSimilarity_1_3 = compareGraph(matching, dgraph1, dgraph3);
+        System.out.println("graphSimilarity_1_3 = " + graphSimilarity_1_3);
     }
 
+    public static double compareGraph(Matching matching, DGraph dgraph1, DGraph dgraph2) throws ModelException {
+
+        MapPair[] mapPairs =  matching.computeNodeSimilarity(dgraph1, dgraph2);
+        Map<String, ArrayList<MapPair>> map = MapPair.sortedCandidates(mapPairs, true);
+
+        System.out.println("\nmap = ");
+        map.forEach((k, v) -> {
+            System.out.println(k + " ==> " + v);
+        });
+
+        double graphSimilarityScore1 = computeGraphSimilarity1(map, dgraph1, dgraph2);
+        System.out.println("graphSimilarityScore1 = " + graphSimilarityScore1);
+
+        double graphSimilarityScore2 = computeGraphSimilarity2(map, dgraph1, dgraph2);
+        System.out.println("graphSimilarityScore2 = " + graphSimilarityScore2);
+
+        return graphSimilarityScore1;
+    }
+
+    /**
+     *
+     * @param map Key is node in right side, Value is a list of mappings to Key
+     * @param dgraph1
+     * @param dgraph2
+     * @return
+     */
+    public static double computeGraphSimilarity1(Map<String, ArrayList<MapPair>> map,
+                         DGraph dgraph1, DGraph dgraph2) {
+
+        double similarity = 0.0;
+
+        Iterator it = map.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            similarity += ((ArrayList<MapPair>) pair.getValue()).get(0).sim;
+        }
+
+        System.out.println("similarity = " + similarity);
+        System.out.println("map.size() = " + map.size());
+        return similarity / map.size();
+    }
+
+    public static double computeGraphSimilarity2(Map<String, ArrayList<MapPair>> map,
+                                                 DGraph dgraph1, DGraph dgraph2) throws ModelException {
+
+        double similarity = 0.0;
+        int count = 0;
+
+        double rootSim = map.get("0").get(0).sim;
+
+        // start by root
+        DNode NodeH = dgraph2.getNodeById(Integer.parseInt("0"));
+        DNode M_NodeH = getDNodeByRDFNode(dgraph1, map.get("0").get(0).getLeftNode());
+        similarity += map.get("0").get(0).sim;
+        count++;
+
+        //
+        List<DNode> childrenOfNodeH = NodeH.getChildren();
+        for (DNode cOfNodeH : childrenOfNodeH) {
+            String cLabel = cOfNodeH.getDepLabel();
+            DNode M_cOfNodeH = dgraph1.getNodeByParentAndLabel(M_NodeH, cLabel);
+            if (M_cOfNodeH != null) {
+                // get similarity;
+                // count++;
+            }
+        }
+
+        return rootSim;
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        //test1();
+        //test2();
+        qingqingTest();
+    }
+
+    private static DNode getDNodeByRDFNode(DGraph dGraph, RDFNode rdfNode) throws ModelException {
+
+        int id = Integer.parseInt(rdfNode.getLabel());
+        return dGraph.getNodeById(id);
+    }
 }
