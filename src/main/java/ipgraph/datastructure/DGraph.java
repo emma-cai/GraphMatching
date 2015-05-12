@@ -6,13 +6,14 @@ import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 import org.jgrapht.graph.Subgraph;
+import org.w3c.rdf.model.*;
 
 import java.util.*;
 
 /**
  * Created by qingqingcai on 5/3/15.
  */
-public class DGraph extends SimpleGraph<DNode, DefaultEdge> {
+public class DGraph extends SimpleGraph<DNode, DefaultEdge> implements Model {
 
     public static final Set<String> postagSet = NodeComparer.postagSet;
 
@@ -239,5 +240,187 @@ public class DGraph extends SimpleGraph<DNode, DefaultEdge> {
 
     private static void printSplitLine() {
         System.out.println("===============================================================");
+    }
+
+    /**
+     * Set a base URI for the model.
+     *
+     * @param uri
+     */
+    @Override
+    public void setSourceURI(String uri) throws ModelException {
+
+    }
+
+    /**
+     * Returns current base URI setting.
+     */
+    @Override
+    public String getSourceURI() throws ModelException {
+        return null;
+    }
+
+    /**
+     * Number of triples in the model
+     *
+     * @return number of triples, -1 if unknown
+     * @seeAlso org.w3c.rdf.model.VirtualModel
+     */
+    @Override
+    public int size() throws ModelException {
+        return 0;
+    }
+
+    /**
+     * true if the model contains no triples
+     */
+    @Override
+    public boolean isEmpty() throws ModelException {
+        return false;
+    }
+
+    /**
+     * Enumerate triples
+     */
+    @Override
+    public Enumeration elements() throws ModelException {
+        return null;
+    }
+
+    /**
+     * Tests if the model contains the given triple.
+     *
+     * @param t
+     * @return <code>true</code> if the triple belongs to the model;
+     * <code>false</code> otherwise.
+     */
+    @Override
+    public boolean contains(Statement t) throws ModelException {
+        return false;
+    }
+
+    /**
+     * Adds a new triple to the model.
+     *
+     * @param t
+     */
+    @Override
+    public void add(Statement t) throws ModelException {
+
+    }
+
+    /**
+     * Removes the triple from the model.
+     *
+     * @param t
+     */
+    @Override
+    public void remove(Statement t) throws ModelException {
+
+    }
+
+    /**
+     * True if the model supports <tt>add()</tt> and <tt>remove()</tt> methods.
+     * A model may change behavior of this function over time.
+     */
+    @Override
+    public boolean isMutable() throws ModelException {
+        return false;
+    }
+
+    /**
+     * General method to search for triples.
+     * <code>null</code> input for any parameter will match anything.
+     * <p>Example: <code>Model result = m.find( null, RDF.type, m.getNodeFactory().createResource("http://...#MyClass") )</code>
+     * <p>finds all instances of the class <code>MyClass</code>
+     *
+     * @param subject
+     * @param predicate
+     * @param object
+     */
+    @Override
+    public Model find(Resource subject, Resource predicate, RDFNode object) throws ModelException {
+        return null;
+    }
+
+    /**
+     * Clone the model.
+     */
+    @Override
+    public Model duplicate() throws ModelException {
+        return null;
+    }
+
+    /**
+     * Creates empty model of the same Class
+     */
+    @Override
+    public Model create() throws ModelException {
+        return null;
+    }
+
+    /**
+     * Returns the node factory for this model
+     */
+    @Override
+    public NodeFactory getNodeFactory() throws ModelException {
+        return null;
+    }
+
+    /**
+     * Returns a set of all the nodes/resources used in this model.
+     *
+     * @return
+     */
+    @Override
+    public Set<Object> getNodeResources() {
+        return null;
+    }
+
+    /**
+     * Returns the URI of the resource. Triples and models must implement this method in a standard way.
+     *
+     * @return the URI of the resource
+     * @see org.w3c.rdf.model.Statement
+     * @see org.w3c.rdf.model.Model
+     */
+    @Override
+    public String getURI() throws ModelException {
+        return null;
+    }
+
+    /**
+     * Returns the namespace of the resource. May return null.
+     *
+     * @return the namespace of the resource
+     * @see org.w3c.rdf.model.Statement
+     * @see org.w3c.rdf.model.Model
+     * @since 2000-10-21
+     */
+    @Override
+    public String getNamespace() throws ModelException {
+        return null;
+    }
+
+    /**
+     * Returns the local name of the resource. May not return null.
+     *
+     * @return the local name of the resource
+     * @see org.w3c.rdf.model.Statement
+     * @see org.w3c.rdf.model.Model
+     * @since 2000-10-21
+     */
+    @Override
+    public String getLocalName() throws ModelException {
+        return null;
+    }
+
+    /**
+     * The formal string label of the node.
+     * URI in case of a resource, string in case of a literal.
+     */
+    @Override
+    public String getLabel() throws ModelException {
+        return null;
     }
 }

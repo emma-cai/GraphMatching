@@ -1,8 +1,10 @@
-package com.articulate.sigma.inference;
+package ipgraph.matching;
 
-import com.articulate.sigma.KBmanager;
-import com.articulate.sigma.nlp.TextFileUtil;
-import com.articulate.sigma.semRewrite.Interpreter;
+import com.clearspring.analytics.util.Lists;
+import com.google.common.io.Resources;
+import com.interdataworking.mm.alg.MapPair;
+import com.interdataworking.mm.alg.SimplifiedMatch;
+import ipgraph.datastructure.DTree;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -16,17 +18,21 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by sserban on 3/25/15.
+ * Read AmeliaEarhart.txt, using AmeliaEarhartTest.json.
  */
 @RunWith(Parameterized.class)
-public class InferenceWikiTest {
+public class AmeliaEarhartTest {
 
-    private static Interpreter interpreter;
     public static final Set<String> files = new HashSet();
 
 
@@ -37,53 +43,61 @@ public class InferenceWikiTest {
     @Parameterized.Parameter(value= 2)
     public String answer;
 
-    /**************************************************************************************************
-     *
-     */
     @BeforeClass
-    public static void initialize() throws IOException {
+    public static void readFile()   {
 
-        KBmanager.getMgr().initializeOnce();
-        interpreter = new Interpreter();
-        interpreter.inference = true;
-        interpreter.autoir = false;
-        interpreter.initialize();
     }
 
-    /***********************************************************************************************
-     *
-     */
-    @Test
-    public void test() {
+     @Test
+    public void test() throws Exception {
 
-        //cache a knowledge base for each file if possible, a la TFIDFWikiTest
-        if(!files.contains(filename)) {
+         // JERRY: for this particular test, we need read the text file only once
+
+         File inFile = null;
+         List<String> lines = null;
+         List<DTree> parses = Lists.newArrayList();
+         if(!files.contains(filename)) {
             //reading the lines
-            List<String> lines = null;
             try {
-                lines = TextFileUtil.readLines("miscellaneous/" + filename, true);
+                URI fileURI = Resources.getResource(filename).toURI();
+                inFile = new File(fileURI);
+                Path path = Paths.get(inFile.getAbsolutePath());
+
+                lines = Files.readAllLines(path);
+                //lines = TextFileUtil.readLines("miscellaneous/" + filename, true);
                 files.add(filename);
-            } catch (IOException e) {
-                System.out.println("Couldn't read document: " + filename + ". Exiting");
-                return;
+            } catch (Exception e) {
+                System.out.println("Couldn't read document: " + inFile + ". Exiting");
+                throw e;
             }
 
-            //loading the assertions
-            interpreter.question = false;
-            for (String line:lines) {
-                System.out.println("\nAsserting: " + line);
-                String response = interpreter.interpretSingle(line);
-                System.out.println("Response: " + response);
+            for (String line : lines) {
+                DTree dtree = DTree.buildTree(line);
+                parses.add(dtree);
             }
+
+//            //loading the assertions
+//            interpreter.question = false;
+//            for (String line:lines) {
+//                System.out.println("\nAsserting: " + line);
+//                String response = interpreter.interpretSingle(line);
+//                System.out.println("Response: " + response);
+//            }
 
         }
 
-        //asking the questions
-        interpreter.question = true;
         System.out.println("\nQuestion: " + query);
-        String actual = interpreter.interpretSingle(query);
-        System.out.println("Answer: " + answer);
-        assertEquals(answer.replaceAll("\\W$"," ").trim(), actual.replaceAll("\\W$"," ").trim());
+         DTree qTree = DTree.buildTree(query);
+         for(DTree dtree : parses)  {
+             //SimplifiedMatch compareGraphs = new SimplifiedMatch();
+             //Matching matching = new Matching(compareGraphs);
+
+             // computeGraphSimilarity on each, storing into list
+             //MapPair[] actualPairs =  matching.computeNodeSimilarity(dgraph1, dgraph2);
+         }
+
+         // sort graph similarity scores; test on those
+
 
     }
 
@@ -95,10 +109,14 @@ public class InferenceWikiTest {
     public static Collection<Object[]> prepare(){
 
         ArrayList<Object[]> result = new ArrayList<Object[]>();
-        File jsonTestFile = new File("test/corpus/java/resources/miscellaneous/inferenceWiki.json");
-        String filename = jsonTestFile.getAbsolutePath();
-        JSONParser parser = new JSONParser();
+
+        File jsonTestFile = null;
         try {
+            URI fileURI = Resources.getResource("AmeliaEarhartTest.json").toURI();
+            jsonTestFile = new File(fileURI);
+            String filename = jsonTestFile.getAbsolutePath();
+            JSONParser parser = new JSONParser();
+
             Object obj = parser.parse(new FileReader(filename));
             JSONArray jsonObject = (JSONArray) obj;
             ListIterator<JSONObject> li = jsonObject.listIterator();
@@ -111,25 +129,25 @@ public class InferenceWikiTest {
             }
         }
         catch (FileNotFoundException e) {
-            System.out.println("Error in InferenceWikiTest.prepare(): File not found: " + filename);
+            System.out.println("Error in InferenceWikiTest.prepare(): File not found: " + jsonTestFile);
             System.out.println(e.getMessage());
             e.printStackTrace();
             throw new RuntimeException("FileNotFoundException");
         }
         catch (IOException e) {
-            System.out.println("Error in InferenceWikiTest.prepare(): IO exception reading: " + filename);
+            System.out.println("Error in InferenceWikiTest.prepare(): IO exception reading: " + jsonTestFile);
             System.out.println(e.getMessage());
             e.printStackTrace();
             e.printStackTrace();
             throw new RuntimeException("IOException");
         }
         catch (ParseException e) {
-            System.out.println("Error in InferenceWikiTest.prepare(): Parse exception reading: " + filename);
+            System.out.println("Error in InferenceWikiTest.prepare(): Parse exception reading: " + jsonTestFile);
             System.out.println(e.getMessage());
             throw new RuntimeException("ParseException");
         }
         catch (Exception e) {
-            System.out.println("Error in InferenceWikiTest.prepare(): Parse exception reading: " + filename);
+            System.out.println("Error in InferenceWikiTest.prepare(): Parse exception reading: " + jsonTestFile);
             System.out.println(e.getMessage());
             e.printStackTrace();
             throw new RuntimeException("Exception");
