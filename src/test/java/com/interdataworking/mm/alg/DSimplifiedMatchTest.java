@@ -1,5 +1,6 @@
 package com.interdataworking.mm.alg;
 
+import org.junit.Test;
 import org.w3c.rdf.model.Model;
 import org.w3c.rdf.model.ModelException;
 import org.w3c.rdf.model.NodeFactory;
@@ -12,7 +13,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 
@@ -126,7 +126,7 @@ public class DSimplifiedMatchTest {
             }
         }
 
-        SimplifiedMatch sf = new SimplifiedMatch();
+        DSimplifiedMatch sf = new DSimplifiedMatch();
 
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
@@ -135,7 +135,7 @@ public class DSimplifiedMatchTest {
 
         MapPair[] actualArray = sf.compareGraphNodes(A, B, initMap);
         MapPair.sort(actualArray);
-        SimplifiedMatch.dump(actualArray);
+        DSimplifiedMatch.dump(actualArray);
 
         // Now create the expected.
         PGNode a_b_MP = makePGNode(a, b, "sim=1.0, init=1.0, N=1.0, N1=1.0");
@@ -202,14 +202,14 @@ public class DSimplifiedMatchTest {
             B.add(nf.createStatement(b[i-1], NEXT, b[i]));
         }
 
-        SimplifiedMatch sf = new SimplifiedMatch();
+        DSimplifiedMatch sf = new DSimplifiedMatch();
         PGNode[] result = sf.compareGraphNodes(A, B, null); // initial mapping is a full cross-product of nodes in A and B
         //MapPair.printMap(new FilterBest().getFilterBest(Arrays.asList(result), true), System.out);
         List actualList = new FilterBest().getFilterBest(Arrays.asList(result), true);
         //List l = new ArrayList(c);
         Object[] actualArray = actualList.toArray();
         MapPair.sort(actualArray);
-        SimplifiedMatch.dump(actualArray);
+        DSimplifiedMatch.dump(actualArray);
 
 
         // Now create the expected.
@@ -263,10 +263,10 @@ public class DSimplifiedMatchTest {
         Model A = rf.createModel();
         Model B = rf.createModel();
 
-        SimplifiedMatch.addSequence(A, nf, seq1, "x");
-        SimplifiedMatch.addSequence(B, nf, seq2, "y");
+        DSimplifiedMatch.addSequence(A, nf, seq1, "x");
+        DSimplifiedMatch.addSequence(B, nf, seq2, "y");
 
-        SimplifiedMatch sf = new SimplifiedMatch();
+        DSimplifiedMatch sf = new DSimplifiedMatch();
         PGNode[] result = sf.compareGraphNodes(A, B, null); // initial mapping is a full cross-product of nodes in A and B
 
         List pruned = new FilterBest().getFilterBest(Arrays.asList(result), true);
@@ -356,7 +356,7 @@ public class DSimplifiedMatchTest {
             }
         }
 
-        SimplifiedMatch sf = new SimplifiedMatch();
+        DSimplifiedMatch sf = new DSimplifiedMatch();
 
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
@@ -366,7 +366,7 @@ public class DSimplifiedMatchTest {
         MapPair[] actualArray = sf.compareGraphNodes(A, B, initMap);
         MapPair.sort(actualArray);
 
-        SimplifiedMatch.dump(actualArray);
+        DSimplifiedMatch.dump(actualArray);
 
         // Now create the expected.
         PGNode is_is_MP = makePGNode(a_is, b_is, "sim=1.0, init=1.0, N=1.0, N1=1.0");
@@ -497,7 +497,7 @@ public class DSimplifiedMatchTest {
             }
         }
 
-        SimplifiedMatch sf = new SimplifiedMatch();
+        DSimplifiedMatch sf = new DSimplifiedMatch();
 
         // Two lines below are used to get the same setting as in the example of the ICDE'02 paper.
         // (In general, this formula won't converge! So better stick to the default values instead)
@@ -507,7 +507,7 @@ public class DSimplifiedMatchTest {
         MapPair[] actualArray = sf.compareGraphNodes(A, B, initMap);
         MapPair.sort(actualArray);
 
-        SimplifiedMatch.dump(actualArray);
+        DSimplifiedMatch.dump(actualArray);
 
         // Now create the expected.
         PGNode place_place_MP = makePGNode(a_place, a_place, "sim=1.0, init=1.0, N=1.0, N1=1.0");
