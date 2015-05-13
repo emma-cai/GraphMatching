@@ -2,12 +2,12 @@
   {
     "file": "AmeliaEarhart.txt",
     "query": "Who was the first woman to fly long distance?",
-    "answer": "Amelia Mary Earhart \\(July 24, 1897 – July 2, 1937\\) was an American aviator, one of the first women to fly a plane long distances\\.|She was the first woman to fly a plane by herself across the Atlantic Ocean."
+    "answer": "Amelia Mary Earhart (July 24, 1897 – July 2, 1937) was an American aviator, one of the first women to fly a plane long distances\\.|She was the first woman to fly a plane by herself across the Atlantic Ocean."
   },
   {
 	"file": "AmeliaEarhart.txt",
 	"query":"Who was Amelia Earhart?",
-	"answer":"Amelia Mary Earhart \\(July 24, 1897 – July 2, 1937\\) was an American aviator, one of the first women to fly a plane long distances\\."
+	"answer":"Amelia Mary Earhart (July 24, 1897 – July 2, 1937) was an American aviator, one of the first women to fly a plane long distances."
 	},
   {
 	"file": "AmeliaEarhart.txt",
@@ -57,7 +57,7 @@
   {
 	"file": "AmeliaEarhart.txt",
 	"query":"What is the most widely accepted explanation of Earhart's and Noonan's fate?",
-	"answer":"The \"crash and sink\" theory is often the most widely accepted explanation of Earhart’s and Noonan’s fate\\.\\[1\\]"
+	"answer":"The \"crash and sink\" theory is often the most widely accepted explanation of Earhart’s and Noonan’s fate."
   },
   {
 	"file": "AmeliaEarhart.txt",
@@ -67,16 +67,16 @@
   {
 	"file": "AmeliaEarhart.txt",
 	"query":"What has been surmised?",
-	"answer":"It has been surmised that Earhart and Noonan might have survived on Nikumaroro for several weeks before succumbing\\.\\[2\\]"
+	"answer":"It has been surmised that Earhart and Noonan might have survived on Nikumaroro for several weeks before succumbing."
   },
   {
 	"file": "AmeliaEarhart.txt",
 	"query":"Where might Earhart and Noonan survived?",
-	"answer":"It has been surmised that Earhart and Noonan might have survived on Nikumaroro for several weeks before succumbing\\.\\[2\\]"
+	"answer":"It has been surmised that Earhart and Noonan might have survived on Nikumaroro for several weeks before succumbing."
   },
   {
     "file": "AmeliaEarhart.txt",
     "query":"How long might Earhart and Noonan survived after reaching Nikumaroro?",
-    "answer":"It has been surmised that Earhart and Noonan might have survived on Nikumaroro for several weeks before succumbing\\.\\[2\\]"
+    "answer":"It has been surmised that Earhart and Noonan might have survived on Nikumaroro for several weeks before succumbing."
   }
 ]
