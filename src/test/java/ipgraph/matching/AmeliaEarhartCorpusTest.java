@@ -2,8 +2,8 @@ package ipgraph.matching;
 
 import com.clearspring.analytics.util.Lists;
 import com.google.common.io.Resources;
-import com.interdataworking.mm.alg.MapPair;
-import com.interdataworking.mm.alg.SimplifiedMatch;
+import com.interdataworking.mm.alg.NodeComparer;
+import ipgraph.datastructure.DGraph;
 import ipgraph.datastructure.DTree;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -19,7 +19,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -31,10 +30,15 @@ import static org.junit.Assert.assertEquals;
  * Read AmeliaEarhart.txt, using AmeliaEarhartTest.json.
  */
 @RunWith(Parameterized.class)
-public class AmeliaEarhartTest {
+public class AmeliaEarhartCorpusTest {
 
     public static final Set<String> files = new HashSet();
 
+    public static final Set<String> postagSet = NodeComparer.postagSet;
+
+    private static List<DGraph> graphs = Lists.newArrayList();
+
+    private static List<String> lines = Lists.newArrayList();
 
     @Parameterized.Parameter(value= 0)
     public String filename;
@@ -54,8 +58,7 @@ public class AmeliaEarhartTest {
          // JERRY: for this particular test, we need read the text file only once
 
          File inFile = null;
-         List<String> lines = null;
-         List<DTree> parses = Lists.newArrayList();
+
          if(!files.contains(filename)) {
             //reading the lines
             try {
@@ -73,32 +76,31 @@ public class AmeliaEarhartTest {
 
             for (String line : lines) {
                 DTree dtree = DTree.buildTree(line);
-                parses.add(dtree);
+                DGraph dgraph = DGraph.buildDGraph(dtree).getSubgraph(postagSet);
+                graphs.add(dgraph);
             }
-
-//            //loading the assertions
-//            interpreter.question = false;
-//            for (String line:lines) {
-//                System.out.println("\nAsserting: " + line);
-//                String response = interpreter.interpretSingle(line);
-//                System.out.println("Response: " + response);
-//            }
-
         }
 
-        System.out.println("\nQuestion: " + query);
-         DTree qTree = DTree.buildTree(query);
-         for(DTree dtree : parses)  {
-             //SimplifiedMatch compareGraphs = new SimplifiedMatch();
-             //Matching matching = new Matching(compareGraphs);
+         DTree QDTree = DTree.buildTree(query);
+         DGraph QDGraph = DGraph.buildDGraph(QDTree).getSubgraph(postagSet);
 
-             // computeGraphSimilarity on each, storing into list
-             //MapPair[] actualPairs =  matching.computeNodeSimilarity(dgraph1, dgraph2);
+         double minimumCost = Double.MAX_VALUE;
+         String actual = null;
+         for(int i = 0; i < graphs.size(); i++)  {
+             DGraph dgragh = graphs.get(i);
+             double graphSimilarity = DMatching.computeMatchingCost(dgragh, QDGraph);
+
+             if (Double.compare(graphSimilarity, minimumCost) < 0) {
+                 minimumCost = graphSimilarity;
+                 actual = lines.get(i);
+             }
          }
 
-         // sort graph similarity scores; test on those
-
-
+         System.out.println("query = " + query);
+         System.out.println("expected = " + answer);
+         System.out.println("actual = " + actual);
+         System.out.println("minimumCost = " + minimumCost);
+         assertEquals(answer, actual);
     }
 
     /******************************************************************************************************
