@@ -14,18 +14,43 @@ import java.util.Vector;
 /**
  * Created by qingqingcai on 5/14/15.
  */
-public class VertexCost implements NodeComparer {
+public class VertexSub implements NodeComparer {
 
     private static boolean debug = true;
+
+    private static double ws4jThreshold = 0.5;  // threshold for WordNet similarity
 
     private static ILexicalDatabase db = new NictWordNet();
 
     private static RelatednessCalculator[] rcs = {
-            /**new HirstStOnge(db), new LeacockChodorow(db), new Lesk(db),  new WuPalmer(db),
-            new Resnik(db), new JiangConrath(db), new Lin(db), **/new Path(db)
+    //        new HirstStOnge(db),
+    //        new LeacockChodorow(db),
+    //        new Lesk(db),
+    //        new WuPalmer(db),
+    //        new Resnik(db),
+    //        new JiangConrath(db),
+    //        new Lin(db),
+            new Path(db)
     };
 
-    public double getNodeCost(DNode dnode_T, DNode dnode_H) {
+    /** **************************************************************
+     * Implement method getNodeSimilarity in NodeComparer: Calculcate
+     * a value from 0 to 1 inclusive that indicates how similar the
+     * two nodes are.
+     * Version1: nodeSimilarity = 1 - nodeMatchingCost;
+     */
+    @Override
+    public double getNodeSimilarity(DNode dnode_T, DNode dnode_H) {
+
+        double nodeMatchingCost = getVertexSub(dnode_T, dnode_H);
+        double nodeSimilarity = 1 - nodeMatchingCost;
+        return nodeSimilarity;
+    }
+
+    /** **************************************************************
+     * Compute VertexCost
+     */
+    public double getVertexSub(DNode dnode_T, DNode dnode_H) {
 
         Vector<Double> fie_vector = new Vector<>();
         double exactMatch_tag = doExactMatch(dnode_T, dnode_H);
@@ -45,7 +70,6 @@ public class VertexCost implements NodeComparer {
 //        for (int i = 0; i < fie_vector.size(); i++)
 //            fie_weight_vector.add(1.0/fie_vector.size());
 
-
         double VertexSub = computeExpFun(fie_weight_vector, fie_vector);
 
         if (debug) {
@@ -63,19 +87,6 @@ public class VertexCost implements NodeComparer {
         }
 
         return VertexSub;
-    }
-
-    /** **************************************************************
-     * Implement  method getNodeSimilarity in NodeComparer: Calculcate
-     * a value from 0 to 1 inclusive that indicates how similar the
-     * two nodes are.
-     */
-    @Override
-    public double getNodeSimilarity(DNode dnode_T, DNode dnode_H) {
-
-        double nodeMatchingCost = getNodeSimilarity(dnode_T, dnode_H);
-        double nodeSimilarity = 1 - nodeMatchingCost;
-        return nodeSimilarity;
     }
 
     /** **************************************************************
@@ -111,13 +122,14 @@ public class VertexCost implements NodeComparer {
             return 1.0;
     }
 
-    /**
-     *
+    /** **************************************************************
+     * If WordNet similarity > ws4jThreshold, WS4JCost = 0;
+     * Otherwise, WS4JCost = 1.0;
      */
     private static double doWS4JMatch(DNode dnode_T, DNode dnode_H) {
         double[] ws4jSimilarities = computeWS4JSimilarity(dnode_T, dnode_H);
         double average = StatUtils.sum(ws4jSimilarities) / (ws4jSimilarities.length * 1.0);
-        if (Double.compare(average, 0.5) > 0)
+        if (Double.compare(average, ws4jThreshold) > 0)
             return 0.0;
         else
             return 1.0;
@@ -146,6 +158,9 @@ public class VertexCost implements NodeComparer {
         return Math.exp(tmp) / (1 + Math.exp(tmp));
     }
 
+    /** **************************************************************
+     * Compute WordNet similarity for two words by using cmu-ws4j
+     */
     private static double[] computeWS4JSimilarity(DNode dNode_T, DNode dNode_H) {
 
         double[] ws4jSimilarities = new double[rcs.length];
