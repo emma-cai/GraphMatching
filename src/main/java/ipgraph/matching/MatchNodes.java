@@ -24,6 +24,10 @@ public class MatchNodes implements GraphComparer {
 
     final Set<Edge> pcGraph = Sets.newHashSet();
 
+    final Set<NodePair> pcGraphNodes = Sets.newHashSet();
+
+    static boolean requireLabelMatchForPCGraph = true;
+
     public MatchNodes(DGraph d1, DGraph d2) {
         leftGraph = d1;
         rightGraph = d2;
@@ -31,21 +35,24 @@ public class MatchNodes implements GraphComparer {
         leftGraphEdges = getEdges(leftGraph);
         rightGraphEdges = getEdges(rightGraph);
 
-        calcPCGraph();
+        calcPCGraph(requireLabelMatchForPCGraph);
     }
 
     /**
      * Create the pairwise connectivity graph.
+     * @param requireEdgeMatch
+     *  if true, we call match() on the edges, requiring that this method return true before we insert the pair
+     *  into the pairwise connectivity graph
      */
-    private void calcPCGraph() {
+    private void calcPCGraph(boolean requireEdgeMatch) {
         // JERRY: Match.initSigma0( ) does the entire cross-product of the graph nodes,
         // but p. 8 of paper includes only those which share the same edge.
 
-//        pcGraph = Sets.newHashSet();
-
         for (Edge edgeL : leftGraphEdges)    {
             for (Edge edgeR : rightGraphEdges)   {
-                if (edgeL.matches(edgeR)) {
+                // If we require a match, then call matches; else, do it
+                boolean doIt = requireEdgeMatch ? edgeL.matches(edgeR) : true;
+                if (doIt) {
                     NodePair pairL = new NodePair((DNode)edgeL.source, (DNode)edgeR.source);
                     NodePair pairR = new NodePair((DNode)edgeL.target, (DNode)edgeR.target);
                     pcGraph.add(new Edge(pairL, edgeL.label, pairR));
@@ -53,15 +60,28 @@ public class MatchNodes implements GraphComparer {
             }
         }
 
+        // Now get a permanent copy of the nodes in the pcGraph.
+        for (Edge edge : pcGraph)   {
+            pcGraphNodes.add((NodePair) edge.source);
+            pcGraphNodes.add((NodePair) edge.target);
+        }
+
     }
 
     /**
      * @return
-     *  a defensive copy of the pcGraph
-     */
-    public Set<Edge> getPDGraph()   {
+     *  a semi-defensive (but not deep) copy of the pcGraph
+     */public Set<Edge> getPCGraph()   {
         return Sets.newHashSet(pcGraph);
-        //return pcGraph;
+    }
+
+    /**
+     * Return a copy of the nodes in the pairwise connectivity graph.
+     * @return
+     */
+    @Override
+    public Set<NodePair> getPCGraphNodes() {
+        return Sets.newHashSet(pcGraphNodes);
     }
 
     @Override
