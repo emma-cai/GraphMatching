@@ -16,9 +16,6 @@ public class DMatching {
 
     public static final Set<String> postagSet = NodeComparer.postagSet;
 
-    // TODO: define excludeVertex
-    public static final Set<String> excludeVertex = new HashSet<>(Arrays.asList());
-
     /** **************************************************************
      * Compute the cost of matching graph_T to graph_H. Basically, the
      * goal is to find the matching with lowest cost.
@@ -41,11 +38,13 @@ public class DMatching {
         double normalize = 0.0;
 
         for (DNode dnode_H : dgraph_H.vertexSet()) {
-            if (excludeVertex.contains(dnode_H)) continue;
+            if (VertexSub.excludeNodes(dnode_H))
+                continue;
             double dnode_weight = 1.0;                 // TODO: decide the weight for each different node
 //            normalize += dnode_weight;
             for (DNode dnode_T : dgraph_T.vertexSet()) {
-                if (excludeVertex.contains(dnode_T)) continue;
+                if (VertexSub.excludeNodes(dnode_T))
+                    continue;
                 normalize++;                            // TODO: how to normalize the value
 
                 VertexSub vc = new VertexSub();
