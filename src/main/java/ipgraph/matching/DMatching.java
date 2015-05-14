@@ -14,13 +14,10 @@ import java.util.*;
  */
 public class DMatching {
 
-    private static boolean debug = false;
-
     public static final Set<String> postagSet = NodeComparer.postagSet;
 
     // TODO: define excludeVertex
     public static final Set<String> excludeVertex = new HashSet<>(Arrays.asList());
-    private static int vertexFeaNum = 3;
 
     /** **************************************************************
      * Compute the cost of matching graph_T to graph_H. Basically, the
@@ -43,7 +40,6 @@ public class DMatching {
         double VertexCost = 0.0;
         double normalize = 0.0;
 
-        double[] fie_weight_vector = {0.4, 0.4, 0.2};
         for (DNode dnode_H : dgraph_H.vertexSet()) {
             if (excludeVertex.contains(dnode_H)) continue;
             double dnode_weight = 1.0;                 // TODO: decide the weight for each different node
@@ -51,32 +47,10 @@ public class DMatching {
             for (DNode dnode_T : dgraph_T.vertexSet()) {
                 if (excludeVertex.contains(dnode_T)) continue;
                 normalize++;                            // TODO: how to normalize the value
-                double[] fie_vector = new double[vertexFeaNum];
-                double exactMatch_tag = isExactMatch(dnode_T, dnode_H);
-                double lemmaMatch_tag = isLemmaMatch(dnode_T, dnode_H);
-                double posMatch_tag = isPOSMatch(dnode_T, dnode_H);
 
-                fie_vector[0] = exactMatch_tag;
-                fie_vector[1] = lemmaMatch_tag;
-                fie_vector[2] = posMatch_tag;
-
-                double VertextSub = computeExpFun(fie_weight_vector, fie_vector);
-                VertexCost += dnode_weight * VertextSub;
-
-                if (debug) {
-                    System.out.println("\n----------------------------------------");
-                    System.out.println("dnode_H = " + dnode_H);
-                    System.out.println("dnode_T = " + dnode_T);
-                    System.out.print("fie_vector = ");
-                    for (double v : fie_vector) System.out.print(" \t" + v);
-                    System.out.println();
-                    System.out.print("fie_weight_vector = ");
-                    for (double v : fie_weight_vector) System.out.print(" \t" + v);
-                    System.out.println();
-                    System.out.println("VertexSub = " + VertextSub);
-                    System.out.println("VertexCost = " + VertexCost);
-                    System.out.println("----------------------------------------");
-                }
+                VertexCost vc = new VertexCost();
+                double VertexSub = vc.getNodeSimilarity(dnode_T, dnode_H);
+                VertexCost += dnode_weight * VertexSub;
             }
         }
 //        System.out.println("\n----------------------------------------");
@@ -84,60 +58,6 @@ public class DMatching {
 //        System.out.println("VertexCost = " + VertexCost);
 //        System.out.println("----------------------------------------");
         return VertexCost / normalize;
-    }
-
-    /** **************************************************************
-     * If v and M(v) are identical words; return 0 (cost value) if they
-     * are, otherwise return 1;
-     */
-    private static double isExactMatch(DNode dnode_T, DNode dnode_H) {
-        if (dnode_T.getForm().equals(dnode_H.getForm()))
-            return 0.0;             // if exactly matched, the cost is 0
-        else
-            return 1.0;
-    }
-
-    /** **************************************************************
-     * If v and M(v) have the same lemma; return 0 (cost value) if they
-     * match, otherwise return 1;
-     */
-    private static double isLemmaMatch(DNode dnode_T, DNode dnode_H) {
-        if (dnode_T.getLemma().equals(dnode_H.getLemma()))
-            return 0.0;
-        else
-            return 1.0;
-    }
-
-    /** **************************************************************
-     * If v and M(v) have the same part of speech; return 0 (cost value)
-     * if they match, otherwise return 1;
-     */
-    private static double isPOSMatch(DNode dnode_T, DNode dnode_H) {
-        if (dnode_T.getPOS().equals(dnode_H.getPOS()))
-            return 0.0;             // if the pos tags are matched, the cost is 0
-        else
-            return 1.0;
-    }
-
-    /** **************************************************************
-     * Compute f = (exp(weightVector * valueVector)) / (1.0 + exp(weightVector * valueVector))
-     * @param weightVector Weight vector
-     * @param feaVector Feature vector
-     * @return
-     */
-    private static double computeExpFun(double[] weightVector, double[] feaVector) {
-
-        if (weightVector.length != feaVector.length) {
-            System.err.println("Feature dimension and weight dimenstion are NOT identical!");
-            System.exit(-1);
-        }
-
-        double tmp = 0.0;
-        for (int i = 0; i < feaVector.length; i++) {
-            tmp += (feaVector[i] * weightVector[i]);
-        }
-
-        return Math.exp(tmp) / (1 + Math.exp(tmp));
     }
 
     /** **************************************************************
