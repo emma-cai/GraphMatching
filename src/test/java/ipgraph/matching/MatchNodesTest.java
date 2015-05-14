@@ -49,6 +49,22 @@ public class MatchNodesTest {
         assertEquals(expected, actual);
     }
 
+    // Verify that what is returned by getPCGraph() is a defensive copy.
+    @Test
+    public void testGetPCGraph()    {
+        DGraph dgraph1 = stringToDGraph("John laughed.");
+        DGraph dgraph2 = stringToDGraph("Mark laughed.");
+
+        MatchNodes matcher = new MatchNodes(dgraph1, dgraph2);
+
+        Set<Edge> pcGraphFromField0 = matcher.getPDGraph();
+        assertEquals(1, pcGraphFromField0.size());
+        pcGraphFromField0.remove(pcGraphFromField0.iterator().next());
+        assertEquals(1, matcher.getPDGraph().size());
+
+        Set<Edge> pcGraphFromGetter = matcher.getPDGraph();
+    }
+
     @Test
     public void testExact() {
         DGraph dgraph1 = stringToDGraph("John laughed.");

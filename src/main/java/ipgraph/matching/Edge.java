@@ -5,15 +5,15 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Created by geraldkurlandski on 5/13/15.
+ * An edge connect two objects, a source and a target. We expect the object to be either two DNodes or two NodePairs.
  */
 public class Edge {
-    DNode source;
-    DNode target;
+    final Object source;
+    final Object target;
 
-    String label;
+    final String label;
 
-    public Edge(DNode n1, String name, DNode n2)    {
+    public Edge(Object n1, String name, Object n2)    {
         source = n1;
         target = n2;
         label = name;
@@ -46,5 +46,14 @@ public class Edge {
     @Override
     public String toString()    {
         return "[source: " + source + "; label: " + label + "; target: " + target + "]";
+    }
+
+    /**
+     * Do the two edges match sufficiently that their sources and targets should be paired in the pairwise connectivity graph?
+     * @param edge
+     * @return
+     */
+    public boolean matches(Edge edge) {
+        return this.label.equals(edge.label);
     }
 }
