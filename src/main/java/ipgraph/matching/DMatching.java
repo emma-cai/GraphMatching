@@ -49,7 +49,7 @@ public class DMatching {
                 normalize++;                            // TODO: how to normalize the value
 
                 VertexCost vc = new VertexCost();
-                double VertexSub = vc.getNodeSimilarity(dnode_T, dnode_H);
+                double VertexSub = vc.getNodeCost(dnode_T, dnode_H);
                 VertexCost += dnode_weight * VertexSub;
             }
         }
