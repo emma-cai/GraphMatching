@@ -5,18 +5,19 @@ import edu.cmu.lti.lexical_db.NictWordNet;
 import edu.cmu.lti.ws4j.RelatednessCalculator;
 import edu.cmu.lti.ws4j.impl.Path;
 import edu.cmu.lti.ws4j.util.WS4JConfiguration;
+import ipgraph.datastructure.DGraph;
 import ipgraph.datastructure.DNode;
+import ipgraph.datastructure.DTree;
 import org.apache.commons.math.stat.StatUtils;
 
-import java.util.Collections;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * Created by qingqingcai on 5/14/15.
  */
 public class VertexSub implements NodeComparer {
 
-    private static boolean debug = true;
+    private static boolean debug = false;
 
     private static double ws4jThreshold = 0.5;  // threshold for WordNet similarity
 
@@ -127,6 +128,7 @@ public class VertexSub implements NodeComparer {
      * Otherwise, WS4JCost = 1.0;
      */
     private static double doWS4JMatch(DNode dnode_T, DNode dnode_H) {
+
         double[] ws4jSimilarities = computeWS4JSimilarity(dnode_T, dnode_H);
         double average = StatUtils.sum(ws4jSimilarities) / (ws4jSimilarities.length * 1.0);
         if (Double.compare(average, ws4jThreshold) > 0)
@@ -171,11 +173,62 @@ public class VertexSub implements NodeComparer {
             double s = rc.calcRelatednessOfWords(dNode_T.getForm(), dNode_H.getForm());
             ws4jSimilarities[index++] = s;
         }
-
-        System.out.println(dNode_T.getForm() + "\t" + dNode_H.getForm() + "\t");
-        for (double v : ws4jSimilarities)
-            System.out.print(v + ", ");
-        System.out.println();
         return ws4jSimilarities;
+    }
+
+    /** **************************************************************
+     * In VertexSub computation, exclude nodes if:
+     * (1) the node is the root, which is labeled as "^";
+     * (2) the cPOSTag of the node is "PUNCT", "DET;
+     */
+    public static boolean excludeNodes(DNode node) {
+
+        // A list of forms/word_strings which will not be considered in VertexSub
+        Set<String> excludeFormList = new HashSet<>(Arrays.asList("^"));
+        if (excludeFormList.contains(node.getForm()))
+            return true;
+
+        // A list of pos-tags which will not be considered in VertexSub
+        Set<String> excludePOSList = new HashSet<>(Arrays.asList("PUNCT", "DET"));
+        if (excludePOSList.contains(node.getcPOSTag()))
+            return true;
+
+        return false;
+    }
+
+
+    public static void main(String[] args) {
+
+        String T1 = "James Cameron is the director of the film Titanic.";
+        DTree dtree_T1 = DTree.buildTree(T1);
+        DGraph dgraph_T1 = DGraph.buildDGraph(dtree_T1);
+        System.out.println("\nsubgraph_T1 = \n" + dgraph_T1.toString());
+
+        String T2 = "Jason Blum is the founder and CEO of Blumhouse Productions.";
+        DTree dtree_T2 = DTree.buildTree(T2);
+        DGraph dgraph_T2 = DGraph.buildDGraph(dtree_T2);
+        System.out.println("\nsubgraph_T2 = \n" + dgraph_T2.toString());
+
+        String Q1 = "Who directed Titanic?";
+        DTree dtree_Q1 = DTree.buildTree(Q1);
+        DGraph dgraph_Q1 = DGraph.buildDGraph(dtree_Q1);
+        System.out.println("\nsubgraph_Q1 = \n" + dgraph_Q1.toString());
+
+
+        VertexSub vs = new VertexSub();
+        for (DNode dnode_H : dgraph_Q1.vertexSet()) {
+            if (excludeNodes(dnode_H))
+                continue;
+            for (DNode dnode_T : dgraph_T1.vertexSet()) {
+                if (excludeNodes(dnode_T))
+                    continue;
+                double nodeSimilarity = vs.getNodeSimilarity(dnode_T, dnode_H);
+                System.out.println("\n------------------------------------------");
+                System.out.println(dnode_H + "\n"
+                        + dnode_T + "\n"
+                        + nodeSimilarity);
+                System.out.println("------------------------------------------");
+            }
+        }
     }
 }
