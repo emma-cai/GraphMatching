@@ -48,8 +48,8 @@ public class DMatching {
                 if (excludeVertex.contains(dnode_T)) continue;
                 normalize++;                            // TODO: how to normalize the value
 
-                VertexCost vc = new VertexCost();
-                double VertexSub = vc.getNodeCost(dnode_T, dnode_H);
+                VertexSub vc = new VertexSub();
+                double VertexSub = vc.getVertexSub(dnode_T, dnode_H);
                 VertexCost += dnode_weight * VertexSub;
             }
         }
@@ -74,8 +74,8 @@ public class DMatching {
 
      //   test1();
      //   test2();
-     //   test3();
-        test4();
+        test3();
+     //   test4();
     }
 
     public static void test1() throws ModelException {
