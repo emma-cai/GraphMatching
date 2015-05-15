@@ -61,11 +61,19 @@ public class MatchNodes implements GraphComparer {
         }
 
         // Now get a permanent copy of the nodes in the pcGraph.
-        for (Edge edge : pcGraph)   {
-            pcGraphNodes.add((NodePair) edge.source);
-            pcGraphNodes.add((NodePair) edge.target);
+        pcGraphNodes.addAll(getNodesInGraph(pcGraph));
+
+    }
+
+    public static Set<NodePair> getNodesInGraph(Set<Edge> graph) {
+        Set<NodePair> returnSet = Sets.newHashSet();
+
+        for (Edge edge : graph)   {
+            returnSet.add((NodePair) edge.source);
+            returnSet.add((NodePair) edge.target);
         }
 
+        return returnSet;
     }
 
     /**
