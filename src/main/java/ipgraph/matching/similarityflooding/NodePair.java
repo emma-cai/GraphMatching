@@ -1,4 +1,4 @@
-package ipgraph.matching;
+package ipgraph.matching.similarityflooding;
 
 import ipgraph.datastructure.DNode;
 import org.apache.commons.lang3.builder.EqualsBuilder;

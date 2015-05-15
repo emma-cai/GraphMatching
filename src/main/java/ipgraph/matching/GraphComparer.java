@@ -1,7 +1,7 @@
 package ipgraph.matching;
 
 import ipgraph.datastructure.LangLib;
-import org.w3c.rdf.model.ModelException;
+import ipgraph.matching.similarityflooding.NodePair;
 
 import java.util.*;
 

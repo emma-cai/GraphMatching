@@ -1,9 +1,12 @@
-package ipgraph.matching;
+package ipgraph.matching.similarityflooding;
 
 import com.google.common.collect.Sets;
 import ipgraph.datastructure.DGraph;
 import ipgraph.datastructure.DNode;
 import ipgraph.datastructure.DTree;
+import ipgraph.matching.similarityflooding.Edge;
+import ipgraph.matching.similarityflooding.MatchNodes;
+import ipgraph.matching.similarityflooding.NodePair;
 import org.junit.Test;
 
 import java.util.Set;

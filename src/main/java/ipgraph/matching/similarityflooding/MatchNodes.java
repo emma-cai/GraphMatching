@@ -1,8 +1,9 @@
-package ipgraph.matching;
+package ipgraph.matching.similarityflooding;
 
 import com.google.common.collect.Sets;
 import ipgraph.datastructure.DGraph;
 import ipgraph.datastructure.DNode;
+import ipgraph.matching.GraphComparer;
 import org.jgrapht.graph.DefaultEdge;
 
 import java.util.Map;
