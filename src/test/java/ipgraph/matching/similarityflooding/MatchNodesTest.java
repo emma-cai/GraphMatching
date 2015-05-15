@@ -4,9 +4,7 @@ import com.google.common.collect.Sets;
 import ipgraph.datastructure.DGraph;
 import ipgraph.datastructure.DNode;
 import ipgraph.datastructure.DTree;
-import ipgraph.matching.similarityflooding.Edge;
-import ipgraph.matching.similarityflooding.MatchNodes;
-import ipgraph.matching.similarityflooding.NodePair;
+import ipgraph.datastructure.Graph;
 import org.junit.Test;
 
 import java.util.Set;
@@ -19,14 +17,14 @@ import static org.junit.Assert.assertFalse;
  */
 public class MatchNodesTest {
 
-    private DGraph stringToDGraph(String in)    {
+    private Graph stringToDGraph(String in)    {
         DTree dtree = DTree.buildTree(in);
-        return DGraph.buildDGraph(dtree);
+        return Graph.buildDGraph(dtree);
     }
 
     @Test
     public void testGetEdges()  {
-        DGraph dgraph1 = stringToDGraph("John bit the dust.");
+        Graph dgraph1 = stringToDGraph("John bit the dust.");
         Set<Edge> actual = MatchNodes.getEdges(dgraph1);
 
         // Find the nodes associated with each word.
@@ -52,26 +50,26 @@ public class MatchNodesTest {
         assertEquals(expected, actual);
     }
 
-    // Verify that what is returned by getPCGraph() is a defensive copy.
+    // Verify that what is returned by getPCGraphEdges() is a defensive copy.
     @Test
     public void testGetPCGraph()    {
-        DGraph dgraph1 = stringToDGraph("John laughed.");
-        DGraph dgraph2 = stringToDGraph("Mark laughed.");
+        Graph dgraph1 = stringToDGraph("John laughed.");
+        Graph dgraph2 = stringToDGraph("Mark laughed.");
 
         MatchNodes matcher = new MatchNodes(dgraph1, dgraph2);
 
         // First try to remove an element using the reference returned by the getter.
-        assertEquals(1, matcher.getPCGraph().size());
-        Set<Edge> pcGraph = matcher.getPCGraph();
+        assertEquals(1, matcher.getPCGraphEdges().size());
+        Set<Edge> pcGraph = matcher.getPCGraphEdges();
         pcGraph.remove(pcGraph.iterator().next());
         // Verify that the object's field hasn't changed.
-        assertEquals(1, matcher.getPCGraph().size());
+        assertEquals(1, matcher.getPCGraphEdges().size());
 
         // Now try to modify an element using the reference returned by the getter.
         // NOTE: this test fails because we haven't made a deep copy; not sure if necessary
 
         // First get the pos of the one node.
-//        pcGraph = matcher.getPCGraph();
+//        pcGraph = matcher.getPCGraphEdges();
 //        NodePair pair = (NodePair) pcGraph.iterator().next().source;
 //        String pos1 = pair.node1.getPOS();
 //
@@ -81,7 +79,7 @@ public class MatchNodesTest {
 //        assertEquals("det", ((NodePair) pcGraph.iterator().next().source).node1.getPOS());
 //
 //        // Now test the pos in the true copy.
-//        Set<Edge> pcGraphTrue = matcher.getPCGraph();
+//        Set<Edge> pcGraphTrue = matcher.getPCGraphEdges();
 //        String actual = ((NodePair) pcGraphTrue.iterator().next().source).node1.getPOS();
 //        assertEquals(pos1, actual);
     }
@@ -91,12 +89,12 @@ public class MatchNodesTest {
      */
     @Test
     public void testPCGraphNotRequiringLabelMatch()    {
-        DGraph dgraph1 = stringToDGraph("John laughed hard.");
-        DGraph dgraph2 = stringToDGraph("Mark laughed.");
+        Graph dgraph1 = stringToDGraph("John laughed hard.");
+        Graph dgraph2 = stringToDGraph("Mark laughed.");
 
         MatchNodes.requireLabelMatchForPCGraph = false;
         MatchNodes matcher = new MatchNodes(dgraph1, dgraph2);
-        Set<Edge> pcGraph = matcher.getPCGraph();
+        Set<Edge> pcGraph = matcher.getPCGraphEdges();
 
         DNode john, laughed, hard;
         john = laughed = hard = null;
@@ -142,12 +140,12 @@ public class MatchNodesTest {
      */
     @Test
     public void testPCGraphRequiringLabelMatch()    {
-        DGraph dgraph1 = stringToDGraph("John laughed hard.");
-        DGraph dgraph2 = stringToDGraph("Mark laughed.");
+        Graph dgraph1 = stringToDGraph("John laughed hard.");
+        Graph dgraph2 = stringToDGraph("Mark laughed.");
 
         MatchNodes.requireLabelMatchForPCGraph = true;
         MatchNodes matcher = new MatchNodes(dgraph1, dgraph2);
-        Set<Edge> pcGraph = matcher.getPCGraph();
+        Set<Edge> pcGraph = matcher.getPCGraphEdges();
 
         DNode john, laughed, hard;
         john = laughed = hard = null;
@@ -188,8 +186,8 @@ public class MatchNodesTest {
 
     @Test
     public void testExact() {
-        DGraph dgraph1 = stringToDGraph("John laughed.");
-        DGraph dgraph2 = stringToDGraph("John laughed.");
+        Graph dgraph1 = stringToDGraph("John laughed.");
+        Graph dgraph2 = stringToDGraph("John laughed.");
 
         MatchNodes matcher = new MatchNodes(dgraph1, dgraph2);
         //Map<NodePair, Double> actual = matcher.compareGraphNodes();

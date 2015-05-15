@@ -3,6 +3,7 @@ package ipgraph.matching.similarityflooding;
 import com.google.common.collect.Sets;
 import ipgraph.datastructure.DGraph;
 import ipgraph.datastructure.DNode;
+import ipgraph.datastructure.Graph;
 import ipgraph.matching.GraphComparer;
 import org.jgrapht.graph.DefaultEdge;
 
@@ -17,26 +18,34 @@ public class MatchNodes implements GraphComparer {
     public static final int MAX_ITERATION_NUM = 10000;
     public static final int MIN_ITERATION_NUM = 7;
 
-    final DGraph leftGraph;
-    final DGraph rightGraph;
+    final Graph leftGraph;
+    final Graph rightGraph;
 
     final Set<Edge> leftGraphEdges;
     final Set<Edge> rightGraphEdges;
 
-    final Set<Edge> pcGraph = Sets.newHashSet();
+    final Set<Edge> pcGraphEdges = Sets.newHashSet();
 
     final Set<NodePair> pcGraphNodes = Sets.newHashSet();
 
     static boolean requireLabelMatchForPCGraph = true;
 
-    public MatchNodes(DGraph d1, DGraph d2) {
-        leftGraph = d1;
-        rightGraph = d2;
+    public MatchNodes(Graph g1, Graph g2) {
+        leftGraph = g1;
+        rightGraph = g2;
 
         leftGraphEdges = getEdges(leftGraph);
         rightGraphEdges = getEdges(rightGraph);
 
         calcPCGraph(requireLabelMatchForPCGraph);
+
+        calcInPropGraph();
+    }
+
+    /**
+     * Create the induced propogation graph.
+     */
+    private void calcInPropGraph() {
     }
 
     /**
@@ -46,7 +55,7 @@ public class MatchNodes implements GraphComparer {
      *  into the pairwise connectivity graph
      */
     private void calcPCGraph(boolean requireEdgeMatch) {
-        // JERRY: Match.initSigma0( ) does the entire cross-product of the graph nodes,
+        // Note: Match.initSigma0( ) does the entire cross-product of the graph nodes,
         // but p. 8 of paper includes only those which share the same edge.
 
         for (Edge edgeL : leftGraphEdges)    {
@@ -56,13 +65,13 @@ public class MatchNodes implements GraphComparer {
                 if (doIt) {
                     NodePair pairL = new NodePair((DNode)edgeL.source, (DNode)edgeR.source);
                     NodePair pairR = new NodePair((DNode)edgeL.target, (DNode)edgeR.target);
-                    pcGraph.add(new Edge(pairL, edgeL.label, pairR));
+                    pcGraphEdges.add(new Edge(pairL, edgeL.label, pairR));
                 }
             }
         }
 
         // Now get a permanent copy of the nodes in the pcGraph.
-        pcGraphNodes.addAll(getNodesInGraph(pcGraph));
+        pcGraphNodes.addAll(getNodesInGraph(pcGraphEdges));
 
     }
 
@@ -80,8 +89,8 @@ public class MatchNodes implements GraphComparer {
     /**
      * @return
      *  a semi-defensive (but not deep) copy of the pcGraph
-     */public Set<Edge> getPCGraph()   {
-        return Sets.newHashSet(pcGraph);
+     */public Set<Edge> getPCGraphEdges()   {
+        return Sets.newHashSet(pcGraphEdges);
     }
 
     /**
@@ -101,13 +110,20 @@ public class MatchNodes implements GraphComparer {
     /**
      *
      */
-    public static Set<Edge> getEdges(DGraph graph) {
+    public static Set<Edge> getEdges(Graph graph) {
         Set<Edge> returnSet = Sets.newHashSet();
 
         for (DefaultEdge edge : graph.edgeSet()) {
-            DNode s = graph.getEdgeSource(edge);
-            DNode t = graph.getEdgeTarget(edge);
-            String label = t.getDepLabel();
+            Object s = graph.getEdgeSource(edge);
+            Object t = graph.getEdgeTarget(edge);
+
+            String label = "";
+
+            // FIXME: behavior depends on type of node
+            if (t instanceof DNode) {
+                DNode node = (DNode) t;
+                label = node.getDepLabel();
+            }
 
             // Ignore punctuation and root.
             Set<String> ignoreList = Sets.newHashSet("punct", "root");

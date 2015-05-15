@@ -55,7 +55,7 @@ public class AmeliaEarhartCorpusTest {
      @Test
     public void test() throws Exception {
 
-         // JERRY: for this particular test, we need read the text file only once
+         // For this particular test, we need read the text file only once
 
          File inFile = null;
 
