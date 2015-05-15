@@ -1,6 +1,7 @@
 package ipgraph.datastructure;
 
 import com.interdataworking.mm.alg.NodeComparer;
+import ipgraph.matching.similarityflooding.Edge;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
@@ -13,6 +14,7 @@ import java.util.*;
  * Created by qingqingcai on 5/3/15.
  */
 public class Graph extends SimpleGraph<Object, DefaultEdge> implements Model {
+    // JERRY: SimpleGraph is an UNdirected graph. Is this a problem?
 
     public static final Set<String> postagSet = NodeComparer.postagSet;
 
@@ -30,6 +32,27 @@ public class Graph extends SimpleGraph<Object, DefaultEdge> implements Model {
 
         for (DefaultEdge e : edgeSubset)
             this.addEdge(this.getEdgeSource(e), this.getEdgeTarget(e));
+    }
+
+
+    /**
+     * Build a Graph from a set of edges.
+     * @param edges
+     * @return
+     */
+    public static Graph buildGraph(Set<Edge> edges) {
+        Graph graph = new Graph(DefaultEdge.class);
+
+        // Initialize edge set
+        for (Edge e : edges) {
+            Object source = e.source;
+            Object target = e.target;
+            graph.addVertex(source);
+            graph.addVertex(target);
+            graph.addEdge(source, target);
+        }
+
+        return graph;
     }
 
     /** **************************************************************

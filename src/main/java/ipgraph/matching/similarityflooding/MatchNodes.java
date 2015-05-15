@@ -24,6 +24,8 @@ public class MatchNodes implements GraphComparer {
     final Set<Edge> leftGraphEdges;
     final Set<Edge> rightGraphEdges;
 
+    final Graph pcGraph;
+
     final Set<Edge> pcGraphEdges = Sets.newHashSet();
 
     final Set<NodePair> pcGraphNodes = Sets.newHashSet();
@@ -37,7 +39,7 @@ public class MatchNodes implements GraphComparer {
         leftGraphEdges = getEdges(leftGraph);
         rightGraphEdges = getEdges(rightGraph);
 
-        calcPCGraph(requireLabelMatchForPCGraph);
+        pcGraph = calcPCGraph(requireLabelMatchForPCGraph);
 
         calcInPropGraph();
     }
@@ -54,7 +56,7 @@ public class MatchNodes implements GraphComparer {
      *  if true, we call match() on the edges, requiring that this method return true before we insert the pair
      *  into the pairwise connectivity graph
      */
-    private void calcPCGraph(boolean requireEdgeMatch) {
+    private Graph calcPCGraph(boolean requireEdgeMatch) {
         // Note: Match.initSigma0( ) does the entire cross-product of the graph nodes,
         // but p. 8 of paper includes only those which share the same edge.
 
@@ -70,8 +72,13 @@ public class MatchNodes implements GraphComparer {
             }
         }
 
-        // Now get a permanent copy of the nodes in the pcGraph.
+         // Now get a permanent copy of the nodes in the pcGraph.
+        // JERRY: call get edges of graph?
         pcGraphNodes.addAll(getNodesInGraph(pcGraphEdges));
+
+        // JERRY: reimplementing pcGraphEdges as a Graph object called pcGraph
+        // need to remove old getter on getPCGraphEdges? create new setter?
+        return Graph.buildGraph(pcGraphEdges);
 
     }
 
