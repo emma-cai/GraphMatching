@@ -87,6 +87,12 @@ public class VertexSub implements NodeComparer {
             System.out.println("----------------------------------------");
         }
 
+//        System.out.println("\n----------------------------------------");
+//        System.out.println("dnode_H = " + dnode_H);
+//        System.out.println("dnode_T = " + dnode_T);
+//        System.out.println("Vertex cost = " + VertexSub);
+//        System.out.println("----------------------------------------");
+
         return VertexSub;
     }
 
@@ -189,27 +195,36 @@ public class VertexSub implements NodeComparer {
             return true;
 
         // A list of pos-tags which will not be considered in VertexSub
-        Set<String> excludePOSList = new HashSet<>(Arrays.asList("PUNCT", "DET"));
+        Set<String> excludePOSList = new HashSet<>(Arrays.asList("PUNCT", "DET", "ADP"));
         if (excludePOSList.contains(node.getcPOSTag()))
             return true;
 
         return false;
     }
 
+    /**
+     * TODO: compute the importance weight dnode_H in our algorithm
+     * @param dnode
+     * @return
+     */
+    public static double Importance(DNode dnode) {
+        return 1.0;
+    }
+
 
     public static void main(String[] args) {
 
-        String T1 = "James Cameron is the director of the film Titanic.";
+        String T1 = "Many researchers including navigator and aeronautical engineer Elgen Long believe that the Electra ran out of fuel and that Earhart and Noonan ditched at sea.";
         DTree dtree_T1 = DTree.buildTree(T1);
         DGraph dgraph_T1 = DGraph.buildDGraph(dtree_T1);
         System.out.println("\nsubgraph_T1 = \n" + dgraph_T1.toString());
 
-        String T2 = "Jason Blum is the founder and CEO of Blumhouse Productions.";
+        String T2 = "The \"crash and sink\" theory is often the most widely accepted explanation of Earhart’s and Noonan’s fate.";
         DTree dtree_T2 = DTree.buildTree(T2);
         DGraph dgraph_T2 = DGraph.buildDGraph(dtree_T2);
         System.out.println("\nsubgraph_T2 = \n" + dgraph_T2.toString());
 
-        String Q1 = "Who directed Titanic?";
+        String Q1 = "Who believes that Earhart and Noonan ditched at sea?";
         DTree dtree_Q1 = DTree.buildTree(Q1);
         DGraph dgraph_Q1 = DGraph.buildDGraph(dtree_Q1);
         System.out.println("\nsubgraph_Q1 = \n" + dgraph_Q1.toString());
