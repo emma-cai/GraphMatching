@@ -7,7 +7,9 @@ import ipgraph.datastructure.DNode;
 import ipgraph.datastructure.DTree;
 import org.w3c.rdf.model.ModelException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by qingqingcai on 5/12/15.
@@ -15,6 +17,7 @@ import java.util.*;
 public class DMatching {
 
     public static final Set<String> postagSet = NodeComparer.postagSet;
+    public static double vertexMatchWeightPct = 1.0;
 
     /** **************************************************************
      * Compute the cost of matching graph_T to graph_H. Basically, the
@@ -22,20 +25,30 @@ public class DMatching {
      */
     public static double computeMatchingCost(DGraph graph_T, DGraph graph_H) {
 
-        double graphSim = Double.MAX_VALUE;
         double VertexCost = computeVertexCost(graph_T, graph_H);
         double PathCost = computePathCost(graph_T, graph_H);
-        graphSim = 1.0 * VertexCost + 0 * PathCost;
+        double graphSim = vertexMatchWeightPct * VertexCost + (1 - vertexMatchWeightPct) * PathCost;
         return graphSim;
     }
 
     /** **************************************************************
      * Compute vertex substitution cost to match graph_T to graph_H
+     * TODO: How to compute normalizationConstant: 1st try and 2st try
+     *
      */
     public static double computeVertexCost(DGraph dgraph_T, DGraph dgraph_H) {
 
         double VertexCost = 0.0;
-        double normalize = 0.0;
+        double normalizationConstant = 0.0;
+
+        /**
+        // 1st try: we cannot ensure that 0 < VertexCost < 1
+        //          M1 is more related to M2, but size(M1) > size(M2),
+        //             in this way, VertexCost(dgraph_H, M1) > VertexCost(dgraph_H, M2)
+        for (DNode dnode_H : dgraph_H.vertexSet()) {
+            normalizationConstant += VertexSub.Importance(dnode_H);
+        }
+         **/
 
         for (DNode dnode_H : dgraph_H.vertexSet()) {
             if (VertexSub.excludeNodes(dnode_H))
@@ -45,7 +58,8 @@ public class DMatching {
             for (DNode dnode_T : dgraph_T.vertexSet()) {
                 if (VertexSub.excludeNodes(dnode_T))
                     continue;
-                normalize++;                            // TODO: how to normalize the value
+                // 2st try: make sure that 0 < VertexCost < 1
+                normalizationConstant += VertexSub.Importance(dnode_H);                      // TODO: how to normalize the value
 
                 VertexSub vc = new VertexSub();
                 double VertexSub = vc.getVertexSub(dnode_T, dnode_H);
@@ -56,7 +70,7 @@ public class DMatching {
 //        System.out.println("normalize = " + normalize);
 //        System.out.println("VertexCost = " + VertexCost);
 //        System.out.println("----------------------------------------");
-        return VertexCost / normalize;
+        return VertexCost / normalizationConstant;
     }
 
     /** **************************************************************
@@ -73,8 +87,9 @@ public class DMatching {
 
      //   test1();
      //   test2();
-        test3();
+     //   test3();
      //   test4();
+        test5();
     }
 
     public static void test1() throws ModelException {
@@ -225,5 +240,30 @@ public class DMatching {
             System.out.println("best answer = " + bestAnswer);
         }
 
+    }
+
+    public static void test5() {
+        String T1 = "Many researchers including navigator and aeronautical engineer Elgen Long believe that the Electra ran out of fuel and that Earhart and Noonan ditched at sea.";
+        DTree dtree_T1 = DTree.buildTree(T1);
+        DGraph dgraph_T1 = DGraph.buildDGraph(dtree_T1)/**.getSubgraph(postagSet)**/;
+        System.out.println("\nsubgraph_T1 = " + T1 +"\n" + dgraph_T1.toString());
+
+        String T2 = "The \"crash and sink\" theory is often the most widely accepted explanation of Earhart’s and Noonan’s fate.";
+        DTree dtree_T2 = DTree.buildTree(T2);
+        DGraph dgraph_T2 = DGraph.buildDGraph(dtree_T2)/**..getSubgraph(postagSet)**/;
+        System.out.println("\nsubgraph_T2 = \n" + T2 + "\n" + dgraph_T2.toString());
+
+        String Q1 = "Who believes that Earhart and Noonan ditched at sea?";
+        DTree dtree_Q1 = DTree.buildTree(Q1);
+        DGraph dgraph_Q1 = DGraph.buildDGraph(dtree_Q1)/**..getSubgraph(postagSet)**/;
+        System.out.println("\nsubgraph_Q1 = \n" + Q1 + "\n" + dgraph_Q1.toString());
+
+        System.out.flush();
+
+        double matchingCost = computeMatchingCost(dgraph_T1, dgraph_Q1);
+        System.out.println("T1 to Q1: " + matchingCost);
+
+        matchingCost = computeMatchingCost(dgraph_T2, dgraph_Q1);
+        System.out.println("T2 to Q1: " + matchingCost);
     }
 }
