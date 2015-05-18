@@ -44,3 +44,7 @@ Thumbs.db
 # Files in target/ #
 ####################
 target/
+
+# Files in data/ #
+###################
+data/
