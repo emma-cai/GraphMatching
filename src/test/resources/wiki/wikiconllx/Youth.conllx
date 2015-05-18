@@ -1,0 +1,267 @@
+De Leon hoped to find the Fountain of Youth, a mythical spring that was said to make anyone who drank its water young forever.
+1	De	_	PROPN	NNP	_	2	nn	_	_
+2	Leon	_	PROPN	NNP	_	3	nsubj	_	_
+3	hoped	_	VERB	VBD	_	0	root	_	_
+4	to	_	PART	TO	_	5	aux	_	_
+5	find	_	VERB	VB	_	3	xcomp	_	_
+6	the	_	DET	DT	_	7	det	_	_
+7	Fountain	_	PROPN	NNP	_	5	dobj	_	_
+8	of	_	ADP	IN	_	7	prep	_	_
+9	Youth	_	PROPN	NNP	_	8	pobj	_	_
+10	,	_	PUNCT	,	_	9	punct	_	_
+11	a	_	DET	DT	_	13	det	_	_
+12	mythical	_	ADJ	JJ	_	13	amod	_	_
+13	spring	_	NOUN	NN	_	9	appos	_	_
+14	that	_	DET	WDT	_	16	nsubjpass	_	_
+15	was	_	AUX	VBD	_	16	auxpass	_	_
+16	said	_	VERB	VBN	_	13	rcmod	_	_
+17	to	_	PART	TO	_	18	aux	_	_
+18	make	_	VERB	VB	_	16	xcomp	_	_
+19	anyone	_	NOUN	NN	_	18	dobj	_	_
+20	who	_	PRON	WP	_	21	nsubj	_	_
+21	drank	_	VERB	VBD	_	19	rcmod	_	_
+22	its	_	PRON	PRP$	_	23	poss	_	_
+23	water	_	NOUN	NN	_	24	nsubj	_	_
+24	young	_	ADJ	JJ	_	21	xcomp	_	_
+25	forever	_	ADV	RB	_	24	advmod	_	_
+26	.	_	PUNCT	.	_	3	punct	_	_
+
+When he heard rumors that a nearby island called Borinquen (now Puerto Rico) was full of gold, he invaded the island and brutally conquered the natives.
+1	When	_	ADV	WRB	_	3	advmod	_	_
+2	he	_	PRON	PRP	_	3	nsubj	_	_
+3	heard	_	VERB	VBD	_	22	advcl	_	_
+4	rumors	_	NOUN	NNS	_	3	dobj	_	_
+5	that	_	SCONJ	IN	_	9	mark	_	_
+6	a	_	DET	DT	_	8	det	_	_
+7	nearby	_	ADJ	JJ	_	8	amod	_	_
+8	island	_	NOUN	NN	_	9	nsubj	_	_
+9	called	_	VERB	VBD	_	3	ccomp	_	_
+10	Borinquen	_	PROPN	NNP	_	16	nsubj	_	_
+11	-LRB-	_	PUNCT	-LRB-	_	14	punct	_	_
+12	now	_	ADV	RB	_	14	dep	_	_
+13	Puerto	_	PROPN	NNP	_	14	nn	_	_
+14	Rico	_	PROPN	NNP	_	10	appos	_	_
+15	-RRB-	_	PUNCT	-RRB-	_	14	punct	_	_
+16	was	_	VERB	VBD	_	9	ccomp	_	_
+17	full	_	ADJ	JJ	_	16	acomp	_	_
+18	of	_	ADP	IN	_	17	prep	_	_
+19	gold	_	NOUN	NN	_	18	pobj	_	_
+20	,	_	PUNCT	,	_	22	punct	_	_
+21	he	_	PRON	PRP	_	22	nsubj	_	_
+22	invaded	_	VERB	VBD	_	0	root	_	_
+23	the	_	DET	DT	_	24	det	_	_
+24	island	_	NOUN	NN	_	22	dobj	_	_
+25	and	_	CONJ	CC	_	22	cc	_	_
+26	brutally	_	ADV	RB	_	27	advmod	_	_
+27	conquered	_	VERB	VBD	_	22	conj	_	_
+28	the	_	DET	DT	_	29	det	_	_
+29	natives	_	NOUN	NNS	_	27	dobj	_	_
+30	.	_	PUNCT	.	_	22	punct	_	_
+
+Juan Ponce de Leon was born in 1460 in Santeveras, Spain.
+1	Juan	_	PROPN	NNP	_	4	nn	_	_
+2	Ponce	_	PROPN	NNP	_	4	nn	_	_
+3	de	_	X	FW	_	4	nn	_	_
+4	Leon	_	PROPN	NNP	_	6	nsubjpass	_	_
+5	was	_	AUX	VBD	_	6	auxpass	_	_
+6	born	_	VERB	VBN	_	0	root	_	_
+7	in	_	ADP	IN	_	6	prep	_	_
+8	1460	_	NUM	CD	_	7	pobj	_	_
+9	in	_	ADP	IN	_	6	prep	_	_
+10	Santeveras	_	PROPN	NNP	_	12	nn	_	_
+11	,	_	PUNCT	,	_	12	punct	_	_
+12	Spain	_	PROPN	NNP	_	9	pobj	_	_
+13	.	_	PUNCT	.	_	6	punct	_	_
+
+During his search, he conquered many islands, including Bimini.
+1	During	_	ADP	IN	_	6	prep	_	_
+2	his	_	PRON	PRP$	_	3	poss	_	_
+3	search	_	NOUN	NN	_	1	pobj	_	_
+4	,	_	PUNCT	,	_	6	punct	_	_
+5	he	_	PRON	PRP	_	6	nsubj	_	_
+6	conquered	_	VERB	VBD	_	0	root	_	_
+7	many	_	ADJ	JJ	_	8	amod	_	_
+8	islands	_	NOUN	NNS	_	6	dobj	_	_
+9	,	_	PUNCT	,	_	8	punct	_	_
+10	including	_	VERB	VBG	_	8	prep	_	_
+11	Bimini	_	PROPN	NNP	_	10	pobj	_	_
+12	.	_	PUNCT	.	_	6	punct	_	_
+
+He was on board Christopher Columbus' second expedition to the Americas in 1493.
+1	He	_	PRON	PRP	_	2	nsubj	_	_
+2	was	_	VERB	VBD	_	0	root	_	_
+3	on	_	ADP	IN	_	2	prep	_	_
+4	board	_	NOUN	NN	_	6	nn	_	_
+5	Christopher	_	PROPN	NNP	_	6	nn	_	_
+6	Columbus	_	PROPN	NNP	_	9	poss	_	_
+7	'	_	PART	POS	_	6	possessive	_	_
+8	second	_	ADJ	JJ	_	9	amod	_	_
+9	expedition	_	NOUN	NN	_	3	pobj	_	_
+10	to	_	ADP	TO	_	2	prep	_	_
+11	the	_	DET	DT	_	12	det	_	_
+12	Americas	_	PROPN	NNPS	_	10	pobj	_	_
+13	in	_	ADP	IN	_	12	prep	_	_
+14	1493	_	NUM	CD	_	13	pobj	_	_
+15	.	_	PUNCT	.	_	2	punct	_	_
+
+De Leon was an explorer and fighter from an early age.
+1	De	_	PROPN	NNP	_	2	nn	_	_
+2	Leon	_	PROPN	NNP	_	3	nsubj	_	_
+3	was	_	VERB	VBD	_	0	root	_	_
+4	an	_	DET	DT	_	5	det	_	_
+5	explorer	_	NOUN	NN	_	3	xcomp	_	_
+6	and	_	CONJ	CC	_	5	cc	_	_
+7	fighter	_	NOUN	NN	_	5	conj	_	_
+8	from	_	ADP	IN	_	5	prep	_	_
+9	an	_	DET	DT	_	11	det	_	_
+10	early	_	ADJ	JJ	_	11	amod	_	_
+11	age	_	NOUN	NN	_	8	pobj	_	_
+12	.	_	PUNCT	.	_	3	punct	_	_
+
+Like many Spanish explorers, he was blood thirsty for gold.
+1	Like	_	ADP	IN	_	7	prep	_	_
+2	many	_	ADJ	JJ	_	4	amod	_	_
+3	Spanish	_	ADJ	JJ	_	4	amod	_	_
+4	explorers	_	NOUN	NNS	_	1	pobj	_	_
+5	,	_	PUNCT	,	_	7	punct	_	_
+6	he	_	PRON	PRP	_	7	nsubj	_	_
+7	was	_	VERB	VBD	_	0	root	_	_
+8	blood	_	NOUN	NN	_	9	nn	_	_
+9	thirsty	_	NOUN	NNS	_	7	xcomp	_	_
+10	for	_	ADP	IN	_	9	prep	_	_
+11	gold	_	NOUN	NN	_	10	pobj	_	_
+12	.	_	PUNCT	.	_	7	punct	_	_
+
+After returning to Puerto Rico, de Leon took three ships and 200 men on a mission to explore lands to the north.
+1	After	_	ADP	IN	_	9	prep	_	_
+2	returning	_	VERB	VBG	_	1	pcomp	_	_
+3	to	_	ADP	TO	_	2	prep	_	_
+4	Puerto	_	PROPN	NNP	_	5	nn	_	_
+5	Rico	_	PROPN	NNP	_	3	pobj	_	_
+6	,	_	PUNCT	,	_	9	punct	_	_
+7	de	_	PROPN	NNP	_	8	nn	_	_
+8	Leon	_	PROPN	NNP	_	9	nsubj	_	_
+9	took	_	VERB	VBD	_	0	root	_	_
+10	three	_	NUM	CD	_	11	num	_	_
+11	ships	_	NOUN	NNS	_	9	dobj	_	_
+12	and	_	CONJ	CC	_	11	cc	_	_
+13	200	_	NUM	CD	_	14	num	_	_
+14	men	_	NOUN	NNS	_	11	conj	_	_
+15	on	_	ADP	IN	_	9	prep	_	_
+16	a	_	DET	DT	_	17	det	_	_
+17	mission	_	NOUN	NN	_	15	pobj	_	_
+18	to	_	PART	TO	_	19	aux	_	_
+19	explore	_	VERB	VB	_	17	vmod	_	_
+20	lands	_	NOUN	NNS	_	19	dobj	_	_
+21	to	_	ADP	TO	_	19	prep	_	_
+22	the	_	DET	DT	_	23	det	_	_
+23	north	_	NOUN	NN	_	21	pobj	_	_
+24	.	_	PUNCT	.	_	9	punct	_	_
+
+De Leon's misfortunes as governor did not stop him from looking for gold and the Fountain of Youth.
+1	De	_	PROPN	NNP	_	2	nn	_	_
+2	Leon	_	PROPN	NNP	_	4	poss	_	_
+3	's	_	PART	POS	_	2	possessive	_	_
+4	misfortunes	_	NOUN	NNS	_	9	nsubj	_	_
+5	as	_	ADP	IN	_	4	prep	_	_
+6	governor	_	NOUN	NN	_	5	pobj	_	_
+7	did	_	AUX	VBD	_	9	aux	_	_
+8	not	_	PART	RB	_	9	neg	_	_
+9	stop	_	VERB	VB	_	0	root	_	_
+10	him	_	PRON	PRP	_	9	dobj	_	_
+11	from	_	ADP	IN	_	9	prep	_	_
+12	looking	_	VERB	VBG	_	11	pcomp	_	_
+13	for	_	ADP	IN	_	12	prep	_	_
+14	gold	_	NOUN	NN	_	13	pobj	_	_
+15	and	_	CONJ	CC	_	14	cc	_	_
+16	the	_	DET	DT	_	17	det	_	_
+17	Fountain	_	PROPN	NNP	_	14	conj	_	_
+18	of	_	ADP	IN	_	17	prep	_	_
+19	Youth	_	PROPN	NNP	_	18	pobj	_	_
+20	.	_	PUNCT	.	_	9	punct	_	_
+
+He was soon appointed governor of the island, but lost his title in 1511 because of his extreme brutality toward the natives.
+1	He	_	PRON	PRP	_	4	nsubjpass	_	_
+2	was	_	AUX	VBD	_	4	auxpass	_	_
+3	soon	_	ADV	RB	_	4	advmod	_	_
+4	appointed	_	VERB	VBN	_	0	root	_	_
+5	governor	_	NOUN	NN	_	4	dobj	_	_
+6	of	_	ADP	IN	_	5	prep	_	_
+7	the	_	DET	DT	_	8	det	_	_
+8	island	_	NOUN	NN	_	6	pobj	_	_
+9	,	_	PUNCT	,	_	4	punct	_	_
+10	but	_	CONJ	CC	_	4	cc	_	_
+11	lost	_	VERB	VBD	_	4	conj	_	_
+12	his	_	PRON	PRP$	_	13	poss	_	_
+13	title	_	NOUN	NN	_	11	dobj	_	_
+14	in	_	ADP	IN	_	11	prep	_	_
+15	1511	_	NUM	CD	_	14	pobj	_	_
+16	because	_	ADV	RB	_	17	advmod	_	_
+17	of	_	ADP	IN	_	15	prep	_	_
+18	his	_	PRON	PRP$	_	20	poss	_	_
+19	extreme	_	ADJ	JJ	_	20	amod	_	_
+20	brutality	_	NOUN	NN	_	17	pobj	_	_
+21	toward	_	ADP	IN	_	11	prep	_	_
+22	the	_	DET	DT	_	23	det	_	_
+23	natives	_	NOUN	NNS	_	21	pobj	_	_
+24	.	_	PUNCT	.	_	4	punct	_	_
+
+De Leon was soon appointed as the governor of the Higuey region of Santo Domingo.
+1	De	_	PROPN	NNP	_	2	nn	_	_
+2	Leon	_	PROPN	NNP	_	5	nsubjpass	_	_
+3	was	_	AUX	VBD	_	5	auxpass	_	_
+4	soon	_	ADV	RB	_	5	advmod	_	_
+5	appointed	_	VERB	VBN	_	0	root	_	_
+6	as	_	ADP	IN	_	5	prep	_	_
+7	the	_	DET	DT	_	8	det	_	_
+8	governor	_	NOUN	NN	_	6	pobj	_	_
+9	of	_	ADP	IN	_	8	prep	_	_
+10	the	_	DET	DT	_	12	det	_	_
+11	Higuey	_	PROPN	NNP	_	12	nn	_	_
+12	region	_	NOUN	NN	_	9	pobj	_	_
+13	of	_	ADP	IN	_	12	prep	_	_
+14	Santo	_	PROPN	NNP	_	15	nn	_	_
+15	Domingo	_	PROPN	NNP	_	13	pobj	_	_
+16	.	_	PUNCT	.	_	5	punct	_	_
+
+He helped fight the Muslims in southern Spain in the early 1490's.
+1	He	_	PRON	PRP	_	2	nsubj	_	_
+2	helped	_	AUX	VBD	_	0	root	_	_
+3	fight	_	VERB	VB	_	2	xcomp	_	_
+4	the	_	DET	DT	_	5	det	_	_
+5	Muslims	_	PROPN	NNPS	_	3	dobj	_	_
+6	in	_	ADP	IN	_	3	prep	_	_
+7	southern	_	ADJ	JJ	_	8	amod	_	_
+8	Spain	_	PROPN	NNP	_	6	pobj	_	_
+9	in	_	ADP	IN	_	3	prep	_	_
+10	the	_	DET	DT	_	13	det	_	_
+11	early	_	ADJ	JJ	_	13	amod	_	_
+12	1490	_	NUM	CD	_	13	num	_	_
+13	's	_	NOUN	NNS	_	9	pobj	_	_
+14	.	_	PUNCT	.	_	2	punct	_	_
+
+Rather than returning to Spain, the adventurer remained at an island called Santo Domingo (now called the Dominican Republic).
+1	Rather	_	ADV	RB	_	2	advmod	_	_
+2	than	_	ADP	IN	_	9	prep	_	_
+3	returning	_	VERB	VBG	_	2	pcomp	_	_
+4	to	_	ADP	TO	_	3	prep	_	_
+5	Spain	_	PROPN	NNP	_	4	pobj	_	_
+6	,	_	PUNCT	,	_	9	punct	_	_
+7	the	_	DET	DT	_	8	det	_	_
+8	adventurer	_	NOUN	NN	_	9	nsubj	_	_
+9	remained	_	VERB	VBD	_	0	root	_	_
+10	at	_	ADP	IN	_	9	prep	_	_
+11	an	_	DET	DT	_	12	det	_	_
+12	island	_	NOUN	NN	_	10	pobj	_	_
+13	called	_	VERB	VBN	_	12	vmod	_	_
+14	Santo	_	PROPN	NNP	_	15	nn	_	_
+15	Domingo	_	PROPN	NNP	_	13	dobj	_	_
+16	-LRB-	_	PUNCT	-LRB-	_	18	punct	_	_
+17	now	_	ADV	RB	_	18	advmod	_	_
+18	called	_	VERB	VBN	_	15	dep	_	_
+19	the	_	DET	DT	_	21	det	_	_
+20	Dominican	_	PROPN	NNP	_	21	nn	_	_
+21	Republic	_	PROPN	NNP	_	18	dobj	_	_
+22	-RRB-	_	PUNCT	-RRB-	_	18	punct	_	_
+23	.	_	PUNCT	.	_	9	punct	_	_
+

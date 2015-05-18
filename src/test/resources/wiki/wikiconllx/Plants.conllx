@@ -1,0 +1,136 @@
+They take in nutrients and light.
+1	They	_	PRON	PRP	_	2	nsubj	_	_
+2	take	_	VERB	VBP	_	0	root	_	_
+3	in	_	ADP	IN	_	2	prep	_	_
+4	nutrients	_	NOUN	NNS	_	3	pobj	_	_
+5	and	_	CONJ	CC	_	4	cc	_	_
+6	light	_	NOUN	NN	_	4	conj	_	_
+7	.	_	PUNCT	.	_	2	punct	_	_
+
+This part carries water and nutrients from the roots to other parts of the plant.
+1	This	_	DET	DT	_	2	det	_	_
+2	part	_	NOUN	NN	_	3	nsubj	_	_
+3	carries	_	VERB	VBZ	_	0	root	_	_
+4	water	_	NOUN	NN	_	3	dobj	_	_
+5	and	_	CONJ	CC	_	4	cc	_	_
+6	nutrients	_	NOUN	NNS	_	4	conj	_	_
+7	from	_	ADP	IN	_	3	prep	_	_
+8	the	_	DET	DT	_	9	det	_	_
+9	roots	_	NOUN	NNS	_	7	pobj	_	_
+10	to	_	ADP	TO	_	9	prep	_	_
+11	other	_	ADJ	JJ	_	12	amod	_	_
+12	parts	_	NOUN	NNS	_	10	pobj	_	_
+13	of	_	ADP	IN	_	12	prep	_	_
+14	the	_	DET	DT	_	15	det	_	_
+15	plant	_	NOUN	NN	_	13	pobj	_	_
+16	.	_	PUNCT	.	_	3	punct	_	_
+
+Plants need the same things to live.
+1	Plants	_	NOUN	NNS	_	2	nsubj	_	_
+2	need	_	VERB	VBP	_	0	root	_	_
+3	the	_	DET	DT	_	5	det	_	_
+4	same	_	ADJ	JJ	_	5	amod	_	_
+5	things	_	NOUN	NNS	_	2	dobj	_	_
+6	to	_	PART	TO	_	7	aux	_	_
+7	live	_	VERB	VB	_	2	xcomp	_	_
+8	.	_	PUNCT	.	_	2	punct	_	_
+
+The stem connects the roots with the leaves.
+1	The	_	DET	DT	_	2	det	_	_
+2	stem	_	NOUN	NN	_	3	nsubj	_	_
+3	connects	_	VERB	VBZ	_	0	root	_	_
+4	the	_	DET	DT	_	5	det	_	_
+5	roots	_	NOUN	NNS	_	3	dobj	_	_
+6	with	_	ADP	IN	_	3	prep	_	_
+7	the	_	DET	DT	_	8	det	_	_
+8	leaves	_	NOUN	NNS	_	6	pobj	_	_
+9	.	_	PUNCT	.	_	3	punct	_	_
+
+The trunk of a tree is a good example of this part of a plant.
+1	The	_	DET	DT	_	2	det	_	_
+2	trunk	_	NOUN	NN	_	6	nsubj	_	_
+3	of	_	ADP	IN	_	2	prep	_	_
+4	a	_	DET	DT	_	5	det	_	_
+5	tree	_	NOUN	NN	_	3	pobj	_	_
+6	is	_	VERB	VBZ	_	0	root	_	_
+7	a	_	DET	DT	_	9	det	_	_
+8	good	_	ADJ	JJ	_	9	amod	_	_
+9	example	_	NOUN	NN	_	6	xcomp	_	_
+10	of	_	ADP	IN	_	9	prep	_	_
+11	this	_	DET	DT	_	12	det	_	_
+12	part	_	NOUN	NN	_	10	pobj	_	_
+13	of	_	ADP	IN	_	12	prep	_	_
+14	a	_	DET	DT	_	15	det	_	_
+15	plant	_	NOUN	NN	_	13	pobj	_	_
+16	.	_	PUNCT	.	_	6	punct	_	_
+
+This is the part of the plant that takes in water and nutrients from the soil.
+1	This	_	DET	DT	_	2	nsubj	_	_
+2	is	_	VERB	VBZ	_	0	root	_	_
+3	the	_	DET	DT	_	4	det	_	_
+4	part	_	NOUN	NN	_	2	xcomp	_	_
+5	of	_	ADP	IN	_	4	prep	_	_
+6	the	_	DET	DT	_	7	det	_	_
+7	plant	_	NOUN	NN	_	5	pobj	_	_
+8	that	_	DET	WDT	_	9	nsubj	_	_
+9	takes	_	VERB	VBZ	_	7	rcmod	_	_
+10	in	_	ADP	IN	_	9	prep	_	_
+11	water	_	NOUN	NN	_	10	pobj	_	_
+12	and	_	CONJ	CC	_	11	cc	_	_
+13	nutrients	_	NOUN	NNS	_	11	conj	_	_
+14	from	_	ADP	IN	_	9	prep	_	_
+15	the	_	DET	DT	_	16	det	_	_
+16	soil	_	NOUN	NN	_	14	pobj	_	_
+17	.	_	PUNCT	.	_	2	punct	_	_
+
+The leaves are the parts of the plant that grow out of the stem.
+1	The	_	DET	DT	_	2	det	_	_
+2	leaves	_	NOUN	NNS	_	3	nsubj	_	_
+3	are	_	VERB	VBP	_	0	root	_	_
+4	the	_	DET	DT	_	5	det	_	_
+5	parts	_	NOUN	NNS	_	3	xcomp	_	_
+6	of	_	ADP	IN	_	5	prep	_	_
+7	the	_	DET	DT	_	8	det	_	_
+8	plant	_	NOUN	NN	_	6	pobj	_	_
+9	that	_	DET	WDT	_	10	nsubj	_	_
+10	grow	_	VERB	VBP	_	8	rcmod	_	_
+11	out	_	ADP	RP	_	10	prt	_	_
+12	of	_	ADP	IN	_	10	prep	_	_
+13	the	_	DET	DT	_	14	det	_	_
+14	stem	_	NOUN	NN	_	12	pobj	_	_
+15	.	_	PUNCT	.	_	3	punct	_	_
+
+Plants grow almost everywhere on our planet.
+1	Plants	_	NOUN	NNS	_	2	nsubj	_	_
+2	grow	_	VERB	VBP	_	0	root	_	_
+3	almost	_	ADV	RB	_	4	advmod	_	_
+4	everywhere	_	ADV	RB	_	2	advmod	_	_
+5	on	_	ADP	IN	_	2	prep	_	_
+6	our	_	PRON	PRP$	_	7	poss	_	_
+7	planet	_	NOUN	NN	_	5	pobj	_	_
+8	.	_	PUNCT	.	_	2	punct	_	_
+
+The four things plants need are light, water, air, and soil.
+1	The	_	DET	DT	_	4	det	_	_
+2	four	_	NUM	CD	_	4	num	_	_
+3	things	_	NOUN	NNS	_	4	nn	_	_
+4	plants	_	NOUN	NNS	_	5	nsubj	_	_
+5	need	_	VERB	VBP	_	0	root	_	_
+6	are	_	VERB	VBP	_	5	ccomp	_	_
+7	light	_	ADJ	JJ	_	6	acomp	_	_
+8	,	_	PUNCT	,	_	6	punct	_	_
+9	water	_	NOUN	NN	_	6	xcomp	_	_
+10	,	_	PUNCT	,	_	9	punct	_	_
+11	air	_	NOUN	NN	_	9	conj	_	_
+12	,	_	PUNCT	,	_	9	punct	_	_
+13	and	_	CONJ	CC	_	9	cc	_	_
+14	soil	_	NOUN	NN	_	9	conj	_	_
+15	.	_	PUNCT	.	_	5	punct	_	_
+
+The roots are underground.
+1	The	_	DET	DT	_	2	det	_	_
+2	roots	_	NOUN	NNS	_	3	nsubj	_	_
+3	are	_	VERB	VBP	_	0	root	_	_
+4	underground	_	ADV	RB	_	3	advmod	_	_
+5	.	_	PUNCT	.	_	3	punct	_	_
+

@@ -1,0 +1,160 @@
+While at UNC, Tausche was a member of the cheerleading team.
+1	While	_	SCONJ	IN	_	2	mark	_	_
+2	at	_	ADP	IN	_	6	advcl	_	_
+3	UNC	_	PROPN	NNP	_	2	pobj	_	_
+4	,	_	PUNCT	,	_	6	punct	_	_
+5	Tausche	_	PROPN	NNP	_	6	nsubj	_	_
+6	was	_	VERB	VBD	_	0	root	_	_
+7	a	_	DET	DT	_	8	det	_	_
+8	member	_	NOUN	NN	_	6	xcomp	_	_
+9	of	_	ADP	IN	_	8	prep	_	_
+10	the	_	DET	DT	_	12	det	_	_
+11	cheerleading	_	VERB	VBG	_	12	amod	_	_
+12	team	_	NOUN	NN	_	9	pobj	_	_
+13	.	_	PUNCT	.	_	6	punct	_	_
+
+According to her Twitter profile, she is now an avid marathon runner.
+1	According	_	VERB	VBG	_	8	prep	_	_
+2	to	_	ADP	TO	_	1	pcomp	_	_
+3	her	_	PRON	PRP$	_	5	poss	_	_
+4	Twitter	_	PROPN	NNP	_	5	nn	_	_
+5	profile	_	NOUN	NN	_	2	pobj	_	_
+6	,	_	PUNCT	,	_	8	punct	_	_
+7	she	_	PRON	PRP	_	8	nsubj	_	_
+8	is	_	VERB	VBZ	_	0	root	_	_
+9	now	_	ADV	RB	_	8	advmod	_	_
+10	an	_	DET	DT	_	13	det	_	_
+11	avid	_	ADJ	JJ	_	13	amod	_	_
+12	marathon	_	NOUN	NN	_	13	nn	_	_
+13	runner	_	NOUN	NN	_	8	xcomp	_	_
+14	.	_	PUNCT	.	_	8	punct	_	_
+
+Tausche was born in Minneapolis, Minnesota.
+1	Tausche	_	PROPN	NNP	_	3	nsubjpass	_	_
+2	was	_	AUX	VBD	_	3	auxpass	_	_
+3	born	_	VERB	VBN	_	0	root	_	_
+4	in	_	ADP	IN	_	3	prep	_	_
+5	Minneapolis	_	PROPN	NNP	_	7	nn	_	_
+6	,	_	PUNCT	,	_	7	punct	_	_
+7	Minnesota	_	PROPN	NNP	_	4	pobj	_	_
+8	.	_	PUNCT	.	_	3	punct	_	_
+
+Tausche's rise at CNBC has been compared to Erin Burnett, an anchor at CNN who once served as a popular host of two CNBC shows.
+1	Tausche	_	PROPN	NNP	_	3	poss	_	_
+2	's	_	PART	POS	_	1	possessive	_	_
+3	rise	_	NOUN	NN	_	7	nsubj	_	_
+4	at	_	ADP	IN	_	3	prep	_	_
+5	CNBC	_	PROPN	NNP	_	4	pobj	_	_
+6	has	_	AUX	VBZ	_	7	aux	_	_
+7	been	_	VERB	VBN	_	0	root	_	_
+8	compared	_	VERB	VBN	_	7	prep	_	_
+9	to	_	ADP	TO	_	8	pcomp	_	_
+10	Erin	_	PROPN	NNP	_	11	nn	_	_
+11	Burnett	_	PROPN	NNP	_	9	pobj	_	_
+12	,	_	PUNCT	,	_	11	punct	_	_
+13	an	_	DET	DT	_	14	det	_	_
+14	anchor	_	NOUN	NN	_	11	appos	_	_
+15	at	_	ADP	IN	_	14	prep	_	_
+16	CNN	_	PROPN	NNP	_	15	pobj	_	_
+17	who	_	PRON	WP	_	19	nsubj	_	_
+18	once	_	ADV	RB	_	19	advmod	_	_
+19	served	_	VERB	VBN	_	14	rcmod	_	_
+20	as	_	ADP	IN	_	19	prep	_	_
+21	a	_	DET	DT	_	23	det	_	_
+22	popular	_	ADJ	JJ	_	23	amod	_	_
+23	host	_	NOUN	NN	_	20	pobj	_	_
+24	of	_	ADP	IN	_	23	prep	_	_
+25	two	_	NUM	CD	_	27	num	_	_
+26	CNBC	_	PROPN	NNP	_	27	nn	_	_
+27	shows	_	NOUN	NNS	_	24	pobj	_	_
+28	.	_	PUNCT	.	_	7	punct	_	_
+
+She graduated from Greater Atlanta Christian School in 2004.
+1	She	_	PRON	PRP	_	2	nsubj	_	_
+2	graduated	_	VERB	VBD	_	0	root	_	_
+3	from	_	ADP	IN	_	2	prep	_	_
+4	Greater	_	PROPN	NNP	_	7	nn	_	_
+5	Atlanta	_	PROPN	NNP	_	7	nn	_	_
+6	Christian	_	PROPN	NNP	_	7	nn	_	_
+7	School	_	PROPN	NNP	_	3	pobj	_	_
+8	in	_	ADP	IN	_	2	prep	_	_
+9	2004	_	NUM	CD	_	8	pobj	_	_
+10	.	_	PUNCT	.	_	2	punct	_	_
+
+She then attended University of North Carolina at Chapel Hill, earning a bachelor's degree in 2008 in business journalism and international politics.
+1	She	_	PRON	PRP	_	3	nsubj	_	_
+2	then	_	ADV	RB	_	3	advmod	_	_
+3	attended	_	VERB	VBD	_	0	root	_	_
+4	University	_	PROPN	NNP	_	3	dobj	_	_
+5	of	_	ADP	IN	_	4	prep	_	_
+6	North	_	PROPN	NNP	_	7	nn	_	_
+7	Carolina	_	PROPN	NNP	_	5	pobj	_	_
+8	at	_	ADP	IN	_	3	prep	_	_
+9	Chapel	_	PROPN	NNP	_	10	nn	_	_
+10	Hill	_	PROPN	NNP	_	8	pobj	_	_
+11	,	_	PUNCT	,	_	3	punct	_	_
+12	earning	_	VERB	VBG	_	3	vmod	_	_
+13	a	_	DET	DT	_	14	det	_	_
+14	bachelor	_	NOUN	NN	_	16	poss	_	_
+15	's	_	PART	POS	_	14	possessive	_	_
+16	degree	_	NOUN	NN	_	12	dobj	_	_
+17	in	_	ADP	IN	_	16	prep	_	_
+18	2008	_	NUM	CD	_	17	pobj	_	_
+19	in	_	ADP	IN	_	12	prep	_	_
+20	business	_	NOUN	NN	_	21	nn	_	_
+21	journalism	_	NOUN	NN	_	19	pobj	_	_
+22	and	_	CONJ	CC	_	21	cc	_	_
+23	international	_	ADJ	JJ	_	24	amod	_	_
+24	politics	_	NOUN	NNS	_	21	conj	_	_
+25	.	_	PUNCT	.	_	3	punct	_	_
+
+She received honors for in-depth research for analyzing the way international newspapers covered the handover of Hong Kong from British to Chinese rule.
+1	She	_	PRON	PRP	_	2	nsubj	_	_
+2	received	_	VERB	VBD	_	0	root	_	_
+3	honors	_	NOUN	NNS	_	2	dobj	_	_
+4	for	_	ADP	IN	_	2	prep	_	_
+5	in-depth	_	ADJ	JJ	_	6	amod	_	_
+6	research	_	NOUN	NN	_	4	pobj	_	_
+7	for	_	ADP	IN	_	2	prep	_	_
+8	analyzing	_	VERB	VBG	_	7	pcomp	_	_
+9	the	_	DET	DT	_	10	det	_	_
+10	way	_	NOUN	NN	_	8	dobj	_	_
+11	international	_	ADJ	JJ	_	12	amod	_	_
+12	newspapers	_	NOUN	NNS	_	13	nsubj	_	_
+13	covered	_	VERB	VBD	_	10	rcmod	_	_
+14	the	_	DET	DT	_	15	det	_	_
+15	handover	_	NOUN	NN	_	13	dobj	_	_
+16	of	_	ADP	IN	_	15	prep	_	_
+17	Hong	_	PROPN	NNP	_	18	nn	_	_
+18	Kong	_	PROPN	NNP	_	16	pobj	_	_
+19	from	_	ADP	IN	_	13	prep	_	_
+20	British	_	PROPN	NNP	_	19	pobj	_	_
+21	to	_	ADP	TO	_	13	prep	_	_
+22	Chinese	_	ADJ	JJ	_	23	amod	_	_
+23	rule	_	NOUN	NN	_	21	pobj	_	_
+24	.	_	PUNCT	.	_	2	punct	_	_
+
+Tausche sits on the alumni board of the University of North Carolina at Chapel Hill School of Journalism and Mass Communication.
+1	Tausche	_	PROPN	NNP	_	2	nsubj	_	_
+2	sits	_	VERB	VBZ	_	0	root	_	_
+3	on	_	ADP	IN	_	2	prep	_	_
+4	the	_	DET	DT	_	6	det	_	_
+5	alumni	_	NOUN	NNS	_	6	nn	_	_
+6	board	_	NOUN	NN	_	3	pobj	_	_
+7	of	_	ADP	IN	_	6	prep	_	_
+8	the	_	DET	DT	_	9	det	_	_
+9	University	_	PROPN	NNP	_	7	pobj	_	_
+10	of	_	ADP	IN	_	9	prep	_	_
+11	North	_	PROPN	NNP	_	12	nn	_	_
+12	Carolina	_	PROPN	NNP	_	10	pobj	_	_
+13	at	_	ADP	IN	_	2	prep	_	_
+14	Chapel	_	PROPN	NNP	_	16	nn	_	_
+15	Hill	_	PROPN	NNP	_	16	nn	_	_
+16	School	_	PROPN	NNP	_	13	pobj	_	_
+17	of	_	ADP	IN	_	16	prep	_	_
+18	Journalism	_	PROPN	NNP	_	21	nn	_	_
+19	and	_	CONJ	CC	_	18	cc	_	_
+20	Mass	_	PROPN	NNP	_	18	conj	_	_
+21	Communication	_	PROPN	NNP	_	17	pobj	_	_
+22	.	_	PUNCT	.	_	2	punct	_	_
+
