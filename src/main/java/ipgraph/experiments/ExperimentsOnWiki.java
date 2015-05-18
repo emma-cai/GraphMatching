@@ -248,6 +248,7 @@ public class ExperimentsOnWiki {
             CORRECTNUM++;
 
         System.out.println("\n--------------------------------------------------");
+        System.out.println("fname = " + fname);
         System.out.println("query = " + query);
         System.out.println("expected = " + answer);
         System.out.println("actual = " + actual);
