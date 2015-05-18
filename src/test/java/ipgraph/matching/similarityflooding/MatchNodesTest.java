@@ -66,7 +66,7 @@ public class MatchNodesTest {
         assertEquals(1, matcher.getPCGraphEdges().size());
 
         // Now try to modify an element using the reference returned by the getter.
-        // NOTE: this test fails because we haven't made a deep copy; not sure if necessary
+        // NOTE: The test below fails because we haven't made a deep copy; not sure if necessary
 
         // First get the pos of the one node.
 //        pcGraph = matcher.getPCGraphEdges();
@@ -184,6 +184,7 @@ public class MatchNodesTest {
         assertEquals(expectedNodes, actualNodes);
     }
 
+    // FIXME: test not finished; awaiting implementation of compareGraphNodes
     @Test
     public void testExact() {
         Graph dgraph1 = stringToDGraph("John laughed.");

@@ -2,11 +2,13 @@ package ipgraph.matching.similarityflooding;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultWeightedEdge;
 
 /**
  * An edge connect two objects, a source and a target. We expect the object to be either two DNodes or two NodePairs.
  */
-public class Edge {
+public class Edge extends DefaultWeightedEdge {
     public final Object source;
     public final Object target;
 

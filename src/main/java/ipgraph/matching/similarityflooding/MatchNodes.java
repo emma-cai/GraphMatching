@@ -1,11 +1,10 @@
 package ipgraph.matching.similarityflooding;
 
 import com.google.common.collect.Sets;
-import ipgraph.datastructure.DGraph;
 import ipgraph.datastructure.DNode;
 import ipgraph.datastructure.Graph;
 import ipgraph.matching.GraphComparer;
-import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultWeightedEdge;
 
 import java.util.Map;
 import java.util.Set;
@@ -26,6 +25,7 @@ public class MatchNodes implements GraphComparer {
 
     final Graph pcGraph;
 
+    // JERRY: we need Edge objects to verify edge labels; we need DefaultWeightedEdge's in the Graph object
     final Set<Edge> pcGraphEdges = Sets.newHashSet();
 
     final Set<NodePair> pcGraphNodes = Sets.newHashSet();
@@ -41,13 +41,22 @@ public class MatchNodes implements GraphComparer {
 
         pcGraph = calcPCGraph(requireLabelMatchForPCGraph);
 
-        calcInPropGraph();
+        calcInducedPropagationGraph();
     }
 
     /**
-     * Create the induced propogation graph.
+     * Create the induced propagation graph.
      */
-    private void calcInPropGraph() {
+    private void calcInducedPropagationGraph() {
+
+        // For every edge, create an edge going in the opposite direction.
+        Set<Edge> reversedEdges = Sets.newHashSet();
+        for (Edge edge : pcGraphEdges) {
+            NodePair sourcePair = (NodePair) edge.source;
+            NodePair targetPair = (NodePair) edge.target;
+            //reversedEdges.add(new Edge(targetPair, "dummyString", sourcePair));
+            pcGraph.addEdge(targetPair, sourcePair);
+        }
     }
 
     /**
@@ -120,7 +129,7 @@ public class MatchNodes implements GraphComparer {
     public static Set<Edge> getEdges(Graph graph) {
         Set<Edge> returnSet = Sets.newHashSet();
 
-        for (DefaultEdge edge : graph.edgeSet()) {
+        for (DefaultWeightedEdge edge : graph.edgeSet()) {
             Object s = graph.getEdgeSource(edge);
             Object t = graph.getEdgeTarget(edge);
 

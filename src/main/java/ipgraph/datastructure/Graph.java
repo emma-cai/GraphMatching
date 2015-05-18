@@ -4,6 +4,7 @@ import com.interdataworking.mm.alg.NodeComparer;
 import ipgraph.matching.similarityflooding.Edge;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleGraph;
 import org.jgrapht.graph.Subgraph;
 import org.w3c.rdf.model.*;
@@ -13,24 +14,24 @@ import java.util.*;
 /**
  * Created by qingqingcai on 5/3/15.
  */
-public class Graph extends SimpleGraph<Object, DefaultEdge> implements Model {
+public class Graph extends SimpleGraph<Object, DefaultWeightedEdge> implements Model {
     // JERRY: SimpleGraph is an UNdirected graph. Is this a problem?
 
     public static final Set<String> postagSet = NodeComparer.postagSet;
 
-    public Graph(Class<? extends DefaultEdge> aClass) {
+    public Graph(Class<? extends DefaultWeightedEdge> aClass) {
         super(aClass);
     }
 
-    public Graph(Class<? extends DefaultEdge> aClass,
-                 Set<DNode> vertexSubset, Set<DefaultEdge> edgeSubset) {
+    public Graph(Class<? extends DefaultWeightedEdge> aClass,
+                 Set<DNode> vertexSubset, Set<DefaultWeightedEdge> edgeSubset) {
 
         super(aClass);
 
         for (DNode v : vertexSubset)
             this.addVertex(v);
 
-        for (DefaultEdge e : edgeSubset)
+        for (DefaultWeightedEdge e : edgeSubset)
             this.addEdge(this.getEdgeSource(e), this.getEdgeTarget(e));
     }
 
@@ -41,9 +42,9 @@ public class Graph extends SimpleGraph<Object, DefaultEdge> implements Model {
      * @return
      */
     public static Graph buildGraph(Set<Edge> edges) {
-        Graph graph = new Graph(DefaultEdge.class);
+        Graph graph = new Graph(DefaultWeightedEdge.class);
 
-        // Initialize edge set
+        // Initialize DefaultWeightedEdge set
         for (Edge e : edges) {
             Object source = e.source;
             Object target = e.target;
@@ -60,7 +61,7 @@ public class Graph extends SimpleGraph<Object, DefaultEdge> implements Model {
      */
     public static Graph buildDGraph(DTree dtree) {
 
-        Graph dgraph = new Graph(DefaultEdge.class);
+        Graph dgraph = new Graph(DefaultWeightedEdge.class);
 
         // Initialize vertex set
         Set<Integer> processed = new HashSet<>();
@@ -91,8 +92,8 @@ public class Graph extends SimpleGraph<Object, DefaultEdge> implements Model {
     public String toString() {
 
         StringBuilder builder = new StringBuilder();
-        Set<DefaultEdge> edges = this.edgeSet();
-        for (DefaultEdge edge : edges) {
+        Set<DefaultWeightedEdge> edges = this.edgeSet();
+        for (DefaultWeightedEdge edge : edges) {
             Object obj = this.getEdgeTarget(edge);
 
             if(obj instanceof DNode) {
@@ -166,9 +167,9 @@ public class Graph extends SimpleGraph<Object, DefaultEdge> implements Model {
         for (Object vn : this.vertexSet()) {
             if (filterSubGraphByNodeType(vn, posTags)) {
                 vertexSubset.add(vn);
-                List<DefaultEdge> path = findShortestPath(root, vn);
+                List<DefaultWeightedEdge> path = findShortestPath(root, vn);
                 edgeSubset.addAll(path);
-                for (DefaultEdge p : path) {
+                for (DefaultWeightedEdge p : path) {
                     Object sn = this.getEdgeSource(p);
                     Object tn = this.getEdgeTarget(p);
                     vertexSubset.add(sn);
@@ -177,7 +178,7 @@ public class Graph extends SimpleGraph<Object, DefaultEdge> implements Model {
             }
         }
         Subgraph subgraph = new Subgraph(this, vertexSubset, edgeSubset);
-        Graph dsubgraph = new Graph(DefaultEdge.class, vertexSubset, edgeSubset);
+        Graph dsubgraph = new Graph(DefaultWeightedEdge.class, vertexSubset, edgeSubset);
         return dsubgraph;
     }
 
@@ -279,7 +280,7 @@ public class Graph extends SimpleGraph<Object, DefaultEdge> implements Model {
         int sid = 1; int tid = 6;
         DNode sn = dtree.getNodeById(1);
         DNode tn = dtree.getNodeById(6);
-        List<DefaultEdge> paths = dgraph.findShortestPath(sn, tn);
+        List<DefaultWeightedEdge> paths = dgraph.findShortestPath(sn, tn);
         printPath(dgraph, paths, sn, tn);
 
         // build subgraph
@@ -288,10 +289,10 @@ public class Graph extends SimpleGraph<Object, DefaultEdge> implements Model {
     }
 
     public static void printPath(Graph dgraph,
-                                 List<DefaultEdge> paths, DNode sn, DNode tn) {
+                                 List<DefaultWeightedEdge> paths, DNode sn, DNode tn) {
         System.out.println("\nshortest path from " + sn.getId() + " to " + tn.getId() + " = ");
         for (int i = 0; i < paths.size(); i++) {
-            DefaultEdge p = paths.get(i);
+            DefaultWeightedEdge p = paths.get(i);
             Object s = dgraph.getEdgeSource(p);
             Object t = dgraph.getEdgeTarget(p);
             if (s instanceof DNode && t instanceof DNode) {
