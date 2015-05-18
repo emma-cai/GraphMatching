@@ -1,5 +1,6 @@
 package ipgraph.matching.similarityflooding;
 
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import ipgraph.datastructure.DGraph;
 import ipgraph.datastructure.DNode;
@@ -9,6 +10,7 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.DirectedWeightedMultigraph;
 import org.junit.Test;
 
+import java.util.Map;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
@@ -138,6 +140,55 @@ public class MatchNodesTest {
     }
 
 
+   /**
+     * Test pc graph when we require the labels of the nodes to match if they're going to be inserted.
+     */
+    @Test
+    public void testPCGraphRequiringLabelMatch()    {
+        Graph dgraph1 = stringToDGraph("John laughed hard.");
+        Graph dgraph2 = stringToDGraph("Mark laughed.");
+
+        MatchNodes.requireLabelMatchForPCGraph = true;
+        MatchNodes matcher = new MatchNodes(dgraph1, dgraph2);
+        Set<Edge> pcGraph = matcher.getPCGraphEdges();
+
+        DNode john, laughed, hard;
+        john = laughed = hard = null;
+        Set<DNode> nodes = dgraph1.getNodesByLevel(0);
+        for (DNode node : nodes)    {
+            if (node.getForm().equals("John"))
+                john = node;
+            else if (node.getForm().equals("laughed"))
+                laughed = node;
+            else if (node.getForm().equals("hard"))
+                hard = node;
+        }
+
+        DNode mark, laughed2;
+        mark = laughed2 = null;
+        Set<DNode> nodes2 = dgraph2.getNodesByLevel(0);
+        for (DNode node : nodes2)    {
+            if (node.getForm().equals("Mark"))
+                mark = node;
+            else if (node.getForm().equals("laughed"))
+                laughed2 = node;
+        }
+
+        Set<Edge> expected = Sets.newHashSet();
+        NodePair nodePair1 = new NodePair(laughed, laughed2);
+        NodePair nodePair2 = new NodePair(john, mark);
+        expected.add(new Edge(nodePair1, "nsubj", nodePair2));
+
+        assertEquals(expected, pcGraph);
+
+        // Now verify pcGraphNodes.
+        Set<NodePair> actualNodes = matcher.getPCGraphNodes();
+
+        Set<NodePair> expectedNodes = Sets.newHashSet(nodePair1, nodePair2);
+
+        assertEquals(expectedNodes, actualNodes);
+    }
+
     /**
      * Test induced propagation graph.
      * FIMXE: this test would be easier if we could create an expected DirectedWeightedMultigraph and test the two are identical with equals()
@@ -211,63 +262,51 @@ public class MatchNodesTest {
         assertEquals(1.0, inPropGraph.getEdgeWeight(weightedEdge), 0);
     }
 
-    /**
-     * Test pc graph when we require the labels of the nodes to match if they're going to be inserted.
-     */
-    @Test
-    public void testPCGraphRequiringLabelMatch()    {
-        Graph dgraph1 = stringToDGraph("John laughed hard.");
-        Graph dgraph2 = stringToDGraph("Mark laughed.");
-
-        MatchNodes.requireLabelMatchForPCGraph = true;
-        MatchNodes matcher = new MatchNodes(dgraph1, dgraph2);
-        Set<Edge> pcGraph = matcher.getPCGraphEdges();
-
-        DNode john, laughed, hard;
-        john = laughed = hard = null;
-        Set<DNode> nodes = dgraph1.getNodesByLevel(0);
-        for (DNode node : nodes)    {
-            if (node.getForm().equals("John"))
-                john = node;
-            else if (node.getForm().equals("laughed"))
-                laughed = node;
-            else if (node.getForm().equals("hard"))
-                hard = node;
-        }
-
-        DNode mark, laughed2;
-        mark = laughed2 = null;
-        Set<DNode> nodes2 = dgraph2.getNodesByLevel(0);
-        for (DNode node : nodes2)    {
-            if (node.getForm().equals("Mark"))
-                mark = node;
-            else if (node.getForm().equals("laughed"))
-                laughed2 = node;
-        }
-
-        Set<Edge> expected = Sets.newHashSet();
-        NodePair nodePair1 = new NodePair(laughed, laughed2);
-        NodePair nodePair2 = new NodePair(john, mark);
-        expected.add(new Edge(nodePair1, "nsubj", nodePair2));
-
-        assertEquals(expected, pcGraph);
-
-        // Now verify pcGraphNodes.
-        Set<NodePair> actualNodes = matcher.getPCGraphNodes();
-
-        Set<NodePair> expectedNodes = Sets.newHashSet(nodePair1, nodePair2);
-
-        assertEquals(expectedNodes, actualNodes);
-    }
-
     // FIXME: test not finished; awaiting implementation of compareGraphNodes
     @Test
     public void testExact() {
         Graph dgraph1 = stringToDGraph("John laughed.");
         Graph dgraph2 = stringToDGraph("John laughed.");
 
+        MatchNodes.MAX_ITERATION_NUM = 2;
+        MatchNodes.requireLabelMatchForPCGraph = true;
         MatchNodes matcher = new MatchNodes(dgraph1, dgraph2);
-        //Map<NodePair, Double> actual = matcher.compareGraphNodes();
 
+
+        NodePair laughed1_laughed2 = null;
+        NodePair john1_john2 = null;
+
+        Set<NodePair> nodePairs = matcher.getPCGraphNodes();
+        for (NodePair pair : nodePairs) {
+            if (pair.node1.getForm().equals("laughed") && pair.node2.getForm().equals("laughed"))  {
+                laughed1_laughed2 = pair;
+            }
+            else if (pair.node1.getForm().equals("John") && pair.node2.getForm().equals("John"))  {
+                john1_john2 = pair;
+            }
+        }
+
+
+        // Create init values.
+        Map<NodePair, Double> initVals = Maps.newHashMap();
+        initVals.put(laughed1_laughed2, 1.0);
+        initVals.put(john1_john2, 0.5);
+
+        assertEquals(4.9E-324, laughed1_laughed2.sim0, 0);
+        assertEquals(4.9E-324, john1_john2.sim0, 0);
+
+
+        Map<NodePair, Double> actual = matcher.compareGraphNodes(initVals);
+
+        // Test initialized values.
+        assertEquals(1.0, laughed1_laughed2.sim0, 0);
+        assertEquals(0.5, john1_john2.sim0, 0);
+
+
+        // Test final values.
+        assertEquals(1.0, actual.get(laughed1_laughed2), 0);
+        assertEquals(0.5, actual.get(john1_john2), 0);
+
+        assertEquals(2, actual.keySet().size());
     }
 }

@@ -38,8 +38,8 @@ public class NodePair {
         return new HashCodeBuilder(17, 31).
                 append(node1).
                 append(node2).
-                append(sim).
-                append(sim0).
+//                append(sim).
+//                append(sim0).
                 toHashCode();
     }
 
@@ -54,8 +54,8 @@ public class NodePair {
         return new EqualsBuilder().
                 append(node1, rhs.node1).
                 append(node2, rhs.node2).
-                append(sim, rhs.sim).
-                append(sim0, rhs.sim0).
+//                append(sim, rhs.sim).
+//                append(sim0, rhs.sim0).
                 isEquals();
     }
 

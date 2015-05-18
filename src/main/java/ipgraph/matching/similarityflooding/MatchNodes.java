@@ -1,6 +1,8 @@
 package ipgraph.matching.similarityflooding;
 
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.interdataworking.mm.alg.MapPair;
 import ipgraph.datastructure.DNode;
 import ipgraph.datastructure.Graph;
 import ipgraph.matching.GraphComparer;
@@ -15,8 +17,10 @@ import java.util.Set;
  */
 public class MatchNodes implements GraphComparer {
 
-    public static final int MAX_ITERATION_NUM = 10000;
-    public static final int MIN_ITERATION_NUM = 7;
+    // JERRY: testing: public static final int MAX_ITERATION_NUM = 5;
+    public static final int MIN_ITERATION_NUM = 5;
+    static int MAX_ITERATION_NUM = 2;
+    //static int MIN_ITERATION_NUM = 5;
 
     final Graph leftGraph;
     final Graph rightGraph;
@@ -71,7 +75,6 @@ public class MatchNodes implements GraphComparer {
 
         // Set weights.
         for (Object objVertex : graph.vertexSet()) {
-//            NodePair source = (NodePair) objVertex;
             Set<Object> allEdgesOfSourceNode = graph.outgoingEdgesOf(objVertex);
             int nbrEdges = allEdgesOfSourceNode.size();
             for (Object objEdge : allEdgesOfSourceNode)  {
@@ -123,17 +126,6 @@ public class MatchNodes implements GraphComparer {
 
     }
 
-    public static Set<NodePair> getNodesInGraph(Set<Edge> graph) {
-        Set<NodePair> returnSet = Sets.newHashSet();
-
-        for (Edge edge : graph)   {
-            returnSet.add((NodePair) edge.source);
-            returnSet.add((NodePair) edge.target);
-        }
-
-        return returnSet;
-    }
-
     /**
      * @return
      *  a semi-defensive (but not deep) copy of the pcGraph
@@ -150,12 +142,7 @@ public class MatchNodes implements GraphComparer {
         return Sets.newHashSet(pcGraphNodes);
     }
 
-    @Override
-    public Map<NodePair, Double> compareGraphNodes(Map<NodePair, Double> initVals)  {
-        return null;
-    }
-
-    /**
+   /**
      *
      */
     public static Set<Edge> getEdges(Graph graph) {
@@ -192,4 +179,83 @@ public class MatchNodes implements GraphComparer {
     DirectedWeightedMultigraph getInducedPropGraph() {
         return ipGraph;
     }
+
+    @Override
+    public Map<NodePair, Double> compareGraphNodes(Map<NodePair, Double> initVals)  {
+
+        Map<NodePair, Double> fixpointVals = Maps.newHashMap();
+
+        // Initialize
+        for (Object objVertex : ipGraph.vertexSet()) {
+            NodePair nodePair = (NodePair) objVertex;
+
+            if(initVals.containsKey(nodePair))  {
+                nodePair.sim0 = initVals.get(nodePair);
+            }
+            else    {
+                nodePair.sim0 = 0.0;
+            }
+            fixpointVals.put(nodePair, nodePair.sim0);
+        }
+        // JERRY: if initVals is empty, I think we want to set all values to 1.0, not 0.0--see original Match class
+
+        //
+        int itCnt = 1;
+        while (itCnt <=  MAX_ITERATION_NUM)  {
+            itCnt++;
+
+            double maxMappingVal = 0.0;
+
+            // for every node in the graph
+            for (Object objSource : ipGraph.vertexSet()) {
+                NodePair source = (NodePair) objSource;
+                double currSourceVal = fixpointVals.get(source);
+
+                Set<Object> allEdgesOfSourceNode = ipGraph.outgoingEdgesOf(objSource);
+
+                // Update each neighbor (target of corresponding edge) with currVal * coefficient
+                for (Object objEdge : allEdgesOfSourceNode)   {
+                    Object objNeighbor = ipGraph.getEdgeTarget(objEdge);
+
+                    // get the weight of the edge leading from neighbor back to target
+                    double coeff = ipGraph.getEdgeWeight(ipGraph.getEdge(objNeighbor, objSource));
+
+                    NodePair neighbor = (NodePair) ipGraph.getEdgeTarget(objEdge);
+                    double currNeighborVal = fixpointVals.get(neighbor);
+
+                    double newVal = currSourceVal + (coeff * currNeighborVal);
+                    fixpointVals.put(neighbor, newVal);
+
+                    maxMappingVal = Double.max(maxMappingVal, newVal);
+                 }
+            }
+
+            // Normalize
+            for (NodePair mapPair : fixpointVals.keySet())   {
+                double newVal = fixpointVals.get(mapPair) / maxMappingVal;
+                fixpointVals.put(mapPair, newVal);
+            }
+
+            // FIXME: create hasConverged( ) and use in if below
+            if (false && itCnt >= MIN_ITERATION_NUM)    {
+                break;
+            }
+        }
+
+        // JERRY: working on this
+
+        return fixpointVals;
+    }
+
+    public static Set<NodePair> getNodesInGraph(Set<Edge> graph) {
+        Set<NodePair> returnSet = Sets.newHashSet();
+
+        for (Edge edge : graph)   {
+            returnSet.add((NodePair) edge.source);
+            returnSet.add((NodePair) edge.target);
+        }
+
+        return returnSet;
+    }
+
 }
