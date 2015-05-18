@@ -243,7 +243,8 @@ public class ExperimentsOnWiki {
         }
 
         TESTNUM++;
-        if (answer.contains(actual) || actual.contains(answer))
+        boolean correctAnswer = judgeAnswer(answer, actual);
+        if (correctAnswer)
             CORRECTNUM++;
 
         System.out.println("\n--------------------------------------------------");
@@ -251,7 +252,19 @@ public class ExperimentsOnWiki {
         System.out.println("expected = " + answer);
         System.out.println("actual = " + actual);
         System.out.println("minimumCost = " + minimumCost);
+        System.out.println("isCorrect = " + correctAnswer);
         System.out.println("Precision = " + (CORRECTNUM * 1.0) / (TESTNUM * 1.0));
         System.out.println("--------------------------------------------------");
+    }
+
+    /** **************************************************************
+     * Compare the actual answer with expected answer
+     * @param expected Expected answer in json file
+     * @param actual Actual answer returned by GraphMatching
+     * @return
+     */
+    public static boolean judgeAnswer(String expected, String actual) {
+
+        return (expected.contains(actual) || actual.contains(expected));
     }
 }
