@@ -5,6 +5,8 @@ import ipgraph.datastructure.DGraph;
 import ipgraph.datastructure.DNode;
 import ipgraph.datastructure.DTree;
 import ipgraph.datastructure.Graph;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.DirectedWeightedMultigraph;
 import org.junit.Test;
 
 import java.util.Set;
@@ -133,6 +135,80 @@ public class MatchNodesTest {
         Set<NodePair> expectedNodes = Sets.newHashSet(nodePair1, nodePair2, nodePair3);
 
         assertEquals(expectedNodes, actualNodes);
+    }
+
+
+    /**
+     * Test induced propagation graph.
+     * FIMXE: this test would be easier if we could create an expected DirectedWeightedMultigraph and test the two are identical with equals()
+     */
+    @Test
+    public void testInducedPropagationGraph()   {
+        Graph dgraph1 = stringToDGraph("John laughed hard.");
+        Graph dgraph2 = stringToDGraph("Mark laughed.");
+
+        MatchNodes.requireLabelMatchForPCGraph = false;
+        MatchNodes matcher = new MatchNodes(dgraph1, dgraph2);
+
+        /**
+         * This graph will have three nodes, with two edges connecting each node for a total of four edges.
+         * node1: laughed_laughed; node2: john_mark; node3 hard_mark
+         * laughed_laughed => 0.5 => john_mark
+         * laughed_laughed => 0.5 => hard_mark
+         * john_mark => 1.0 => laughed_laughed
+         * hard_mark => 1.0 => laughed_laughed
+         */
+        DirectedWeightedMultigraph inPropGraph = matcher.getInducedPropGraph();
+
+        // Now create the expected output.
+        DNode john, laughed, hard;
+        john = laughed = hard = null;
+        Set<DNode> nodes = dgraph1.getNodesByLevel(0);
+        for (DNode node : nodes)    {
+            if (node.getForm().equals("John"))
+                john = node;
+            else if (node.getForm().equals("laughed"))
+                laughed = node;
+            else if (node.getForm().equals("hard"))
+                hard = node;
+        }
+
+        DNode mark, laughed2;
+        mark = laughed2 = null;
+        Set<DNode> nodes2 = dgraph2.getNodesByLevel(0);
+        for (DNode node : nodes2)    {
+            if (node.getForm().equals("Mark"))
+                mark = node;
+            else if (node.getForm().equals("laughed"))
+                laughed2 = node;
+        }
+
+        NodePair laughed_laughed2 = new NodePair(laughed, laughed2);
+        NodePair john_mark = new NodePair(john, mark);
+        NodePair hard_mark = new NodePair(hard, mark);
+
+        assertEquals(3, inPropGraph.vertexSet().size());
+        assertEquals(4, inPropGraph.edgeSet().size());
+
+        Set<DefaultWeightedEdge> actualEdgeSet = inPropGraph.getAllEdges(laughed_laughed2, hard_mark);
+        assertEquals(1, actualEdgeSet.size());
+        DefaultWeightedEdge weightedEdge = (DefaultWeightedEdge) actualEdgeSet.iterator().next();
+        assertEquals(0.5, inPropGraph.getEdgeWeight(weightedEdge), 0);
+
+        actualEdgeSet = inPropGraph.getAllEdges(laughed_laughed2, john_mark);
+        assertEquals(1, actualEdgeSet.size());
+        weightedEdge = (DefaultWeightedEdge) actualEdgeSet.iterator().next();
+        assertEquals(0.5, inPropGraph.getEdgeWeight(weightedEdge), 0);
+
+        actualEdgeSet = inPropGraph.getAllEdges(john_mark, laughed_laughed2);
+        assertEquals(1, actualEdgeSet.size());
+        weightedEdge = (DefaultWeightedEdge) actualEdgeSet.iterator().next();
+        assertEquals(1.0, inPropGraph.getEdgeWeight(weightedEdge), 0);
+
+        actualEdgeSet = inPropGraph.getAllEdges(hard_mark, laughed_laughed2);
+        assertEquals(1, actualEdgeSet.size());
+        weightedEdge = (DefaultWeightedEdge) actualEdgeSet.iterator().next();
+        assertEquals(1.0, inPropGraph.getEdgeWeight(weightedEdge), 0);
     }
 
     /**

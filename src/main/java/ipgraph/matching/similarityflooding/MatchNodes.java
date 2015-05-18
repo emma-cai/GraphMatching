@@ -5,6 +5,7 @@ import ipgraph.datastructure.DNode;
 import ipgraph.datastructure.Graph;
 import ipgraph.matching.GraphComparer;
 import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.DirectedWeightedMultigraph;
 
 import java.util.Map;
 import java.util.Set;
@@ -30,6 +31,10 @@ public class MatchNodes implements GraphComparer {
 
     final Set<NodePair> pcGraphNodes = Sets.newHashSet();
 
+    final DirectedWeightedMultigraph ipGraph;
+
+
+
     static boolean requireLabelMatchForPCGraph = true;
 
     public MatchNodes(Graph g1, Graph g2) {
@@ -41,22 +46,49 @@ public class MatchNodes implements GraphComparer {
 
         pcGraph = calcPCGraph(requireLabelMatchForPCGraph);
 
-        calcInducedPropagationGraph();
+        ipGraph = calcInducedPropagationGraph();
     }
 
     /**
      * Create the induced propagation graph.
      */
-    private void calcInducedPropagationGraph() {
+    private DirectedWeightedMultigraph calcInducedPropagationGraph() {
+
+        //DirectedWeightedMultigraph graph = Graph.buildGraph(pcGraphEdges);
+        // JERRY: graph.
+        DirectedWeightedMultigraph graph = new DirectedWeightedMultigraph(DefaultWeightedEdge.class);
 
         // For every edge, create an edge going in the opposite direction.
         Set<Edge> reversedEdges = Sets.newHashSet();
         for (Edge edge : pcGraphEdges) {
             NodePair sourcePair = (NodePair) edge.source;
             NodePair targetPair = (NodePair) edge.target;
-            //reversedEdges.add(new Edge(targetPair, "dummyString", sourcePair));
-            pcGraph.addEdge(targetPair, sourcePair);
+            graph.addVertex(sourcePair);
+            graph.addVertex(targetPair);
+            graph.addEdge(sourcePair, targetPair);
+            graph.addEdge(targetPair, sourcePair);
         }
+
+        // Set weights.
+        for (Object objVertex : graph.vertexSet()) {
+//            NodePair source = (NodePair) objVertex;
+            Set<Object> allEdgesOfSourceNode = graph.outgoingEdgesOf(objVertex);
+            int nbrEdges = allEdgesOfSourceNode.size();
+            for (Object objEdge : allEdgesOfSourceNode)  {
+                graph.setEdgeWeight(objEdge, 1/(double) nbrEdges);
+            }
+        }
+
+//        for (Object objEdge : graph.edgeSet())    {
+//
+//            DefaultWeightedEdge edge = (DefaultWeightedEdge) objEdge;
+//
+//            NodePair source = (NodePair) graph.getEdgeSource(edge);
+//            Set<Object> allEdgesOfSourceNode = graph.edgesOf(source);
+//            int nbrEdges = allEdgesOfSourceNode.size();
+//        }
+
+        return graph;
     }
 
     /**
@@ -151,5 +183,13 @@ public class MatchNodes implements GraphComparer {
         }
 
         return returnSet;
+    }
+
+    /**
+     * FIXME: this is not a defensive copy
+     * @return
+     */
+    DirectedWeightedMultigraph getInducedPropGraph() {
+        return ipGraph;
     }
 }
