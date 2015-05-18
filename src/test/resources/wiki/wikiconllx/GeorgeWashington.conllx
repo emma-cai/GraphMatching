@@ -1,0 +1,327 @@
+When he was 16, he went to live with his brother Lawrence in Mount Vernon.
+1	When	_	ADV	WRB	_	3	advmod	_	_
+2	he	_	PRON	PRP	_	3	nsubj	_	_
+3	was	_	VERB	VBD	_	7	advcl	_	_
+4	16	_	NUM	CD	_	3	xcomp	_	_
+5	,	_	PUNCT	,	_	7	punct	_	_
+6	he	_	PRON	PRP	_	7	nsubj	_	_
+7	went	_	VERB	VBD	_	0	root	_	_
+8	to	_	PART	TO	_	9	aux	_	_
+9	live	_	VERB	VB	_	7	xcomp	_	_
+10	with	_	ADP	IN	_	9	prep	_	_
+11	his	_	PRON	PRP$	_	13	poss	_	_
+12	brother	_	NOUN	NN	_	13	nn	_	_
+13	Lawrence	_	PROPN	NNP	_	10	pobj	_	_
+14	in	_	ADP	IN	_	13	prep	_	_
+15	Mount	_	PROPN	NNP	_	16	nn	_	_
+16	Vernon	_	PROPN	NNP	_	14	pobj	_	_
+17	.	_	PUNCT	.	_	7	punct	_	_
+
+Washington's military career began in 1753, when he was sent into Ohio country.
+1	Washington	_	PROPN	NNP	_	4	poss	_	_
+2	's	_	PART	POS	_	1	possessive	_	_
+3	military	_	ADJ	JJ	_	4	amod	_	_
+4	career	_	NOUN	NN	_	5	nsubj	_	_
+5	began	_	VERB	VBD	_	0	root	_	_
+6	in	_	ADP	IN	_	5	prep	_	_
+7	1753	_	NUM	CD	_	6	pobj	_	_
+8	,	_	PUNCT	,	_	5	punct	_	_
+9	when	_	ADV	WRB	_	12	advmod	_	_
+10	he	_	PRON	PRP	_	12	nsubjpass	_	_
+11	was	_	AUX	VBD	_	12	auxpass	_	_
+12	sent	_	VERB	VBN	_	5	advcl	_	_
+13	into	_	ADP	IN	_	12	prep	_	_
+14	Ohio	_	PROPN	NNP	_	15	nn	_	_
+15	country	_	NOUN	NN	_	13	pobj	_	_
+16	.	_	PUNCT	.	_	5	punct	_	_
+
+In his childhood and adolescence, he studied math and surveying.
+1	In	_	ADP	IN	_	8	prep	_	_
+2	his	_	PRON	PRP$	_	3	poss	_	_
+3	childhood	_	NOUN	NN	_	1	pobj	_	_
+4	and	_	CONJ	CC	_	3	cc	_	_
+5	adolescence	_	NOUN	NN	_	3	conj	_	_
+6	,	_	PUNCT	,	_	8	punct	_	_
+7	he	_	PRON	PRP	_	8	nsubj	_	_
+8	studied	_	VERB	VBD	_	0	root	_	_
+9	math	_	NOUN	NN	_	8	dobj	_	_
+10	and	_	CONJ	CC	_	9	cc	_	_
+11	surveying	_	NOUN	NN	_	9	conj	_	_
+12	.	_	PUNCT	.	_	8	punct	_	_
+
+George was scarred with Smallpox before the age of 20, but inherited his brother's land including Mt. Vernon, when he died in 1752.
+1	George	_	PROPN	NNP	_	2	nsubj	_	_
+2	was	_	VERB	VBD	_	0	root	_	_
+3	scarred	_	ADJ	JJ	_	2	acomp	_	_
+4	with	_	ADP	IN	_	3	prep	_	_
+5	Smallpox	_	PROPN	NNP	_	4	pobj	_	_
+6	before	_	ADP	IN	_	2	prep	_	_
+7	the	_	DET	DT	_	8	det	_	_
+8	age	_	NOUN	NN	_	6	pobj	_	_
+9	of	_	ADP	IN	_	8	prep	_	_
+10	20	_	NUM	CD	_	9	pobj	_	_
+11	,	_	PUNCT	,	_	2	punct	_	_
+12	but	_	CONJ	CC	_	2	cc	_	_
+13	inherited	_	VERB	VBD	_	2	conj	_	_
+14	his	_	PRON	PRP$	_	15	poss	_	_
+15	brother	_	NOUN	NN	_	17	poss	_	_
+16	's	_	PART	POS	_	15	possessive	_	_
+17	land	_	NOUN	NN	_	13	dobj	_	_
+18	including	_	VERB	VBG	_	17	prep	_	_
+19	Mt.	_	PROPN	NNP	_	20	nn	_	_
+20	Vernon	_	PROPN	NNP	_	18	pobj	_	_
+21	,	_	PUNCT	,	_	20	punct	_	_
+22	when	_	ADV	WRB	_	24	advmod	_	_
+23	he	_	PRON	PRP	_	24	nsubj	_	_
+24	died	_	VERB	VBD	_	20	rcmod	_	_
+25	in	_	ADP	IN	_	24	prep	_	_
+26	1752	_	NUM	CD	_	25	pobj	_	_
+27	.	_	PUNCT	.	_	2	punct	_	_
+
+He continued as an officer in Ohio country, and served under the British general Edward Braddock when their army was ambushed by the French in 1755.
+1	He	_	PRON	PRP	_	2	nsubj	_	_
+2	continued	_	VERB	VBD	_	0	root	_	_
+3	as	_	ADP	IN	_	2	prep	_	_
+4	an	_	DET	DT	_	5	det	_	_
+5	officer	_	NOUN	NN	_	3	pobj	_	_
+6	in	_	ADP	IN	_	2	prep	_	_
+7	Ohio	_	PROPN	NNP	_	8	nn	_	_
+8	country	_	NOUN	NN	_	6	pobj	_	_
+9	,	_	PUNCT	,	_	2	punct	_	_
+10	and	_	CONJ	CC	_	2	cc	_	_
+11	served	_	VERB	VBD	_	2	conj	_	_
+12	under	_	ADP	IN	_	11	prep	_	_
+13	the	_	DET	DT	_	17	det	_	_
+14	British	_	ADJ	JJ	_	17	amod	_	_
+15	general	_	NOUN	NN	_	17	nn	_	_
+16	Edward	_	PROPN	NNP	_	17	nn	_	_
+17	Braddock	_	PROPN	NNP	_	12	pobj	_	_
+18	when	_	ADV	WRB	_	22	advmod	_	_
+19	their	_	PRON	PRP$	_	20	poss	_	_
+20	army	_	NOUN	NN	_	22	nsubjpass	_	_
+21	was	_	AUX	VBD	_	22	auxpass	_	_
+22	ambushed	_	VERB	VBN	_	11	advcl	_	_
+23	by	_	ADP	IN	_	22	prep	_	_
+24	the	_	DET	DT	_	25	det	_	_
+25	French	_	ADJ	JJ	_	23	pobj	_	_
+26	in	_	ADP	IN	_	25	prep	_	_
+27	1755	_	NUM	CD	_	26	pobj	_	_
+28	.	_	PUNCT	.	_	2	punct	_	_
+
+Washington proved himself an excellent leader, and won several decisive battles during the Revolution.
+1	Washington	_	PROPN	NNP	_	2	nsubj	_	_
+2	proved	_	VERB	VBD	_	0	root	_	_
+3	himself	_	PRON	PRP	_	6	nsubj	_	_
+4	an	_	DET	DT	_	6	det	_	_
+5	excellent	_	ADJ	JJ	_	6	amod	_	_
+6	leader	_	NOUN	NN	_	2	xcomp	_	_
+7	,	_	PUNCT	,	_	2	punct	_	_
+8	and	_	CONJ	CC	_	2	cc	_	_
+9	won	_	VERB	VBD	_	2	conj	_	_
+10	several	_	ADJ	JJ	_	12	amod	_	_
+11	decisive	_	ADJ	JJ	_	12	amod	_	_
+12	battles	_	NOUN	NNS	_	9	dobj	_	_
+13	during	_	ADP	IN	_	9	prep	_	_
+14	the	_	DET	DT	_	15	det	_	_
+15	Revolution	_	NOUN	NN	_	13	pobj	_	_
+16	.	_	PUNCT	.	_	2	punct	_	_
+
+In 1789, he was inaugurated as America's first president.
+1	In	_	ADP	IN	_	6	prep	_	_
+2	1789	_	NUM	CD	_	1	pobj	_	_
+3	,	_	PUNCT	,	_	6	punct	_	_
+4	he	_	PRON	PRP	_	6	nsubjpass	_	_
+5	was	_	AUX	VBD	_	6	auxpass	_	_
+6	inaugurated	_	VERB	VBN	_	0	root	_	_
+7	as	_	ADP	IN	_	6	prep	_	_
+8	America	_	PROPN	NNP	_	11	poss	_	_
+9	's	_	PART	POS	_	8	possessive	_	_
+10	first	_	ADJ	JJ	_	11	amod	_	_
+11	president	_	NOUN	NN	_	7	pobj	_	_
+12	.	_	PUNCT	.	_	6	punct	_	_
+
+Once again, Washington tasted defeat after their surrender of Fort Duquesne to French forces.
+1	Once	_	ADV	RB	_	2	advmod	_	_
+2	again	_	ADV	RB	_	5	advmod	_	_
+3	,	_	PUNCT	,	_	5	punct	_	_
+4	Washington	_	PROPN	NNP	_	5	nsubj	_	_
+5	tasted	_	VERB	VBD	_	0	root	_	_
+6	defeat	_	NOUN	NN	_	5	dobj	_	_
+7	after	_	ADP	IN	_	5	prep	_	_
+8	their	_	PRON	PRP$	_	9	poss	_	_
+9	surrender	_	NOUN	NN	_	7	pobj	_	_
+10	of	_	ADP	IN	_	9	prep	_	_
+11	Fort	_	PROPN	NNP	_	12	nn	_	_
+12	Duquesne	_	PROPN	NNP	_	10	pobj	_	_
+13	to	_	ADP	TO	_	5	prep	_	_
+14	French	_	ADJ	JJ	_	15	amod	_	_
+15	forces	_	NOUN	NNS	_	13	pobj	_	_
+16	.	_	PUNCT	.	_	5	punct	_	_
+
+George Washington was born on February 22, 1732 in Westmoreland County, Virginia, although he grew up near Fredericksburg.
+1	George	_	PROPN	NNP	_	2	nn	_	_
+2	Washington	_	PROPN	NNP	_	4	nsubjpass	_	_
+3	was	_	AUX	VBD	_	4	auxpass	_	_
+4	born	_	VERB	VBN	_	0	root	_	_
+5	on	_	ADP	IN	_	4	prep	_	_
+6	February	_	PROPN	NNP	_	5	pobj	_	_
+7	22	_	NUM	CD	_	6	num	_	_
+8	,	_	PUNCT	,	_	6	punct	_	_
+9	1732	_	NUM	CD	_	6	num	_	_
+10	in	_	ADP	IN	_	6	prep	_	_
+11	Westmoreland	_	PROPN	NNP	_	12	nn	_	_
+12	County	_	PROPN	NNP	_	10	pobj	_	_
+13	,	_	PUNCT	,	_	12	punct	_	_
+14	Virginia	_	PROPN	NNP	_	12	appos	_	_
+15	,	_	PUNCT	,	_	12	punct	_	_
+16	although	_	SCONJ	IN	_	18	mark	_	_
+17	he	_	PRON	PRP	_	18	nsubj	_	_
+18	grew	_	VERB	VBD	_	4	advcl	_	_
+19	up	_	ADP	RP	_	18	prt	_	_
+20	near	_	ADP	IN	_	18	prep	_	_
+21	Fredericksburg	_	PROPN	NNP	_	20	pobj	_	_
+22	.	_	PUNCT	.	_	4	punct	_	_
+
+As an advocate of a federal government, Washington became chairman of the Constitutional Convention and helped in getting the Constitution ratified.
+1	As	_	ADP	IN	_	10	prep	_	_
+2	an	_	DET	DT	_	3	det	_	_
+3	advocate	_	NOUN	NN	_	1	pobj	_	_
+4	of	_	ADP	IN	_	3	prep	_	_
+5	a	_	DET	DT	_	7	det	_	_
+6	federal	_	ADJ	JJ	_	7	amod	_	_
+7	government	_	NOUN	NN	_	4	pobj	_	_
+8	,	_	PUNCT	,	_	10	punct	_	_
+9	Washington	_	PROPN	NNP	_	10	nsubj	_	_
+10	became	_	VERB	VBD	_	0	root	_	_
+11	chairman	_	NOUN	NN	_	10	xcomp	_	_
+12	of	_	ADP	IN	_	11	prep	_	_
+13	the	_	DET	DT	_	15	det	_	_
+14	Constitutional	_	PROPN	NNP	_	15	nn	_	_
+15	Convention	_	PROPN	NNP	_	12	pobj	_	_
+16	and	_	CONJ	CC	_	10	cc	_	_
+17	helped	_	VERB	VBD	_	10	conj	_	_
+18	in	_	ADP	IN	_	17	prep	_	_
+19	getting	_	VERB	VBG	_	18	pcomp	_	_
+20	the	_	DET	DT	_	21	det	_	_
+21	Constitution	_	PROPN	NNP	_	19	dobj	_	_
+22	ratified	_	VERB	VBN	_	21	vmod	_	_
+23	.	_	PUNCT	.	_	10	punct	_	_
+
+He was made commander of the Continental Army on June 15, 1775.
+1	He	_	PRON	PRP	_	3	nsubjpass	_	_
+2	was	_	AUX	VBD	_	3	auxpass	_	_
+3	made	_	VERB	VBN	_	0	root	_	_
+4	commander	_	NOUN	NN	_	3	dobj	_	_
+5	of	_	ADP	IN	_	4	prep	_	_
+6	the	_	DET	DT	_	8	det	_	_
+7	Continental	_	PROPN	NNP	_	8	nn	_	_
+8	Army	_	PROPN	NNP	_	5	pobj	_	_
+9	on	_	ADP	IN	_	3	prep	_	_
+10	June	_	PROPN	NNP	_	9	pobj	_	_
+11	15	_	NUM	CD	_	10	num	_	_
+12	,	_	PUNCT	,	_	10	punct	_	_
+13	1775	_	NUM	CD	_	10	num	_	_
+14	.	_	PUNCT	.	_	3	punct	_	_
+
+On December 14, 1799, seventeen days before the new century, Washington died of acute laryngitis.
+1	On	_	ADP	IN	_	15	prep	_	_
+2	December	_	PROPN	NNP	_	1	pobj	_	_
+3	14	_	NUM	CD	_	2	num	_	_
+4	,	_	PUNCT	,	_	2	punct	_	_
+5	1799	_	NUM	CD	_	2	num	_	_
+6	,	_	PUNCT	,	_	15	punct	_	_
+7	seventeen	_	NUM	CD	_	8	num	_	_
+8	days	_	NOUN	NNS	_	9	npadvmod	_	_
+9	before	_	ADP	IN	_	15	prep	_	_
+10	the	_	DET	DT	_	12	det	_	_
+11	new	_	ADJ	JJ	_	12	amod	_	_
+12	century	_	NOUN	NN	_	9	pobj	_	_
+13	,	_	PUNCT	,	_	15	punct	_	_
+14	Washington	_	PROPN	NNP	_	15	nsubj	_	_
+15	died	_	VERB	VBD	_	0	root	_	_
+16	of	_	ADP	IN	_	15	prep	_	_
+17	acute	_	ADJ	JJ	_	18	amod	_	_
+18	laryngitis	_	NOUN	NNS	_	16	pobj	_	_
+19	.	_	PUNCT	.	_	15	punct	_	_
+
+In 1754, he battled the French and was forced to surrender Fort Necessity, near present-day Pittsburgh, Pennsylvania.
+1	In	_	ADP	IN	_	5	prep	_	_
+2	1754	_	NUM	CD	_	1	pobj	_	_
+3	,	_	PUNCT	,	_	5	punct	_	_
+4	he	_	PRON	PRP	_	5	nsubj	_	_
+5	battled	_	VERB	VBD	_	0	root	_	_
+6	the	_	DET	DT	_	7	det	_	_
+7	French	_	ADJ	JJ	_	5	dobj	_	_
+8	and	_	CONJ	CC	_	5	cc	_	_
+9	was	_	AUX	VBD	_	10	auxpass	_	_
+10	forced	_	VERB	VBN	_	5	conj	_	_
+11	to	_	PART	TO	_	12	aux	_	_
+12	surrender	_	VERB	VB	_	10	xcomp	_	_
+13	Fort	_	PROPN	NNP	_	14	nn	_	_
+14	Necessity	_	PROPN	NNP	_	20	nsubj	_	_
+15	,	_	PUNCT	,	_	14	punct	_	_
+16	near	_	ADP	IN	_	14	prep	_	_
+17	present-day	_	ADJ	JJ	_	18	amod	_	_
+18	Pittsburgh	_	PROPN	NNP	_	16	pobj	_	_
+19	,	_	PUNCT	,	_	14	punct	_	_
+20	Pennsylvania	_	PROPN	NNP	_	12	xcomp	_	_
+21	.	_	PUNCT	.	_	5	punct	_	_
+
+Washington was married to Martha Custis in 1759.
+1	Washington	_	PROPN	NNP	_	3	nsubjpass	_	_
+2	was	_	AUX	VBD	_	3	auxpass	_	_
+3	married	_	VERB	VBN	_	0	root	_	_
+4	to	_	ADP	TO	_	3	prep	_	_
+5	Martha	_	PROPN	NNP	_	6	nn	_	_
+6	Custis	_	PROPN	NNP	_	4	pobj	_	_
+7	in	_	ADP	IN	_	6	prep	_	_
+8	1759	_	NUM	CD	_	7	pobj	_	_
+9	.	_	PUNCT	.	_	3	punct	_	_
+
+Washington was re-elected in 1792, but refused a third term.
+1	Washington	_	PROPN	NNP	_	3	nsubjpass	_	_
+2	was	_	AUX	VBD	_	3	auxpass	_	_
+3	re-elected	_	VERB	VBN	_	0	root	_	_
+4	in	_	ADP	IN	_	3	prep	_	_
+5	1792	_	NUM	CD	_	4	pobj	_	_
+6	,	_	PUNCT	,	_	3	punct	_	_
+7	but	_	CONJ	CC	_	3	cc	_	_
+8	refused	_	VERB	VBD	_	3	conj	_	_
+9	a	_	DET	DT	_	11	det	_	_
+10	third	_	ADJ	JJ	_	11	amod	_	_
+11	term	_	NOUN	NN	_	8	dobj	_	_
+12	.	_	PUNCT	.	_	3	punct	_	_
+
+Washington managed the family and estate until he took command of the Virginia troops just before the American Revolution.
+1	Washington	_	PROPN	NNP	_	2	nsubj	_	_
+2	managed	_	VERB	VBD	_	0	root	_	_
+3	the	_	DET	DT	_	4	det	_	_
+4	family	_	NOUN	NN	_	2	dobj	_	_
+5	and	_	CONJ	CC	_	4	cc	_	_
+6	estate	_	NOUN	NN	_	4	conj	_	_
+7	until	_	SCONJ	IN	_	9	mark	_	_
+8	he	_	PRON	PRP	_	9	nsubj	_	_
+9	took	_	VERB	VBD	_	2	advcl	_	_
+10	command	_	NOUN	NN	_	9	dobj	_	_
+11	of	_	ADP	IN	_	10	prep	_	_
+12	the	_	DET	DT	_	14	det	_	_
+13	Virginia	_	PROPN	NNP	_	14	nn	_	_
+14	troops	_	NOUN	NNS	_	11	pobj	_	_
+15	just	_	ADV	RB	_	16	advmod	_	_
+16	before	_	ADP	IN	_	9	prep	_	_
+17	the	_	DET	DT	_	19	det	_	_
+18	American	_	ADJ	JJ	_	19	amod	_	_
+19	Revolution	_	NOUN	NN	_	16	pobj	_	_
+20	.	_	PUNCT	.	_	2	punct	_	_
+
+Washington helped take Fort Duquesne back in 1758.
+1	Washington	_	PROPN	NNP	_	2	nsubj	_	_
+2	helped	_	AUX	VBD	_	0	root	_	_
+3	take	_	VERB	VB	_	2	xcomp	_	_
+4	Fort	_	PROPN	NNP	_	5	nn	_	_
+5	Duquesne	_	PROPN	NNP	_	3	dobj	_	_
+6	back	_	ADP	RP	_	3	prt	_	_
+7	in	_	ADP	IN	_	3	prep	_	_
+8	1758	_	NUM	CD	_	7	pobj	_	_
+9	.	_	PUNCT	.	_	2	punct	_	_
+

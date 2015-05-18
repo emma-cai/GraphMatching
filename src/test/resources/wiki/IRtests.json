@@ -1,0 +1,1427 @@
+[
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What is two centimeters in length?",
+    "answer":"The adult House Cricket"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What is House cricket?",
+    "answer":"about two centimeters in length\\.?"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What is usually light brown with black markings about the head and thorax?",
+    "answer":"The body"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What is ovipositor?",
+    "answer":"a long extension attached to the end of the abdomen, used for depositing eggs in the soil"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What is told from the male?",
+    "answer":"The female"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What is attached to the end of the abdomen?",
+    "answer":"ovipositor"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What is used for depositing eggs in the soil?",
+    "answer":"ovipositor"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What has conspicuous jumping legs?",
+    "answer":"House crickets"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What has pairs of wings?",
+    "answer":"House crickets"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What is used for flying?",
+    "answer":"House crickets have conspicuous jumping legs and have two pairs of wings, of which, only the back pair are used for flight"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"Where are house crickets found?",
+    "answer":"(in a variety of habitats including)|(woodlands, suburbs, urban areas, buildings, ducts, siding, restaurants and anywhere else there happens to be a food supply and warm air)"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What are the variety of habitats?",
+    "answer":"woodlands, suburbs, urban areas, buildings, ducts, siding, restaurants and anywhere else there happens to be a food supply and warm air"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What can stay alive year round?",
+    "answer":"((many )?crickets)|(those that manage to find their way indoors)"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"When do the crickets reach sexual maturity?",
+    "answer":"eight and twelve weeks after birth\\.?"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What happens between eight and twelve weeks after birth?",
+    "answer":"Crickets reach sexual maturity"
+  },
+  {
+    "file":"AdultHouseCricket.txt",
+    "query":"What attracts mates by rubbing their wings together?",
+    "answer":"Males"
+  },
+  {
+    "file":"BattleIronclads.txt",
+    "query":"Which is the most important naval battle of the American Civil War?",
+    "answer":"(Battle of the Ironclads)|(Battle of Hampton Roads)"
+  },
+  {
+    "file":"BattleIronclads.txt",
+    "query":"Who believed in duplicating the idea?",
+    "answer":"Southern engineers"
+  },
+  {
+    "file":"BattleIronclads.txt",
+    "query":"What was set to sail in France in 1860?",
+    "answer":"(The world's first ironclad ship)|(The world 's first ironclad ship)"
+  },
+  {
+    "file":"BattleIronclads.txt",
+    "query":"What happened on February, 1862?",
+    "answer":"(It|ship) was equipped with ten guns and fourteen gun ports and was ready for action"
+  },
+  {
+    "file":"BattleIronclads.txt",
+    "query":"What was the plan?",
+    "answer":"to build an iron shell around the ship and to outfit (the iron shell)|(it) with an iron ram"
+  },
+  {
+    "file":"BattleIronclads.txt",
+    "query":"What was planned to build around the ship?",
+    "answer":"an iron shell"
+  },
+  {
+    "file":"DeLeon.txt",
+    "query":"What happened on April 2, 1513?",
+    "answer":"de Leon and his men reached the east coast of Florida"
+  },
+  {
+    "file":"DeLeon.txt",
+    "query":"Who reached the east coast of Florida?",
+    "answer":"de Leon and his men"
+  },
+  {
+    "file":"DeLeon.txt",
+    "query":"What is Pascua de Florida?",
+    "answer":"He named the land Pascua de Florida, or Feast of Flowers, because he discovered it on Palm Sunday"
+  },
+  {
+    "file":"DeLeon.txt",
+    "query":"Who discovered Pascua de Florida?",
+    "answer":"de Leon"
+  },
+  {
+    "file":"DeLeon.txt",
+    "query":"What was discovered on Palm Sunday?",
+    "answer":"(Pascua de Florida)|(Feast of Flowers)"
+  },
+  {
+    "file":"DeLeon.txt",
+    "query":"What happened On April 8, 1513?",
+    "answer":"de Leon and his men left northern Florida and sailed south along the Gulf Stream"
+  },
+  {
+    "file":"GeorgeWashington.txt",
+    "query":"Who is George Washington?",
+    "answer":"(Washington was America's first president)|(George Washington was born on February 22, 1732)|(America 's first president)|(an advocate of a federal government)"
+  },
+  {
+    "file":"GeorgeWashington.txt",
+    "query":"What happened in 1752?",
+    "answer":"(George Washington died)|(he died in 1752)"
+  },
+  {
+    "file":"GeorgeWashington.txt",
+    "query":"Who continued as an officer in Ohio country?",
+    "answer":"(George Washington)|(He continued as an officer in Ohio country)"
+  },
+  {
+    "file":"GeorgeWashington.txt",
+    "query":"What happened in 1755?",
+    "answer":"their army was ambushed by the French"
+  },
+  {
+    "file":"GeorgeWashington.txt",
+    "query":"What happened in 1758?",
+    "answer":"Washington helped take Fort Duquesne"
+  },
+  {
+    "file":"GeorgeWashington.txt",
+    "query":"What happened in 1759?",
+    "answer":"Washington was married to Martha Custis"
+  },
+  {
+    "file":"GeorgeWashington.txt",
+    "query":"Who was made commander of the Continental Army?",
+    "answer":"(George Washington)|(He was made commander of the Continental Army on June 15, 1775)"
+  },
+  {
+    "file":"GeorgeWashington.txt",
+    "query":"What happened on June 15, 1775?",
+    "answer":"(George Washington)|(He) was made commander of the Continental Army"
+  },
+  {
+    "file":"Gravity.txt",
+    "query":"What does Newton's law state ?",
+    "answer":"the gravitational force of two bodies of mass is directly proportional to the product of their masses and inversely proportional to the square of the distance between (them)|(the bodies)"
+  },
+  {
+    "file":"Gravity.txt",
+    "query":"What is gravitation?",
+    "answer":"(a natural phenomenon by which all physical bodies attract each other)|(gravitation is a force of attraction that acts between and on all physical objects with matter \\(mass\\) or energy)|(a consequence of the curvature of space time)"
+  },
+  {
+    "file":"Gravity.txt",
+    "query":"The phenomenon of gravitation is a consequence of what?",
+    "answer":"the curvature of space time"
+  },
+  {
+    "file":"Gravity.txt",
+    "query":"What is graviton?",
+    "answer":"the gravitational force is mediated by a mass less spin-2 particle"
+  },
+  {
+    "file":"Jupiter.txt",
+    "query":"What has no surface?",
+    "answer":"gas giants"
+  },
+  {
+    "file":"Jupiter.txt",
+    "query":"What has a rocky core?",
+    "answer":"Jupiter"
+  },
+  {
+    "file":"Jupiter.txt",
+    "query":"What is 1/1000th as massive as the sun?",
+    "answer":"Jupiter"
+  },
+  {
+    "file":"Jupiter.txt",
+    "query":"What is Jupiter's atmosphere?",
+    "answer":"separated into different bands and gives the planet the appearance of having whitish and reddish layers with various spots, swirls and bubbles"
+  },
+  {
+    "file":"Jupiter.txt",
+    "query":"Why the spot looks red?",
+    "answer":"Scientists still don't have an explanation for why the spot looks red."
+  },
+  {
+    "file":"Jupiter.txt",
+    "query":"What may be weakening?",
+    "answer":"(the( red)? spot)|(the storm)"
+  },
+  {
+    "file":"NarwhalWhale.txt",
+    "query":"What swim toward their prey and suck it into their mouths?",
+    "answer":"Narwhals"
+  },
+  {
+    "file":"NarwhalWhale.txt",
+    "query":"What can dive to depths of over 2,500 feet?",
+    "answer":"Narwhals"
+  },
+  {
+    "file":"NarwhalWhale.txt",
+    "query":"What can stay under water for 25 minutes or more?",
+    "answer":"Narwhals"
+  },
+  {
+    "file":"NarwhalWhale.txt",
+    "query":"Who believed that 75,000 Narwhals living in the Arctic waters?",
+    "answer":"Scientists"
+  },
+  {
+    "file":"NarwhalWhale.txt",
+    "query":"What can live up to 50 years?",
+    "answer":"Individuals in the wild"
+  },
+  {
+    "file":"Plants.txt",
+    "query":"What part of a plant is underground?",
+    "answer":"The roots"
+  },
+  {
+    "file":"Plants.txt",
+    "query":"Which part of the plant takes in water and nutrients from the soil?",
+    "answer":"(The roots)|(This is the part of the plant that takes in water and nutrients from the soil)"
+  },
+  {
+    "file":"Plants.txt",
+    "query":"What are the four things that plants need?",
+    "answer":"light, water, air, and soil"
+  },
+  {
+    "file":"Plants.txt",
+    "query":"What do the leaves take in?",
+    "answer":"nutrients and light."
+  },
+  {
+    "file":"Venus.txt",
+    "query":"What is like the greenhouse effect?",
+    "answer":"The thick layers of cloud"
+  },
+  {
+    "file":"Venus.txt",
+    "query":"What occupies about 95% of Earth's diameter?",
+    "answer":"Venus"
+  },
+  {
+    "file":"Venus.txt",
+    "query":"What is the temperature on Venus's clouds?",
+    "answer":"55 degree F"
+  },
+  {
+    "file":"Venus.txt",
+    "query":"What can be easily observed with the naked eye?",
+    "answer":"(Venus)|(Earth 's sister planet)"
+  },
+  {
+    "file":"Venus.txt",
+    "query":"What is covered by thick, noxious clouds of sulfuric acid?",
+    "answer":"Venus"
+  },
+  {
+    "file":"Venus.txt",
+    "query":"What is Venus covered with?",
+    "answer":"thick, noxious clouds of sulfuric acid"
+  },
+  {
+    "file":"Venus.txt",
+    "query":"What is the temperature in the uppermost layer of Venus's clouds ?",
+    "answer":"55 degree F"
+  },
+  {
+    "file":"Youth.txt",
+    "query":"Who was born in 1460 ?",
+    "answer":"Juan Ponce de Leon"
+  },
+  {
+    "file":"Youth.txt",
+    "query":"What happened in the early 1490's?",
+    "answer":"(de Leon)|(He) helped fight the Muslims in southern Spain"
+  },
+  {
+    "file":"Youth.txt",
+    "query":"Who was on board Christopher Columbus' second expedition to the Americas?",
+    "answer":"de Leon"
+  },
+  {
+    "file":"Youth.txt",
+    "query":"How were the spanish explorers?",
+    "answer":"blood thirsty for gold"
+  },
+  {
+    "file":"Tausche.txt",
+    "query":"Where was Tausche born?",
+    "answer":"Minneapolis, Minnesota"
+  },
+  {
+    "file":"Tausche.txt",
+    "query":"Where did Tausche graduate from?",
+    "answer":"Greater Atlanta Christian School"
+  },
+  {
+    "file":"Tausche.txt",
+    "query":"Where did Tausche attend university?",
+    "answer":"Chapel Hill"
+  },
+  {
+    "file":"Tausche.txt",
+    "query":"What did Tausche earn a bachelor's degree in?",
+    "answer":"business journalism and international politics"
+  },
+  {
+    "file":"Tausche.txt",
+    "query":"What did Tausche receive honors for?",
+    "answer":"in-depth research for analyzing the way international newspapers covered the handover of Hong Kong from British to Chinese rule"
+  },
+  {
+    "file":"Tausche.txt",
+    "query":"Is Tausche an avid marathon runner?",
+    "answer":"according to her Twitter profile, (Tausche)|(she) is now an avid marathon runner"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What was the French Revolution?",
+    "answer":"a period of radical social and political upheaval in France from 1789 to 1799"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What exacerbated an economic crisis?",
+    "answer":"the Seven Years War and the American Revolutionary War"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did The Seven Years War and the American Revolutionary War exacerbate?",
+    "answer":"economic crisis"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"Who did the ineptitude of King Louis XVI and the continued decadence of the aristocracy frustrate?",
+    "answer":"the common people of (France)|(france)"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What increasingly frustrated the common people of France?",
+    "answer":"the ineptitude of (king louis xvi)|(King Louis XVI) and the continued decadence of the aristocracy"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What fueled radical sentiments and launched the Revolution in 1789",
+    "answer":"this resentment, coupled with burgeoning (enlightenment)|(Enlightenment) ideals"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What was this resentment coupled with?",
+    "answer":"with burgeoning (enlightenment)|(Enlightenment) ideals"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did this resentment fuel?",
+    "answer":"radical sentiments"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did this resentment launch?",
+    "answer":"the (revolution)|(Revolution)"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did the first year of the Revolution see?",
+    "answer":"members of the Third Estate proclaiming the Tennis Court Oath in June, the assault on the Bastille in July, the passage of the Declaration of the Rights of Man and of the Citizen in August, and an epic march on Versailles that forced the royal court back to Paris in October"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did members of the Third Estate proclaim?",
+    "answer":"the (tennis court oath in june)|(Tennis Court Oath in June), the assault on the (bastille in july)|(Bastille in July), the passage of the (declaration of the rights of man)|(Declaration of the Rights of Man) and of the (citizen in august)|(Citizen in August)"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When did members of the Third Estate proclaim the Tennis Court Oath?",
+    "answer":"in (june)|(June)"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When did members of the Third Estate proclaim the assault on the Bastille?",
+    "answer":"in (j)|(J)uly"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When did members of the Third Estate proclaim the passage of the Declaration of the Rights of Man and of the Citizen?",
+    "answer":"in (a)|(A)ugust"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did members of the Third Estate proclaim in June?",
+    "answer":"the (t)|(T)ennis (c)|(C)ourt (o)|(O)ath"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did members of the Third Estate proclaim in July?",
+    "answer":"the assault on the (b)|(B)astille"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did members of the Third Estate proclaim in August?",
+    "answer":"the passage of the (declaration of the rights of man)|(Declaration of the Rights of Man) and of the (c)|(C)itizen"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What dominated the new few years?",
+    "answer":"struggles between various liberal assemblies and right-wing supporters of the monarchy intent on thwarting major reforms"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When was a republic proclaimed?",
+    "answer":"(s)|(S)eptember 1792(?!.* the next year.*)"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When was King Louis XVI executed?",
+    "answer":"(in 1793)|(the next year)"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What shaped the course of the Revolution?",
+    "answer":"(e)|(E)xternal threats"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When did the Revolutionary Wars begin?",
+    "answer":".*((in )?1792)(?!, the Rhine-achievements).*"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did the Revolutionary Wars ultimately feature?",
+    "answer":"spectacular (f)|(F)rench victories"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What radicalized the Revolution?",
+    "answer":"popular agitation"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"Who imposed the dictatorship?",
+    "answer":"the (c)|(C)ommittee of (p)|(P)ublic (s)|(S)afety"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When did the Committee of Public Safety impose the dictatorship?",
+    "answer":"during the (r)|(R)eign of (t)|(T)error"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"From when was the Reign of Terror?",
+    "answer":"from 1793"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"Until when was the Reign of Terror?",
+    "answer":"until 1794"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What caused up to 40,000 deaths inside France?",
+    "answer":"the dictatorship imposed by the (c)|(C)ommittee of (p)|(P)ublic (s)|(S)afety"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What abolished slavery in the colonies?",
+    "answer":"the dictatorship imposed by the (c)|(C)ommittee of (p)|(P)ublic (s)|(S)afety"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What secured the borders of the new republic from its enemies?",
+    "answer":"the dictatorship imposed by the (c)|(C)ommittee of (p)|(P)ublic (s)|(S)afety"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What sparked an internal backlash?",
+    "answer":"the bloody rule of the (j)|(J)acobins"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What ultimately sent Robespierre to the guillotine?",
+    "answer":"the bloody rule of the (j)|(J)acobins"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What sparked an internal backlash and sent Robespierre to the guillotine?",
+    "answer":"the bloody rule of the (j)|(J)acobins"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"After the fall of the Jacobins, what assumed control of the French state?",
+    "answer":"the (d)|(D)irectory"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When did the Directory assume control of the French state?",
+    "answer":"(after the fall of the jacobins)|(in 1795)"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"Until when did the Directory hold power?",
+    "answer":"until 1799"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"Which year marks the traditional conclusion of the Revolution?",
+    "answer":"(that year)|(1799)"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When did Napoleon Bonaparte overthrow the Directory?",
+    "answer":"(that year)|(1799)"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When did Napoleon Bonaparte establish the Consulate?",
+    "answer":"(that year)|(1799)"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What was the primary successor state of the Revolution?",
+    "answer":"the (first empire under napoleon)|(First Empire under Napoleon)"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When did the primary successor state of the Revolution emerge?",
+    "answer":"1804"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When did the First Empire under Napoleon emerge?",
+    "answer":"1804"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What spread the new revolutionary principles all over Europe during the Napoleonic Wars?",
+    "answer":"the primary successor state of the (r)|(R)evolution, the First Empire under Napoleon"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did the primary successor state of the Revolution spread?",
+    "answer":"the new revolutionary principles"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did the First Empire under Napoleon spread?",
+    "answer":"the new revolutionary principles"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"When did the First Empire finally collapse?",
+    "answer":"1815"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What has unfolded in the shadow of the French Revolution?",
+    "answer":"modern era"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did French society itself undergo?",
+    "answer":"an epic transformation"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What underwent an epic transformation?",
+    "answer":"(f)|(F)rench society"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What evaporated under a sustained assault from various left-wing poligical groups, the masses on the streets, and peasants in the countryside?",
+    "answer":"feudal, aristocratic, and religious privileges"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What were abruptly overthrown under the mantra of \"Liberté, égalité, fraternité\"?",
+    "answer":"(o)|(O)ld ideas about tradition and hierarchy regarding monarchs, aristocrats, and the (c)|(C)atholic (c)|(C)hurch"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What did the Revolution accelerate?",
+    "answer":"the rise of republics and democracies, the spread of liberalism and secularism, the development of modern ideologies, and the adoption of total war."
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What expanded the arena of human rights?",
+    "answer":"some of its central documents, like the (declaration of the rights of man)|(Declaration of the Rights of Man)"
+  },
+  {
+    "file":"FrenchRevolution.txt",
+    "query":"What are just a few of the numerous events that ultimately depended upon the eruption of 1789?",
+    "answer":"the (latin american)|(Latin American) independence wars, the (louisiana purchase)|(Louisiana Purchase) by the (united states)|(United States), and the (r)|(R)evolutions of 1848"
+  },
+  {
+    "file":"Electrons.txt",
+    "query":"What is an electron?",
+    "answer":"The electron is a subatomic particle with a negative elementary electric charge"
+  },
+  {
+    "file":"Electrons.txt",
+    "query":"Where do electrons play an essential role?",
+    "answer":"Many physical phenomena involve electrons in an essential role, such as electricity, magnetism, and thermal conductivity, and electrons also participate in gravitational, electromagnetic and weak interactions"
+  },
+  {
+    "file":"Electrons.txt",
+    "query":"What kind of particles are electrons?",
+    "answer":"(subatomic particle with a negative elementary electric charge)|(Electrons belong to the first generation of the lepton particle family, and are generally thought to be elementary particles because electrons have no known components or substructure)"
+  },
+  {
+    "file":"Electrons.txt",
+    "query":"How big is an electron?",
+    "answer":"The electron has a mass that is approximately 1/1836 that of the proton"
+  },
+  {
+    "file":"Electrons.txt",
+    "query":"Are Electrons waves or particles?",
+    "answer":"Electrons also have properties of both particles and waves, and so can collide with other particles and can be diffracted like light"
+  },
+  {
+    "file":"Electrons.txt",
+    "query":"How are electrons made?",
+    "answer":"Electrons may be created through beta decay of radioactive isotopes"
+  },
+  {
+    "file":"Electrons.txt",
+    "query":"What is the opposite of an electron?",
+    "answer":"The antiparticle of the electron is called the positron; (a positron)|(it) is identical to the electron except that it carries electrical and other charges of the opposite sign"
+  },
+  {
+    "file":"Electrons.txt",
+    "query":"What happens when an electron and a positron collide?",
+    "answer":"If an electron collides with a positron, both particles may be totally annihilated, producing gamma ray photons"
+  },
+  {
+    "file":"Electrons.txt",
+    "query":"Can electrons absorb energy?",
+    "answer":"Electrons radiate or absorb energy in the form of photons when accelerated"
+  },
+  {
+    "file":"Electrons.txt",
+    "query":"Who gave electrons their name?",
+    "answer":"Irish physicist George Johnstone Stoney named this charge 'electron' in 1891, and J. J. Thomson and his team of British physicists identified it as a particle in 1897."
+  },
+  {
+    "file":"IP.txt",
+    "query":"What is used to relay datagrams across networks?",
+    "answer":"Internet Protocol"
+  },
+  {
+    "file":"IP.txt",
+    "query":"What does IP define?",
+    "answer":"(packet structures that encapsulate the data to be delivered)|(addressing methods that are used to label the datagram with source and destination information)"
+  },
+  {
+    "file":"IP.txt",
+    "query":"What are packet structures defined by?",
+    "answer":"(IP)|(Internet Protocol)"
+  },
+  {
+    "file":"IP.txt",
+    "query":"What was IP historically?",
+    "answer":"(connectionless datagram service)|(primary protocol in the Internet)"
+  },
+  {
+    "file":"IP.txt",
+    "query":"What is the Internet protocol suite often referred to as?",
+    "answer":"TCP/IP"
+  },
+  {
+    "file":"IP.txt",
+    "query":"What was the first major version of IP?",
+    "answer":"(Internet Protocol Version 4)|(IPv4)"
+  },
+  {
+    "file":"IP.txt",
+    "query":"What is the successor of IPv4?",
+    "answer":"(Internet Protocol Version 6)|(IPv6)"
+  },
+  {
+    "file":"ArnoldSchwarzenegger.txt",
+    "query":"Where was Arnold Schwarzenegger born?",
+    "answer":"Austria"
+  },
+  {
+    "file":"ArnoldSchwarzenegger.txt",
+    "query":"When did Arnold Schwarzenegger serve as Governor of California?",
+    "answer":"(Schwarzenegger was then re-elected on November 7 , 2006)|(from 2003 until 2011)"
+  },
+  {
+    "file":"ArnoldSchwarzenegger.txt",
+    "query":"When did Arnold win Mr. Universe?",
+    "answer":"age 20"
+  },
+  {
+    "file":"ArnoldSchwarzenegger.txt",
+    "query":"What was Arnold's breakthrough film?",
+    "answer":"(The Terminator)|(Conan the Barbarian)"
+  },
+  {
+    "file":"ArnoldSchwarzenegger.txt",
+    "query":"What did Arnold Schwarzenegger appear in that was a massive critical and box-office success?",
+    "answer":"The Terminator"
+  },
+  {
+    "file":"ArnoldSchwarzenegger.txt",
+    "query":"When did Schwarzenegger appear in The Terminator?",
+    "answer":"1984"
+  },
+  {
+    "file":"ArnoldSchwarzenegger.txt",
+    "query":"What successful films did Arnold Schwarzenegger appear in?",
+    "answer":"Commando|The Running Man|Predator|Twins|Total Recall|Kindergarten Cop|True Lies"
+  },
+  {
+    "file":"ArnoldSchwarzenegger.txt",
+    "query":"What is Arnold's nicknames?",
+    "answer":"Austrian Oak|Styrian Oak|Arnie|The Governator"
+  },
+  {
+    "file":"ArnoldSchwarzenegger.txt",
+    "query":"When was Schwarzenegger elected as Govenor?",
+    "answer":"October 7, 2003"
+  },
+  {
+    "file":"ArnoldSchwarzenegger.txt",
+    "query":"When was Schwarzenegger re-elected?",
+    "answer":"(Schwarzenegger was then re-elected on November 7 , 2006)|(November 7, 2006)"
+  },
+  {
+    "file":"Research.txt",
+    "query":"Why do people routinely research different online websites?",
+    "answer":"find the best place to buy goods or services ((Some)? people)|(they) want"
+  },
+  {
+    "file":"Research.txt",
+    "query":"Where do people search to find the best place to buy goods or services they want ?",
+    "answer":"different online websites"
+  },
+  {
+    "file":"Research.txt",
+    "query":"How do television channels do research?",
+    "answer":"Television news channels supposedly conduct research in the form of viewer polls on topics of public interest such as forthcoming elections or government-funded projects"
+  },
+  {
+    "file":"Research.txt",
+    "query":"Why do undergraduate students research the Internet?",
+    "answer":"find the information [^ ]+ need to complete assigned projects or term papers"
+  },
+  {
+    "file":"Research.txt",
+    "query":"How do businesses and consultants perform research?",
+    "answer":"businesses and consultants research different potential solutions to remedy organizational problems such as a supply chain bottleneck or to identify customer purchase patterns"
+  },
+  {
+    "file":"Research.txt",
+    "query":"How do businesses and consultants remedy organizational problems?",
+    "answer":"businesses and consultants research different potential solutions to remedy organizational problems such as a supply chain bottleneck or to identify customer purchase patterns"
+  },
+  {
+    "file":"Research.txt",
+    "query":"How is something categorized as scientific research?",
+    "answer":"none of the above can be considered scientific research unless the above contributes to a body of science , and the above follows the scientific method"
+  },
+  {
+    "file":"Research.txt",
+    "query":"How is something considered as scientific research?",
+    "answer":"none of the above can be considered scientific research unless the above contributes to a body of science , and the above follows the scientific method"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is science?",
+    "answer":"a systematic and organized body of knowledge in any area of inquiry that is acquired using \"the scientific method\""
+  },
+  {
+    "file":"Research.txt",
+    "query":"What are the categories in science?",
+    "answer":"natural science and social science"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is science grouped into?",
+    "answer":"natural science and social science"
+  },
+  {
+    "file":"Research.txt",
+    "query":"How is science grouped?",
+    "answer":"natural science and social science"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is Natural science?",
+    "answer":"the science of naturally occurring objects or phenomena"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is social science?",
+    "answer":"the science of people or collections of people"
+  },
+  {
+    "file":"Research.txt",
+    "query":"How is natural science classified?",
+    "answer":"(Natural science is the science of naturally occurring objects)|(Natural sciences can be further classified into physical sciences, earth sciences, life sciences, and others)"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What are physical sciences?",
+    "answer":"disciplines such as physics, chemistry, and astronomy"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What are earth sciences?",
+    "answer":"consist of disciplines such as geology"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What are life sciences?",
+    "answer":"include disciplines such as biology which is the science of human bodies and botany which is the science of plants"
+  },
+  {
+    "file":"Research.txt",
+    "query":"How is social science classified?",
+    "answer":"can be classified into disciplines such as psychology, sociology, and economics"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is Physics?",
+    "answer":"the science of physical objects"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is Chemistry?",
+    "answer":"the science of matter"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is Astronomy?",
+    "answer":"the science of celestial objects"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is Geology?",
+    "answer":"the science of the earth"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is Biology?",
+    "answer":"the science of human bodies"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is Botany?",
+    "answer":"The science of plants"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is Psychology?",
+    "answer":"The science of human behaviors"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is Sociology?",
+    "answer":"science of social groups"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is Economics?",
+    "answer":"science of firms, markets, and economies"
+  },
+  {
+    "file":"Research.txt",
+    "query":"How are natural sciences different from the social sciences?",
+    "answer":"(The natural sciences are different from the social sciences in several respects)|(The natural sciences are very precise, accurate, deterministic, and independent of the person making the scientific observations)|(However, the same cannot be said for the social sciences, which tend to be less accurate, deterministic, or unambiguous)"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is the conclusion if two students conducting the same physics experiment obtain two different values of the physical properties?",
+    "answer":"one or both of those students must be in error"
+  },
+  {
+    "file":"Research.txt",
+    "query":"What is the conclusion if two students conducting social experiments obtain different values?",
+    "answer":"one or both of those students must be in error"
+  },
+  {
+    "file":"Research.txt",
+    "query":"Why do two students conducting the same physics experiment obtain two different values of the physical properties?",
+    "answer":"if two students conducting the same physics experiment obtain two different values of these physical properties, then it generally means that one or both of those students must be in error"
+  },
+  {
+    "file":"Research.txt",
+    "query":"Why do two students conducting the same social experiment obtain two different values?",
+    "answer":"However, the same cannot be said for the social sciences, which tend to be less accurate, deterministic, or unambiguous."
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"What has attracted a great deal of attention in the information industry?",
+    "answer":"data mining"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"Why has data mining attracted a great deal of attention in the information industry?",
+    "answer":"the wide availability of huge amounts of data and the imminent need for turning such data into useful information and knowledge"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"What is the information and knowledge gained used for?",
+    "answer":"the information and knowledge gained can be used for applications ranging from market analysis, fraud detection, and customer retention, to production control and science exploration"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"What can be viewed as a result of the natural evolution of information technology?",
+    "answer":"Data mining"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"What does data management include?",
+    "answer":"data storage and retrieval, and database transaction processing"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"What does advanced data analysis involve?",
+    "answer":"(data warehousing and data mining)|(data mining tools perform data analysis and may uncover important data patterns, contributing greatly to business strategies, knowledge bases, and scientific and medical research)"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"How has database and information technology evolved systematically since the 1960’s?",
+    "answer":"from primitive file processing systems to sophisticated and powerful database systems"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"How has database and information technology evolved systematically?",
+    "answer":"from primitive file processing systems to sophisticated and powerful database systems"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"How did the users gain convenient and flexible data access?",
+    "answer":"through query languages, user interfaces, optimized query processing, and transaction management"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"What are some of the Application-oriented database systems which have flourished?",
+    "answer":"spatial, temporal, multimedia, active, stream, and sensor, and scientific and engineering databases, knowledge bases, and office information bases"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"How is data stored?",
+    "answer":"in many different kinds of databases and information repositories"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"What is a data warehouse?",
+    "answer":"(One data repository architecture that has emerged)|(data warehouse technology includes data cleaning, data integration, and on-line analytical processing \\(OLAP\\), that is, analysis techniques with functionalities such as summarization, consolidation, and aggregation as well as the ability to view information from different angles)"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"What are some of the Data warehouse technologies?",
+    "answer":"data cleaning, data integration, and on-line analytical processing"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"What is described as a data rich but information poor situation?",
+    "answer":"The abundance of data, coupled with the need for powerful data analysis tools"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"What are data tombs?",
+    "answer":"As a result, data collected in large data repositories become \"data tombs\""
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"How can data tombs be turned into golden nuggets of knowledge?",
+    "answer":"the widening gap between data and information calls for a systematic development of data mining tools that will turn data tombs into .golden nuggets. of knowledge"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"What will turn data tombs into golden nuggets of knowledge?",
+    "answer":"Data mining tools"
+  },
+  {
+    "file":"DataMining.txt",
+    "query":"What do data mining tools perform?",
+    "answer":"data analysis"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"Who is the Finance Minister of India?",
+    "answer":"Arun Jaitley"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"Who is the Finance Minister?",
+    "answer":"Arun Jaitley"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"Who is Arun Jaitley?",
+    "answer":"Finance Minister"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"What did Mr Jaitley say about the growth?",
+    "answer":"(growth will accelerate to between 8 and 8.5 percent in the fiscal year starting in April)|(A pace of 7.4 per cent is expected for the current year)"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"What percent is expected for the current year?",
+    "answer":"7.4 percent"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"Who forecasted inflation at 5 percent by the end of the fiscal year ending March 2016?",
+    "answer":"Mr Jaitley"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"What percent of tax has the Reserve Bank of India targeted?",
+    "answer":"6 percent"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"How much was the annual inflation in January?",
+    "answer":"5.1 percent"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"How much % of tax will India reduce on business?",
+    "answer":"25 percent over four years from a current 30 percent"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"Which tax is abolished by the government?",
+    "answer":"the wealth tax"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"What amount has the government added to boost the efficiency of MNREGA?",
+    "answer":"5,000 crores"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"What is MNREGA?",
+    "answer":"(the rural job creation scheme)|(MNREGA)"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"What is the rural job creation scheme?",
+    "answer":"(India's costliest welfare programme)|(MNREGA)"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"What is India's costliest welfare programme?",
+    "answer":"(the rural job creation scheme)|(MNREGA)"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"How much of increase does the budget show?",
+    "answer":"1"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"To which scheme has the government added 5,000 crores?",
+    "answer":"(MNREGA)|(the rural job creation scheme)|(India's costliest welfare programme)"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"What has the minister proposed regarding increasing the service tax?",
+    "answer":"increasing the service tax rate and education cess to 14 percent from the current 12.36 percent"
+  },
+  {
+    "file":"GMFinanceMinister.txt",
+    "query":"What did the local companies hope for?",
+    "answer":"that the budget would reduce their tax liabilities"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What is macroeconomics?",
+    "answer":"(a branch of economics)|(a branch of economics dealing with the performance, structure, behavior, and decision-making of an economy as a whole, rather than individual markets)|(macroeconomics is one of the two most general fields in economics)"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What constitutes macroeconomics?",
+    "answer":"(Macroeconomic theories usually relate the phenomena of output , unemployment , and inflation)|(Macroeconomics encompasses a variety of concepts and variables, but there are three central topics for macroeconomic research)|(A branch of economics dealing with the performance, structure, behavior, and decision-making of an economy as a whole, rather than individual markets)|(This includes national, regional, and global economies)"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What are the 2 most general fields in economics?",
+    "answer":"With microeconomics, macroeconomics is one of the two most general fields in economics"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What do Macroeconomists study?",
+    "answer":"aggregated indicators such as GDP, unemployment rates, and price indexes to understand how the whole economy functions"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What do macroeconomists develop?",
+    "answer":"models that explain the relationship between such factors as national income, output, consumption, unemployment, inflation, savings, investment, international trade and international finance"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What sort of models do Macroeconomists develop?",
+    "answer":"models that explain the relationship between such factors as national income, output, consumption, unemployment, inflation, savings, investment, international trade and international finance"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What is microeconomics primarily focused on?",
+    "answer":"the actions of individual agents, such as firms and consumers, and how their behavior determines prices and quantities in specific markets"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What are Macroeconomic models and their forecasts used for?",
+    "answer":"to assist in the development and evaluation of economic policy"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What do Macroeconomic theories usually relate to?",
+    "answer":"the phenomena of output, unemployment, and inflation"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What is national output?",
+    "answer":"the lowest amount of everything a country produces in a given time period"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What generates income?",
+    "answer":"Everything that is produced and sold"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"How is the Macroeconomic output usually measured?",
+    "answer":"(total income)|(the total value of final goods)|(Gross Domestic Product)"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What is GDP?",
+    "answer":"Macroeconomic output is usually measured by Gross Domestic Product \\(GDP\\) or one of the other national accounts"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What is Gross Domestic Product?",
+    "answer":"Macroeconomic output is usually measured by Gross Domestic Product \\(GDP\\) or one of the other national accounts"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What leads to increased economic output over time?",
+    "answer":"advances in technology, accumulation of machinery and other capital, and better education and human capital"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"How is the amount of unemployment in an economy is measured?",
+    "answer":"the unemployment rate"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"How is the labor force calculated?",
+    "answer":"workers actively looking for jobs|People who are retired, pursuing education, or discouraged from seeking work by a lack of job prospects are excluded from the labor force"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What constitutes of the labor force?",
+    "answer":"workers actively looking for jobs|People who are retired, pursuing education, or discouraged from seeking work by a lack of job prospects are excluded from the labor force"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What is the classical unemployment theory?",
+    "answer":"unemployment occurs when wages are too high for employers to be willing to hire more workers"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What are the modern economic theories regarding unemployment?",
+    "answer":"that increased wages actually decrease unemployment by creating more consumer demand"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"How does frictional unemployment occur?",
+    "answer":"when appropriate job vacancies exist for a worker, but the length of time needed to search for and find the job leads to a period of unemployment"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"How does cyclical unemployment occur?",
+    "answer":"when growth stagnates"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What is Okun's law?",
+    "answer":"(the empirical relationship between unemployment and economic growth)|(a 3% increase in output would lead to a 1% decrease in unemployment)"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What does Okun’s law represent?",
+    "answer":" the empirical relationship between unemployment and economic growth"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What is inflation?",
+    "answer":"A general price increase across the entire economy"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"What is deflation?",
+    "answer":"when prices decrease"
+  },
+  {
+    "file":"Macroeconomics.txt",
+    "query":"How does inflation occur?",
+    "answer":"when an economy becomes overheated and grows too quickly"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"What are technology shocks?",
+    "answer":"events in a macroeconomic model, that change the production function"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"What changes the production function?",
+    "answer":"Technology shocks"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"How is shock defined?",
+    "answer":"a sudden change in economic terms"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"How is the term shock defined?",
+    "answer":"a sudden change in economic terms"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"How is shock modeled?",
+    "answer":"with an aggregate production function that has a scaling factor"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"What happens when there is a sudden change in technology to either benefit or worsen economic activity?",
+    "answer":"technology shock"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"What does technology shock have a big effect on?",
+    "answer":"(This type of shock has big effects on companies that are solely dependent on technology as their main source of labor or production , such as manufacturing plants or oil/energy extraction)|(industry or firm's productivity)"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"What is a positive technology shock?",
+    "answer":"increasing the output for a given set of inputs"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"What is a negative technology shock?",
+    "answer":"decreasing the output for a given set of inputs"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"Are positive shocks more common than negative technology shocks?",
+    "answer":"negative shocks are much less common than positive shocks"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"Are negative shocks more common than positive technology shocks?",
+    "answer":"negative shocks are much less common than positive shocks as technology rarely moves backwards"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"What is the example of a positive technology shock?",
+    "answer":"(The Industrial Revolution)|(This is an example of a positive technology shock)"
+  },
+  {
+    "file":"TechnologyShocks.txt",
+    "query":"How did the Industrial revolution impact people?",
+    "answer":"increased wages steadily over the period of time and it also increased population because people had the wages for standard living"
+  },
+  {
+    "file":"Microprocessor.txt",
+    "query":"What does the incredibly simple microprocessor contain?",
+    "answer":"a fairly large set of instructions"
+  },
+  {
+    "file":"Microprocessor.txt",
+    "query":"What contains a fairly large set of instructions that it can perform?",
+    "answer":"incredibly simple microprocessor"
+  },
+  {
+    "file":"Microprocessor.txt",
+    "query":"How are the collection of instructions implemented?",
+    "answer":"as bit patterns, each one of which has a different meaning when loaded into the instruction register"
+  },
+  {
+    "file":"Microprocessor.txt",
+    "query":"Are humans good at remembering bit patterns?",
+    "answer":"humans are not particularly good at remembering bit patterns"
+  },
+  {
+    "file":"Microprocessor.txt",
+    "query":"What needs to be done as humans are not particularly good at remembering bit patterns?",
+    "answer":"a set of short words are defined to represent the different bit patterns"
+  },
+  {
+    "file":"Microprocessor.txt",
+    "query":"What are the collection of words called?",
+    "answer":"the assembly language of the processor"
+  },
+  {
+    "file":"Microprocessor.txt",
+    "query":"What does an assembler do?",
+    "answer":"An assembler can translate the words into their bit patterns"
+  },
+  {
+    "file":"Microprocessor.txt",
+    "query":"What is done with the assembler output?",
+    "answer":"the output of the assembler is placed in memory for the microprocessor to execute"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"Where is Clearing located?",
+    "answer":"(Illinois)|(suburb of Chicago)"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"Where is Clearing?",
+    "answer":"(Illinois)|(suburb of Chicago)"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"Why were residents unhappy?",
+    "answer":"(armed teenagers on the streets, giving gang signals and shouting at passing cars)|(a series of burglaries and graffiti messages on storefronts)"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"Why were the residents alarmed?",
+    "answer":"(armed teenagers on the streets, giving gang signals and shouting at passing cars)|(a series of burglaries and graffiti messages on storefronts)"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"When were the 2 girls shot?",
+    "answer":"Last December"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"How old were the girls who were shot?",
+    "answer":"13-year-old"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"How many states passed laws which allow youths to be tried in courts?",
+    "answer":"Nearly all 50"
+  },
+  {
+    "file": "ClearingIL.txt",
+    "query": "How many states passed laws to punish parents for their children’s behavior?",
+    "answer": "In about 25 states"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"Who imposed curfews to reduce violence?",
+    "answer":"in 146 of the nation's largest cities"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"How have the murder rates trended in the past decade?",
+    "answer":"there has been a decline in adult murders in the US, while murder rates have surged for youths between 14-17"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"What is done with the young offenders?",
+    "answer":"some are ordered to perform community service, others are placed in job training programs, still others sent to youth prisons"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"What do the Republicans in Congress want to do?",
+    "answer":"reverse a basic principle of juvenile justice: the separation of young criminals from hardened adult criminals in prison"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"Why do the Replubicans want to reverse the principle of juvenile justice?",
+    "answer":"(the separation of young criminals from hardened adult criminals in prison)|(The reasons are partly financial - to reduce the cost of having separate prisons for young people - and partly psychological - to end what Republicans consider as society's overly protective attitude towards young criminals)"
+  },
+  {
+    "file":"ClearingIL.txt",
+    "query":"What is a principle of juvenile justice?",
+    "answer":"the separation of young criminals from hardened adult criminals in prison"
+  }
+]
