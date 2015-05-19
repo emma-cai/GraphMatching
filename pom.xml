@@ -39,15 +39,14 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>jgrapht</groupId>
-            <artifactId>jgrapht</artifactId>
-            <version>0.7.3</version>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-core</artifactId>
+            <version>0.9.1</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
             <version>1.1.1</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>edu.cmu.lti</groupId>
@@ -57,4 +56,18 @@
             <systemPath>${project.basedir}/lib/ws4j-1.0.1.jar</systemPath>
         </dependency>
    </dependencies>
+
+   <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <version>3.1</version>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

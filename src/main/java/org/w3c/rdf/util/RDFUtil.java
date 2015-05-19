@@ -1,5 +1,5 @@
 /**
- * Copyright © Sergey Melnik (Stanford University, Database Group)
+ * Copyright Sergey Melnik (Stanford University, Database Group)
  *
  * All Rights Reserved.
  */
@@ -7,18 +7,19 @@
 package org.w3c.rdf.util;
 
 import org.w3c.rdf.model.*;
-import org.w3c.rdf.syntax.*;
-import org.w3c.rdf.vocabulary.rdf_syntax_19990222.*;
-import org.w3c.rdf.vocabulary.rdf_schema_19990303.*;
+import org.w3c.rdf.syntax.RDFParser;
+import org.w3c.rdf.syntax.RDFSerializer;
+import org.w3c.rdf.syntax.SerializationException;
+import org.w3c.rdf.vocabulary.rdf_syntax_19990222.RDF;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
-import org.w3c.rdf.implementation.model.ResourceImpl;
-import org.w3c.rdf.util.SetOperations;
-//import org.w3c.tools.crypt.*;
-import org.xml.sax.*;
-
-import java.util.*;
 import java.io.*;
-import java.net.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.*;
+
+//import org.w3c.tools.crypt.*;
 
 /**
  * Useful utility methods.

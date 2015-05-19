@@ -1,5 +1,5 @@
 /**
- * Copyright � Sergey Melnik (Stanford University, Database Group)
+ * Copyright Sergey Melnik (Stanford University, Database Group)
  *
  * All Rights Reserved.
  */

@@ -1,22 +1,24 @@
 /**
- * Copyright © Sergey Melnik (Stanford University, Database Group)
+ * Copyright Sergey Melnik (Stanford University, Database Group)
  *
  * All Rights Reserved.
  */
 
 package org.w3c.rdf.implementation.syntax.sirpac;
 
-import org.w3c.rdf.model.*;
-import org.w3c.rdf.syntax.*;
-import org.w3c.rdf.vocabulary.rdf_syntax_19990222.RDF;
-import org.w3c.rdf.vocabulary.rdf_schema_19990303.RDFS;
 import edu.stanford.db.rdf.vocabulary.order_20000527.RDFX;
+import org.w3c.rdf.model.*;
+import org.w3c.rdf.syntax.RDFSerializer;
 import org.w3c.rdf.util.RDFUtil;
-//import org.w3c.tools.sorter.*;
+import org.w3c.rdf.vocabulary.rdf_schema_19990303.RDFS;
+import org.w3c.rdf.vocabulary.rdf_syntax_19990222.RDF;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.*;
-import java.io.*;
-import java.net.URL;
+
+//import org.w3c.tools.sorter.*;
 
 /**
  * A default implementation of the RDFMS interface.
