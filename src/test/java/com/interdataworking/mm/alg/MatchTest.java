@@ -143,7 +143,7 @@ public class MatchTest extends TestCase {
         PGNode a2_b1_MP = makePGNode(a2, b1, 0.9192856376702777, 1.0, 0.9170165472956283, 0.9192856376702777);
         PGNode a1_b2_MP = makePGNode(a1, b2, 0.7021345060602809, 1.0, 0.6996789330698936, 0.7021345060602809);
         PGNode a1_b1_MP = makePGNode(a1, b1, 0.38458650648932746, 1.0, 0.385527290689059, 0.38458650648932746);
-        a1_b1_MP.inverse = true;
+//        a1_b1_MP.inverse = true;
         PGNode a1_b_MP = makePGNode(a1, b, 0.21967177947012764, 1.0, 0.2529019510990368, 0.21967177947012764);
         PGNode a2_b2_MP = makePGNode(a2, b2, 0.21967177947012764, 1.0, 0.2529019510990368, 0.21967177947012764);
         PGNode a_b1_MP = makePGNode(a, b1, 4.2904644427759305E-4, 1.0, 9.878982464806125E-4, 4.2904644427759305E-4);
@@ -165,7 +165,7 @@ public class MatchTest extends TestCase {
             PGNode expected = (PGNode) expectedList.get(ct);
             PGNode actual = (PGNode) actualArray[ct];
 
-            assertEquals("Testing element = " + ct + "; ", expected, actual);
+            assertEquals("Testing element = " + ct + "; ", expected.toString(), actual.toString());
 
         }
     }
