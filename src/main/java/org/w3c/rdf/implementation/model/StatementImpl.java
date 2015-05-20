@@ -1,5 +1,5 @@
 /**
- * Copyright © World Wide Web Consortium, (Massachusetts Institute of
+ * Copyright World Wide Web Consortium, (Massachusetts Institute of
  * Technology, Institut National de Recherche en Informatique et en
  * Automatique, Keio University).
  *
@@ -10,10 +10,10 @@
 
 package org.w3c.rdf.implementation.model;
 
+import org.w3c.rdf.digest.DigestException;
+import org.w3c.rdf.digest.RDFDigestUtil;
 import org.w3c.rdf.model.*;
-import org.w3c.rdf.util.*;
-import org.w3c.rdf.digest.*;
-import java.io.*;
+import org.w3c.rdf.util.RDFUtil;
 
 public final class StatementImpl implements Statement {
 
