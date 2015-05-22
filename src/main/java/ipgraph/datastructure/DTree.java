@@ -37,9 +37,11 @@ import java.util.stream.Collectors;
  * Created by Maochen on 12/8/14.
  */
 public class DTree extends ArrayList<DNode> {
+
     private DNode padding;
     private String sentenceType = StringUtils.EMPTY;
     private String originalSentence = StringUtils.EMPTY;
+    private static StanfordPCFGParser pcfgParser = new StanfordPCFGParser("", false);
 
     @Override
     public String toString() {
@@ -106,14 +108,29 @@ public class DTree extends ArrayList<DNode> {
      * Build dependency-tree from a plain sentence
      */
     public static DTree buildTree(String s) {
-        StanfordPCFGParser pcfgParser = new StanfordPCFGParser("", false);
+
         Tree tree = pcfgParser.getLexicalizedParser().parse(s);
 
         SemanticHeadFinder headFinder = new SemanticHeadFinder(false); // keep copula verbs as head
         GrammaticalStructure egs = new EnglishGrammaticalStructure(tree, string -> true, headFinder, true);
 
         // notes: typedDependencies() is suggested
-        String conllx = EnglishGrammaticalStructure.dependenciesToString(egs, egs.typedDependencies(), tree, true, true);
+        String conllx = null;
+        DTree dtree = null;
+        try {
+            conllx = EnglishGrammaticalStructure.dependenciesToString(egs, egs.typedDependencies(), tree, true, true);
+            dtree = LangTools.getDTreeFromCoNLLXString(conllx, true);
+        } catch (Exception ex) {
+            System.out.println("Exception when building DTree for: \"" + s + "\"");
+        }
+
+        return dtree;
+    }
+
+    /** **************************************************************
+     * Build dependency-tree from conllx
+     */
+    public static DTree buildTreeFromConllx(String conllx) {
 
         DTree dtree = LangTools.getDTreeFromCoNLLXString(conllx, true);
         return dtree;
