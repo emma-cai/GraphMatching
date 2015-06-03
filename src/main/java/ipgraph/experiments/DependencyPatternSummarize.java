@@ -16,7 +16,7 @@ import java.util.*;
 /**
  * Created by qingqingcai on 5/22/15.
  */
-public class DependencyPatternLearning {
+public class DependencyPatternSummarize {
 
     private static String baseDir = "src/test/resources/wiki";
 
@@ -28,7 +28,7 @@ public class DependencyPatternLearning {
 
     public static void runPatternFrequency(String jsonpath) {
 
-        HashMap<String, Integer> pattern_fre = new HashMap<>();
+        TreeMap<String, Integer> pattern_fre = new TreeMap<>();
         File jsonTestFile = null;
         try {
             jsonTestFile = new File(jsonpath);
@@ -57,16 +57,16 @@ public class DependencyPatternLearning {
                     fre = pattern_fre.get(form_deplabel) + 1;
                 }
                 pattern_fre.put(form_deplabel, fre);
+                System.out.println("\n" + query);
+                System.out.println(whForm + " - " + whDepLabel + " - " + whDNodeParent.getForm() + " - " + whDNodeParent.getPOS());
             }
-
-//            Map<String, Integer> sorted = pattern_fre.entrySet().stream()
-//                    .sorted(Map.Entry.comparingByValue())
-//                    .collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
 
             TreeMap sorted = sortByValue(pattern_fre);
 
-        //    System.out.println(sortedTmp);
-            sorted.forEach((k, v) -> { System.out.println(k + "\t" + v); } );
+            System.out.println("\n\n\nSorted Answers:");
+            sorted.forEach((k, v) -> {
+                System.out.println(k + "\t" + v);
+            });
         }
 
         catch (FileNotFoundException e) {
